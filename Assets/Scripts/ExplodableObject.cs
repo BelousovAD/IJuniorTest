@@ -4,20 +4,35 @@ using UnityEngine;
 
 public class ExplodableObject : MonoBehaviour
 {
-    public static event Action<Transform> Clicked;
+    private const float DivisionChanceDivider = 2f;
 
     [SerializeField]
     private float _explosionRadius = 1f;
     [SerializeField]
     private float _explosionForce = 1f;
 
+    private float _divisionChanceBoundary = 1f;
+
+    public static event Action<ExplodableObject> Clicked;
+
+    public void Initialize(ExplodableObject parent)
+    {
+        if (parent != null)
+        {
+            _divisionChanceBoundary = parent._divisionChanceBoundary / DivisionChanceDivider;
+        }
+    }
+
     private void OnMouseUpAsButton()
     {
-        Clicked?.Invoke(transform);
-
-        foreach (Rigidbody rigidbody in GetRigidbodiesFromExplosionSphere())
+        if (UnityEngine.Random.value <= _divisionChanceBoundary)
         {
-            rigidbody.AddExplosionForce(_explosionForce, transform.position, _explosionRadius);
+            Clicked?.Invoke(this);
+
+            foreach (Rigidbody rigidbody in GetRigidbodiesFromExplosionSphere())
+            {
+                rigidbody.AddExplosionForce(_explosionForce, transform.position, _explosionRadius);
+            }
         }
 
         Destroy(gameObject);
