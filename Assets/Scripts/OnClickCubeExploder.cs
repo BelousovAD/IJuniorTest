@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class OnClickCubeExploder : MonoBehaviour
 {
+    private const int ExponentForCalculateMultipliersFromCubeScale = -1;
+
     [SerializeField] private CubeClickChecker _cubeClickChecker;
     [SerializeField] private CubeSpawner _cubeSpawner;
     [SerializeField] private Explosion _explosion;
@@ -21,6 +23,12 @@ public class OnClickCubeExploder : MonoBehaviour
             List<Rigidbody> cubeRigidbodies = new();
             spawnedCubes.ForEach(spawnedCube => cubeRigidbodies.Add(spawnedCube.gameObject.GetComponent<Rigidbody>()));
             _explosion.Explode(cubeRigidbodies, cube.transform.position);
+        }
+        else
+        {
+            float forceMultiplier = Mathf.Pow(cube.transform.localScale.x, ExponentForCalculateMultipliersFromCubeScale);
+            float radiusMultiplier = Mathf.Pow(cube.transform.localScale.x, ExponentForCalculateMultipliersFromCubeScale);
+            _explosion.Explode(cube.transform.position, forceMultiplier, radiusMultiplier);
         }
 
         Destroy(cube.gameObject);

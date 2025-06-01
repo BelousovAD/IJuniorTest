@@ -1069,7 +1069,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _force: 20
-  _radius: 5
+  _radius: 1
 --- !u!4 &1993442280
 Transform:
   m_ObjectHideFlags: 0
