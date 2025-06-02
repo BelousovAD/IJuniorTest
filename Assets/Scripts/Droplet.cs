@@ -42,6 +42,7 @@ public class Droplet : MonoBehaviour
     private void Release()
     {
         _isTriggered = false;
+        _materialSetter.ResetMaterial();
         _parentSpawner.Release(this);
     }
 }

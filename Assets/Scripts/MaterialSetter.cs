@@ -6,15 +6,21 @@ public class MaterialSetter : MonoBehaviour
 {
     private const int MinRandomValue = 0;
 
-    [SerializeField]
-    private List<Material> _materials = new();
+    [SerializeField] private List<Material> _materials = new();
 
     private MeshRenderer _meshRenderer;
+    private Material _defaultMaterial;
     private readonly System.Random _random = new();
 
-    private void Awake() =>
+    private void Awake()
+    {
         _meshRenderer = GetComponent<MeshRenderer>();
+        _defaultMaterial = _meshRenderer.material;
+    }
 
     public void SetRandomMaterial() =>
         _meshRenderer.material = _materials[_random.Next(MinRandomValue, _materials.Count)];
+
+    public void ResetMaterial() =>
+        _meshRenderer.material = _defaultMaterial;
 }
