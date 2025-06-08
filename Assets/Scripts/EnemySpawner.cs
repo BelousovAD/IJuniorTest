@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private Character _prefab;
+    [SerializeField] private Enemy _prefab;
     [SerializeField] private Material _enemyMaterial;
     [SerializeField] private Transform _parent;
     [SerializeField] private Transform _spawnPoint;
@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void Spawn()
     {
-        Enemy enemy = Instantiate(_prefab, _spawnPoint.position, Quaternion.identity, _parent) as Enemy;
+        Enemy enemy = Instantiate(_prefab, _spawnPoint.position, Quaternion.identity, _parent);
         enemy.Initialize(_enemyMaterial, _targetToFollow, _moveSpeed);
     }
 }
