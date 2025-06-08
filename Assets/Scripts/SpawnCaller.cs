@@ -1,10 +1,11 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnCaller : MonoBehaviour
 {
     [SerializeField, Min(0.005f)] private float _spawnDelay = 2f;
-    [SerializeField] private EnemySpawner _spawner;
+    [SerializeField] private List<EnemySpawner> _spawners = new();
 
     private void OnEnable() =>
         StartCoroutine(SpawnWithDelayRoutine(_spawnDelay));
@@ -14,7 +15,7 @@ public class SpawnCaller : MonoBehaviour
         while (isActiveAndEnabled)
         {
             yield return new WaitForSeconds(triggerTime);
-            _spawner.SpawnAtRandomPoint();
+            _spawners[Random.Range(0, _spawners.Count)].Spawn();
         }
     }
 }

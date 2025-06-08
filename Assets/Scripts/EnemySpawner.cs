@@ -1,18 +1,17 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private Enemy _prefab;
+    [SerializeField] private Character _prefab;
+    [SerializeField] private Material _enemyMaterial;
     [SerializeField] private Transform _parent;
-    [SerializeField] private float _maxAbsStartRotation = 180f;
-    [SerializeField] private List<Transform> _spawnPoints = new();
+    [SerializeField] private Transform _spawnPoint;
+    [SerializeField] private Transform _targetToFollow;
+    [SerializeField] private float _moveSpeed = 1f;
 
-    public void SpawnAtRandomPoint()
+    public void Spawn()
     {
-        Transform spawnPoint = _spawnPoints[Random.Range(0, _spawnPoints.Count)];
-        Vector3 rotation = new(0f, Random.Range(-_maxAbsStartRotation, _maxAbsStartRotation), 0f);
-        Enemy enemy = Instantiate(_prefab, spawnPoint.position, Quaternion.Euler(rotation), _parent);
-        enemy.Initialize();
+        Enemy enemy = Instantiate(_prefab, _spawnPoint.position, Quaternion.identity, _parent) as Enemy;
+        enemy.Initialize(_enemyMaterial, _targetToFollow, _moveSpeed);
     }
 }

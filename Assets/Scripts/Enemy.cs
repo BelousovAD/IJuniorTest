@@ -1,15 +1,13 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Character
 {
-    [SerializeField] private Mover _mover;
     [SerializeField] private MaterialSetter _materialSetter;
-    
-    [SerializeField] private float _startSpeed = 1f;
 
-    public void Initialize()
+    public void Initialize(Material material, Transform targetToFollow, float moveSpeed)
     {
-        _mover.Speed = _startSpeed;
-        _materialSetter.SetRandomMaterial();
+        _materialSetter.SetMaterial(material);
+        SetTarget(targetToFollow);
+        Mover.Speed = moveSpeed;
     }
 }
