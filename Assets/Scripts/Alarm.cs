@@ -37,14 +37,22 @@ public class Alarm : MonoBehaviour
 
     private void IncreaseThiefCount()
     {
+        if (_increaseVolumeRoutine == null && _thiefCount == 0)
+        {
+            StartCoroutine(StartPlay());
+        }
+
         ++_thiefCount;
-        StartCoroutine(StartPlay());
     }
 
     private void DecreaseThiefCount()
     {
         --_thiefCount;
-        StartCoroutine(StopPlay());
+
+        if (_decreaseVolumeRoutine == null && _thiefCount == 0)
+        {
+            StartCoroutine(StopPlay());
+        }
     }
 
     private IEnumerator StartPlay()
@@ -54,35 +62,29 @@ public class Alarm : MonoBehaviour
             _audioSource.Play();
         }
 
-        if (_increaseVolumeRoutine == null)
-        {
-            if (_decreaseVolumeRoutine != null)
-            {
-                StopCoroutine(_decreaseVolumeRoutine);
-                _decreaseVolumeRoutine = null;
-            }
+        CancelCoroutine(ref _decreaseVolumeRoutine);
 
-            yield return _increaseVolumeRoutine = StartCoroutine(ChangeVolumeSmoothly(MaxVolume));
-            _increaseVolumeRoutine = null;
-        }
+        yield return _increaseVolumeRoutine = StartCoroutine(ChangeVolumeSmoothly(MaxVolume));
+
+        _increaseVolumeRoutine = null;
     }
 
     private IEnumerator StopPlay()
     {
-        if (_thiefCount == 0)
-        {
-            if (_decreaseVolumeRoutine == null)
-            {
-                if (_increaseVolumeRoutine != null)
-                {
-                    StopCoroutine(_increaseVolumeRoutine);
-                    _increaseVolumeRoutine = null;
-                }
+        CancelCoroutine(ref _increaseVolumeRoutine);
 
-                yield return _decreaseVolumeRoutine = StartCoroutine(ChangeVolumeSmoothly(MinVolume));
-                _decreaseVolumeRoutine = null;
-                _audioSource.Stop();
-            }
+        yield return _decreaseVolumeRoutine = StartCoroutine(ChangeVolumeSmoothly(MinVolume));
+
+        _decreaseVolumeRoutine = null;
+        _audioSource.Stop();
+    }
+
+    private void CancelCoroutine(ref Coroutine coroutine)
+    {
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+            coroutine = null;
         }
     }
 
