@@ -4,7 +4,7 @@ public class Wallet : MonoBehaviour
 {
     private uint _currency;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent(out Coin coin))
         {
