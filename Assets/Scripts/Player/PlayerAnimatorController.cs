@@ -1,41 +1,51 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerAnimatorController : MonoBehaviour
 {
-    private readonly int IsIdle = Animator.StringToHash(nameof(IsIdle));
-    private readonly int IsOnGround = Animator.StringToHash(nameof(IsOnGround));
-    private readonly int VelocityHorizontal = Animator.StringToHash(nameof(VelocityHorizontal));
-    private readonly int VelocityVertical = Animator.StringToHash(nameof(VelocityVertical));
+    private readonly int IsRunning = Animator.StringToHash(nameof(IsRunning));
+    private readonly int IsFalling = Animator.StringToHash(nameof(IsFalling));
+    private readonly int IsJumping = Animator.StringToHash(nameof(IsJumping));
 
-    [SerializeField] private float _velocityEpsilon = 0.00001f;
-    [SerializeField] private PlayerIsOnGroundChecker _playerIsOnGroundChecker;
+    [SerializeField] private PlayerVerticalVelocityReader _playerVerticalVelocityReader;
+    [SerializeField] private InputReader _inputReader;
 
     private Animator _animator;
-    private Rigidbody2D _rigidbody2D;
-    private Vector2 _velocity;
+    private Vector3 _localScale;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    private void OnEnable() =>
-        _playerIsOnGroundChecker.IsOnGroundStatusChanged += UpdateIsOnGroundParameter;
-
-    private void OnDisable() =>
-        _playerIsOnGroundChecker.IsOnGroundStatusChanged -= UpdateIsOnGroundParameter;
-
-    private void Update()
+    private void OnEnable()
     {
-        _velocity = _rigidbody2D.velocity;
-        _animator.SetBool(IsIdle, Mathf.Abs(_velocity.x) <= _velocityEpsilon && Mathf.Abs(_velocity.y) <= _velocityEpsilon);
-        _animator.SetFloat(VelocityHorizontal, Mathf.Abs(_velocity.x) > _velocityEpsilon ? Mathf.Abs(_velocity.x) : 0f);
-        _animator.SetFloat(VelocityVertical, Mathf.Abs(_velocity.y) > _velocityEpsilon ? _velocity.y : 0f);
+        _playerVerticalVelocityReader.FallingStatusChanged += UpdateIsFallingParameter;
+        _playerVerticalVelocityReader.JumpingStatusChanged += UpdateIsJumpingParameter;
+        _inputReader.HorizontalInputChanged += UpdateLookDirection;
+        _inputReader.HorizontalInputChanged += UpdateIsRunningParameter;
     }
 
-    private void UpdateIsOnGroundParameter(bool isOnGround) =>
-        _animator.SetBool(IsOnGround, isOnGround);
+    private void OnDisable()
+    {
+        _playerVerticalVelocityReader.FallingStatusChanged -= UpdateIsFallingParameter;
+        _playerVerticalVelocityReader.JumpingStatusChanged -= UpdateIsJumpingParameter;
+        _inputReader.HorizontalInputChanged -= UpdateLookDirection;
+        _inputReader.HorizontalInputChanged -= UpdateIsRunningParameter;
+    }
+
+    private void UpdateIsFallingParameter(bool isFalling) =>
+        _animator.SetBool(IsFalling, isFalling);
+
+    private void UpdateIsJumpingParameter(bool isJumping) =>
+        _animator.SetBool(IsJumping, isJumping);
+
+    private void UpdateLookDirection(int horizontalInput)
+    {
+        _localScale = transform.localScale;
+        transform.localScale = new Vector3(Mathf.Sign(horizontalInput) * Mathf.Abs(_localScale.x), _localScale.y, _localScale.z);
+    }
+
+    private void UpdateIsRunningParameter(int horizontalInput) =>
+        _animator.SetBool(IsRunning, horizontalInput != 0);
 }

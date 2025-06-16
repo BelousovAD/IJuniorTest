@@ -3,34 +3,34 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMover : MonoBehaviour
 {
-    private const string Horizontal = nameof(Horizontal);
-
     [SerializeField] private float _speed = 1f;
     [SerializeField] private float _jumpVelocity = 5f;
+    [SerializeField] private InputReader _inputReader;
 
     private Rigidbody2D _rigidbody2D;
-    int _horizontalInput;
-    bool _isJumpRequested;
+    private float _horizontalVelocity;
 
     private void Awake() =>
         _rigidbody2D = GetComponent<Rigidbody2D>();
 
-    private void Update()
+    private void OnEnable()
     {
-        _horizontalInput = Mathf.RoundToInt(Input.GetAxisRaw(Horizontal));
-
-        if (_isJumpRequested == false)
-        {
-            _isJumpRequested = Input.GetButtonDown("Jump");
-        }
+        _inputReader.HorizontalInputChanged += UpdateHorizontalVelocity;
+        _inputReader.JumpRequested += UpdateVerticalVelocity;
     }
 
-    private void FixedUpdate()
+    private void OnDisable()
     {
-        Vector2 velocity = _rigidbody2D.velocity;
-        Vector3 localScale = transform.localScale;
-        _rigidbody2D.velocity = new Vector2(_horizontalInput * _speed, _isJumpRequested ? _jumpVelocity : velocity.y);
-        transform.localScale = new Vector3(Mathf.Sign(_horizontalInput), localScale.y, localScale.z);
-        _isJumpRequested = false;
+        _inputReader.HorizontalInputChanged -= UpdateHorizontalVelocity;
+        _inputReader.JumpRequested -= UpdateVerticalVelocity;
     }
+
+    private void FixedUpdate() =>
+        _rigidbody2D.velocity = new Vector2(_horizontalVelocity, _rigidbody2D.velocity.y);
+
+    private void UpdateHorizontalVelocity(int horizontalInput) =>
+        _horizontalVelocity = horizontalInput * _speed;
+
+    private void UpdateVerticalVelocity() =>
+        _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, _jumpVelocity);
 }
