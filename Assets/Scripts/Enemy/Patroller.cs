@@ -25,7 +25,7 @@ namespace Enemy
         private void ChooseNextTarget()
         {
             _waypointIndex = ++_waypointIndex % _waypoints.Count;
-            _mover.SetTarget(_waypoints[_waypointIndex]);
+            _mover.MoveTo(_waypoints[_waypointIndex]);
         }
 
 #if UNITY_EDITOR
