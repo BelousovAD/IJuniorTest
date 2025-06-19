@@ -1,15 +1,25 @@
-using UnityEngine;
-
-public class Wallet : MonoBehaviour
+namespace Player
 {
-    private uint _currency;
+    using UnityEngine;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class Wallet : MonoBehaviour
     {
-        if (collision.gameObject.TryGetComponent(out Coin coin))
+        private uint _currency;
+
+        public void EarnCurrency(uint amount) =>
+            _currency += amount;
+
+        public bool TrySpendCurrency(uint amount)
         {
-            _currency += coin.Value;
-            Destroy(coin.gameObject);
+            if (_currency >= amount)
+            {
+                _currency -= amount;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
