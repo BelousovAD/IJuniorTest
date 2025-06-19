@@ -5,8 +5,6 @@ namespace Enemy
 
     public class Patroller : MonoBehaviour
     {
-        private const string RuntimeWaypointsParentName = "RuntimeWaypointsParent";
-
         [SerializeField] private Mover _mover;
         [SerializeField] private List<Transform> _waypoints;
 
@@ -14,7 +12,7 @@ namespace Enemy
 
         private void Awake()
         {
-            UnpinWaypoints();
+            transform.SetParent(null);
             ChooseNextTarget();
         }
 
@@ -28,19 +26,6 @@ namespace Enemy
         {
             _waypointIndex = ++_waypointIndex % _waypoints.Count;
             _mover.SetTarget(_waypoints[_waypointIndex]);
-        }
-
-        private void UnpinWaypoints()
-        {
-            GameObject waypointsParent = new (RuntimeWaypointsParentName);
-            Transform waypoint;
-
-            for (int i = _waypoints.Count - 1; i >= 0; i--)
-            {
-                waypoint = transform.GetChild(i);
-                waypoint.SetParent(waypointsParent.transform);
-                waypoint.SetAsFirstSibling();
-            }
         }
 
 #if UNITY_EDITOR
