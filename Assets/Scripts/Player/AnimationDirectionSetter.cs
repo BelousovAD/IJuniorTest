@@ -7,7 +7,7 @@ namespace Player
         [SerializeField] private InputReader _inputReader;
         [SerializeField] private Transform _spriteTransform;
 
-        private Vector3 _localScale;
+        private Quaternion _localRotation;
 
         private void OnEnable() =>
             _inputReader.HorizontalInputChanged += UpdateLookDirection;
@@ -17,8 +17,8 @@ namespace Player
 
         private void UpdateLookDirection(int horizontalInput)
         {
-            _localScale = _spriteTransform.localScale;
-            _spriteTransform.localScale = new Vector3(Mathf.Sign(horizontalInput) * Mathf.Abs(_localScale.x), _localScale.y, _localScale.z);
+            _localRotation = _spriteTransform.localRotation;
+            _spriteTransform.localRotation = Quaternion.Euler(0, Mathf.Sign(horizontalInput) * 90 - 90, 0);
         }
     }
 }
