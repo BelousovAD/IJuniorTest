@@ -9,6 +9,9 @@ namespace Currency.Coin
         [SerializeField] private Transform _parent;
         [SerializeField] private List<Transform> _spawnPoints = new();
 
+        private void Start() =>
+            SpawnAtPoints();
+
         public void SpawnAtPoints()
         {
             foreach (Transform point in _spawnPoints)
@@ -17,9 +20,6 @@ namespace Currency.Coin
                 coin.Collected += DestroyCoin;
             }
         }
-
-        private void Start() =>
-            SpawnAtPoints();
 
         private void DestroyCoin(Coin coin)
         {

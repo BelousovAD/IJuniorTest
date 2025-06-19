@@ -14,9 +14,6 @@ namespace Enemy
 
         public event Action TargetReached;
 
-        public void SetTarget(Transform target) =>
-            _target = target;
-
         private void Awake() =>
             _sqrTargetRadius = _targetRadius * _targetRadius;
 
@@ -34,6 +31,9 @@ namespace Enemy
                 TargetReached?.Invoke();
             }
         }
+
+        public void SetTarget(Transform target) =>
+            _target = target;
 
         private bool IsTargetReached() =>
             Vector2.SqrMagnitude(_target.position - _transformToMove.position) <= _sqrTargetRadius;
