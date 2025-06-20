@@ -1,38 +1,49 @@
 namespace Enemy
 {
+    using Common;
     using System.Collections.Generic;
     using UnityEngine;
 
-    public class Patroller : MonoBehaviour
+    public class PatrollingState : AbstractState<EnemyStateType>
     {
         [SerializeField] private Mover _mover;
         [SerializeField] private List<Transform> _waypoints;
 
-        private int _waypointIndex = -1;
+        private int _waypointIndex = 0;
 
-        private void Awake()
-        {
+        public override EnemyStateType StateType =>
+            EnemyStateType.Patrolling;
+
+        private void Awake() =>
             transform.SetParent(null);
-            ChooseNextTarget();
-        }
 
-        private void OnEnable() =>
+        public override bool CanSwitchToState(EnemyStateType nextState) =>
+            nextState == EnemyStateType.Following || nextState == EnemyStateType.Idle;
+
+        public override void Enter() =>
             _mover.TargetReached += ChooseNextTarget;
 
-        private void OnDisable() =>
+        public override void Exit() =>
             _mover.TargetReached -= ChooseNextTarget;
+
+        public override void Process() =>
+            FocusOnCurrentTarget();
 
         private void ChooseNextTarget()
         {
             _waypointIndex = ++_waypointIndex % _waypoints.Count;
-            _mover.MoveTo(_waypoints[_waypointIndex]);
+            FocusOnCurrentTarget();
         }
+
+        private void FocusOnCurrentTarget() =>
+            _mover.MoveTo(_waypoints[_waypointIndex]);
 
 #if UNITY_EDITOR
         [ContextMenu(nameof(RefreshPointsArray))]
         private void RefreshPointsArray()
         {
             int pointCount = transform.childCount;
+            _waypoints.Clear();
 
             for (int i = 0; i < pointCount; i++)
             {
