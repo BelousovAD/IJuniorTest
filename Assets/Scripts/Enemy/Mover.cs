@@ -44,7 +44,11 @@ namespace Enemy
             }
 
             _target = target;
-            _moving = StartCoroutine(Moving());
+
+            if (_target != null)
+            {
+                _moving = StartCoroutine(Moving());
+            }
         }
 
         private IEnumerator Moving()
