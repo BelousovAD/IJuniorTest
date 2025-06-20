@@ -1,4 +1,4 @@
-namespace Player
+namespace Character.Player
 {
     using System;
     using UnityEngine;
