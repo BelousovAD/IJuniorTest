@@ -1,6 +1,6 @@
-namespace Player
+namespace Character.Player
 {
-    using Currency.Coin;
+    using Pickable.Coin;
     using UnityEngine;
 
     public class CoinCollector : MonoBehaviour
@@ -11,8 +11,8 @@ namespace Player
         {
             if (collision.gameObject.TryGetComponent(out Coin coin))
             {
-                _wallet.EarnCurrency(coin.Value);
-                coin.Collect();
+                _wallet.EarnMoney(coin.Value);
+                coin.PickUp();
             }
         }
     }
