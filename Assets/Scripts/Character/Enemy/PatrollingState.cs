@@ -1,4 +1,4 @@
-namespace Enemy
+namespace Character.Enemy
 {
     using Common;
     using System.Collections.Generic;

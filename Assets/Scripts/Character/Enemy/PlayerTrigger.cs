@@ -1,4 +1,4 @@
-namespace Enemy
+namespace Character.Enemy
 {
     using Player;
     using System;
