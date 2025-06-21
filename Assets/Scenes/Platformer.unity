@@ -433,7 +433,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxValue: 100
-  _value: 0
 --- !u!70 &212443291
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1891,10 +1890,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1181906578}
-  - component: {fileID: 1181906579}
   - component: {fileID: 1181906580}
+  - component: {fileID: 1181906581}
   m_Layer: 2
-  m_Name: CoinCollector
+  m_Name: Picker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1915,19 +1914,6 @@ Transform:
   m_Father: {fileID: 2009394114}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1181906579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1181906577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89483ef86e7a3be4da2bac1e08032faa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _wallet: {fileID: 77588029}
 --- !u!70 &1181906580
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1963,6 +1949,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.5, y: 0.57}
   m_Direction: 0
+--- !u!114 &1181906581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181906577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1104c1afc670e88478d5f60b375ddf96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1292018097
 GameObject:
   m_ObjectHideFlags: 0
@@ -3052,7 +3050,6 @@ Transform:
   - {fileID: 1752072662}
   - {fileID: 608262018}
   - {fileID: 1181906578}
-  - {fileID: 2120434838}
   m_Father: {fileID: 2010538701}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3190,6 +3187,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c5efed255970f04497662721289b51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _wallet: {fileID: 77588029}
+  _health: {fileID: 212443290}
+  _picker: {fileID: 1181906581}
 --- !u!1 &2097559735
 GameObject:
   m_ObjectHideFlags: 0
@@ -3221,87 +3221,6 @@ Transform:
   m_Father: {fileID: 1774713254}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2120434837
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2120434838}
-  - component: {fileID: 2120434840}
-  - component: {fileID: 2120434839}
-  m_Layer: 2
-  m_Name: MedicineCollector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2120434838
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2120434837}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2009394114}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &2120434839
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2120434837}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 0.57}
-  m_Direction: 0
---- !u!114 &2120434840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2120434837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3b3b9a5b3a4f3848960c14c71a18ca1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: {fileID: 212443290}
 --- !u!1 &2146116432
 GameObject:
   m_ObjectHideFlags: 0
