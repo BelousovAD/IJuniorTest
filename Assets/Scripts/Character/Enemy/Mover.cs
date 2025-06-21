@@ -55,9 +55,9 @@ namespace Character.Enemy
         {
             while (IsTargetReached() == false)
             {
-                _transformToMove.position = Vector2.MoveTowards(_transformToMove.position, _target.position, _speed * Time.deltaTime);
-
                 yield return null;
+
+                _transformToMove.position = Vector2.MoveTowards(_transformToMove.position, _target.position, _speed * Time.deltaTime);
             }
 
             _target = null;
