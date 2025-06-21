@@ -8,6 +8,7 @@ namespace Character.Player
         [SerializeField] private float _jumpVelocity = 5f;
         [SerializeField] private Rigidbody2D _rigidbody2D;
         [SerializeField] private InputReader _inputReader;
+        [SerializeField] private GroundDetector _groundDetector;
 
         private float _horizontalVelocity;
 
@@ -29,7 +30,12 @@ namespace Character.Player
         private void UpdateHorizontalVelocity(int horizontalInput) =>
             _horizontalVelocity = horizontalInput * _speed;
 
-        private void UpdateVerticalVelocity() =>
-            _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, _jumpVelocity);
+        private void UpdateVerticalVelocity()
+        {
+            if (_groundDetector.IsOnGround)
+            {
+                _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, _jumpVelocity);
+            }
+        }
     }
 }

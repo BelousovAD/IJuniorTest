@@ -515,6 +515,7 @@ MonoBehaviour:
   _animator: {fileID: 2010538702}
   _inputReader: {fileID: 1576728064}
   _verticalVelocityReader: {fileID: 1752072663}
+  _groundDetector: {fileID: 1601978365}
 --- !u!1 &506280082
 GameObject:
   m_ObjectHideFlags: 0
@@ -1467,9 +1468,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 3
-  _jumpVelocity: 5
+  _jumpVelocity: 7
   _rigidbody2D: {fileID: 2010538704}
   _inputReader: {fileID: 1576728064}
+  _groundDetector: {fileID: 1601978365}
 --- !u!1 &626065807
 GameObject:
   m_ObjectHideFlags: 0
@@ -2510,6 +2512,54 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1601978363
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1601978364}
+  - component: {fileID: 1601978365}
+  m_Layer: 2
+  m_Name: GroundDetector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1601978364
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601978363}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.28, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2009394114}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1601978365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601978363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bece5b663ddf3f449189b68c9efb5e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _checkDistance: 0.025
+  _layersToRaycast:
+    serializedVersion: 2
+    m_Bits: 51
 --- !u!1 &1614120018
 GameObject:
   m_ObjectHideFlags: 0
@@ -3050,6 +3100,7 @@ Transform:
   - {fileID: 1752072662}
   - {fileID: 608262018}
   - {fileID: 1181906578}
+  - {fileID: 1601978364}
   m_Father: {fileID: 2010538701}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
