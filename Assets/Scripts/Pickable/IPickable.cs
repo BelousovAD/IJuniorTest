@@ -3,9 +3,9 @@ namespace Pickable
     using System;
     using UnityEngine;
 
-    public interface IPickable<T> where T : MonoBehaviour, IPickable<T>
+    public interface IPickable
     {
-        public event Action<T> Picked;
+        public event Action<IPickable> Picked;
 
         public void PickUp();
     }

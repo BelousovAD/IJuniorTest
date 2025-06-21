@@ -3,11 +3,11 @@ namespace Pickable.Medicine
     using System;
     using UnityEngine;
 
-    public class Medicine : MonoBehaviour, IPickable<Medicine>
+    public class Medicine : MonoBehaviour, IPickable
     {
         [SerializeField, Min(0)] private int _value;
 
-        public event Action<Medicine> Picked;
+        public event Action<IPickable> Picked;
 
         public int Value =>
             _value;
