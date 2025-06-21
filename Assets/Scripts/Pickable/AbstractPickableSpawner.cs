@@ -3,7 +3,7 @@ namespace Pickable
     using System.Collections.Generic;
     using UnityEngine;
 
-    public abstract class AbstractPickableSpawner<T> : MonoBehaviour where T : MonoBehaviour, IPickable<T>
+    public abstract class AbstractPickableSpawner<T> : MonoBehaviour where T : MonoBehaviour, IPickable
     {
         [SerializeField] private T _prefab;
         [SerializeField] private Transform _parent;
@@ -18,7 +18,7 @@ namespace Pickable
             }
         }
 
-        protected virtual void PickedHandler(T pickable) =>
+        protected virtual void PickedHandler(IPickable pickable) =>
             pickable.Picked -= PickedHandler;
 
 #if UNITY_EDITOR

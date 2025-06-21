@@ -7,10 +7,10 @@ namespace Pickable.Coin
         private void Start() =>
             SpawnAtPoints();
 
-        protected override void PickedHandler(Coin pickable)
+        protected override void PickedHandler(IPickable pickable)
         {
             base.PickedHandler(pickable);
-            Destroy(pickable.gameObject);
+            Destroy((pickable as Coin).gameObject);
         }
 
 #if UNITY_EDITOR

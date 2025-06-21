@@ -3,15 +3,15 @@ namespace Pickable.Medicine
     using Pickable;
     using UnityEngine;
 
-    public class CoinSpawner : AbstractPickableSpawner<Medicine>
+    public class MedicineSpawner : AbstractPickableSpawner<Medicine>
     {
         private void Start() =>
             SpawnAtPoints();
 
-        protected override void PickedHandler(Medicine pickable)
+        protected override void PickedHandler(IPickable pickable)
         {
             base.PickedHandler(pickable);
-            Destroy(pickable.gameObject);
+            Destroy((pickable as Medicine).gameObject);
         }
 
 #if UNITY_EDITOR
