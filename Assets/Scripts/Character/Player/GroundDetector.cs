@@ -19,7 +19,6 @@ namespace Character.Player
         private void Update()
         {
             _hitInfo = Physics2D.Raycast(transform.position, Vector2.down, _checkDistance, _layersToRaycast);
-            Debug.DrawRay(transform.position, Vector3.down * _checkDistance);
 
             if (_hitInfo.collider != null ^ _isOnGround)
             {
