@@ -1,6 +1,7 @@
-namespace DevPackages.UI
+namespace DevPackages.UI.View
 {
     using Common;
+    using Common.View;
     using UnityEngine;
     using UnityEngine.UI;
 

@@ -1,4 +1,4 @@
-namespace DevPackages.Character.UI
+namespace DevPackages.Character.View
 {
     using System.Collections;
     using UnityEngine;

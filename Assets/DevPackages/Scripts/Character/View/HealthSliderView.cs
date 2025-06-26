@@ -1,7 +1,7 @@
-namespace DevPackages.Character.UI
+namespace DevPackages.Character.View
 {
     using Character;
-    using DevPackages.UI;
+    using DevPackages.UI.View;
     using UnityEngine;
     using UnityEngine.UI;
 

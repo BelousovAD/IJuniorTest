@@ -1,7 +1,7 @@
-namespace DevPackages.Character.UI
+namespace DevPackages.Character.View
 {
     using Character;
-    using DevPackages.UI;
+    using DevPackages.UI.View;
 
     public class HealthTextView : AbstractTextView<Health>
     {
