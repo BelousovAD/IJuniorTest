@@ -1,18 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class AbstractButton : MonoBehaviour
+namespace DevPackages.UI
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    using UnityEngine;
+    using UnityEngine.UI;
 
-    // Update is called once per frame
-    void Update()
+    [RequireComponent(typeof(Button))]
+    public abstract class AbstractButton : MonoBehaviour
     {
-        
+        protected Button Button;
+
+        protected virtual void Awake() =>
+            Button = GetComponent<Button>();
+
+        protected virtual void OnEnable() =>
+            Button.onClick.AddListener(HandleClick);
+
+        protected virtual void OnDisable() =>
+            Button.onClick.RemoveListener(HandleClick);
+
+        protected abstract void HandleClick();
     }
 }
