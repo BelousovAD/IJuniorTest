@@ -14,8 +14,7 @@ namespace DevPackages.Character
 
         public event Action ValueChanged;
 
-        public int MaxValue =>
-            _maxValue;
+        public int MaxValue => _maxValue;
 
         public int Value
         {
