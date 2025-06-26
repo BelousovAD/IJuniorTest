@@ -9,6 +9,6 @@ namespace DevPackages.Character.UI
     public class HealthSliderView : AbstractSliderView<Health>
     {
         protected override void UpdateView() =>
-            Slider.value = Parameter.Value / Parameter.MaxValue;
+            Slider.value = (float)Parameter.Value / Parameter.MaxValue;
     }
 }

@@ -12,9 +12,15 @@ namespace DevPackages.Character.UI
         private float _changingSpeed;
         private Coroutine _changingValueSmoothly;
 
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            Slider.value = _targetValue;
+        }
+
         protected override void UpdateView()
         {
-            _targetValue = Parameter.Value;
+            _targetValue = (float)Parameter.Value / Parameter.MaxValue;
             _changingSpeed = Mathf.Abs(_targetValue - Slider.value) / _changingTimeInSeconds;
 
             if (_changingValueSmoothly == null)
@@ -33,6 +39,7 @@ namespace DevPackages.Character.UI
             }
 
             Slider.value = _targetValue;
+            _changingValueSmoothly = null;
         }
 
         private bool IsTargetReached() =>
