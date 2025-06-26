@@ -1,9 +1,10 @@
-namespace Character
+namespace DevPackages.Character
 {
+    using Common;
     using System;
     using UnityEngine;
 
-    public class Health : MonoBehaviour
+    public class Health : MonoBehaviour, IChangableParameter
     {
         private const int MinValue = 0;
 
@@ -23,7 +24,7 @@ namespace Character
                 return _value;
             }
 
-            private set
+            protected set
             {
                 _value = Mathf.Clamp(value, MinValue, MaxValue);
                 ValueChanged?.Invoke();
