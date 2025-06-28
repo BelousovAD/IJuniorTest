@@ -1,5 +1,6 @@
 namespace Character.Player
 {
+    using DevPackages.Character;
     using Pickable;
     using Pickable.Coin;
     using Pickable.Medicine;
@@ -8,8 +9,10 @@ namespace Character.Player
     public class Player : MonoBehaviour
     {
         [SerializeField] private Wallet _wallet;
-        [SerializeField] private PlayerHealth _health;
+        [SerializeField] private Health _health;
         [SerializeField] private Picker _picker;
+
+        public Health Health => _health;
 
         private void OnEnable() =>
             _picker.Picking += PickUpHandle;

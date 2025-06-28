@@ -1,6 +1,7 @@
 namespace Character.Enemy
 {
     using Character.Player;
+    using DevPackages.Character;
     using System.Collections;
     using UnityEngine;
 
@@ -18,18 +19,18 @@ namespace Character.Enemy
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.TryGetComponent(out PlayerHealth playerHealth))
+            if (collision.TryGetComponent(out Player player))
             {
                 if (_damageDealing == null)
                 {
-                    _damageDealing = StartCoroutine(DamageDealing(playerHealth));
+                    _damageDealing = StartCoroutine(DamageDealing(player));
                 }
             }
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (collision.TryGetComponent(out PlayerHealth _))
+            if (collision.TryGetComponent(out Player player))
             {
                 if (_damageDealing != null)
                 {
@@ -39,8 +40,10 @@ namespace Character.Enemy
             }
         }
 
-        private IEnumerator DamageDealing(PlayerHealth playerHealth)
+        private IEnumerator DamageDealing(Player player)
         {
+            Health playerHealth = player.Health;
+
             yield return _waiting;
 
             while (isActiveAndEnabled && playerHealth.Value > 0)
