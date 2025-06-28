@@ -7,7 +7,12 @@ public class RandomValueCoroutineTimer : MonoBehaviour
     [SerializeField] private float _minSeconds = 2;
     [SerializeField] private float _maxSeconds = 5;
 
+    private float _triggerTime;
+
+    public event Action Started;
     public event Action TimeIsUp;
+
+    public float TriggerTime => _triggerTime;
 
     private void OnValidate()
     {
@@ -17,8 +22,12 @@ public class RandomValueCoroutineTimer : MonoBehaviour
         }
     }
 
-    public void StartTimer() =>
-        StartCoroutine(TimerRoutine(GenerateTriggerTime()));
+    public void StartTimer()
+    {
+        _triggerTime = GenerateTriggerTime();
+        StartCoroutine(TimerRoutine(_triggerTime));
+        Started?.Invoke();
+    }
 
     private IEnumerator TimerRoutine(float triggerTime)
     {
