@@ -2,15 +2,11 @@ using UnityEngine;
 
 [RequireComponent(typeof(RandomValueCoroutineTimer))]
 [RequireComponent(typeof(MaterialSetter))]
-public class Droplet : MonoBehaviour
+public class Droplet : PooledObject
 {
     private bool _isTriggered = false;
     private RandomValueCoroutineTimer _timer;
     private MaterialSetter _materialSetter;
-    private DropletSpawner _parentSpawner;
-
-    public void Initialize(DropletSpawner parentSpawner) =>
-        _parentSpawner = parentSpawner;
 
     private void Awake()
     {
@@ -39,10 +35,10 @@ public class Droplet : MonoBehaviour
         }
     }
 
-    private void Release()
+    public override void Release()
     {
         _isTriggered = false;
         _materialSetter.ResetMaterial();
-        _parentSpawner.Release(this);
+        base.Release();
     }
 }
