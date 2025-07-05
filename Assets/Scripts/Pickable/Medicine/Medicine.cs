@@ -1,8 +1,8 @@
+using System;
+using UnityEngine;
+
 namespace Pickable.Medicine
 {
-    using System;
-    using UnityEngine;
-
     public class Medicine : MonoBehaviour, IPickable
     {
         [SerializeField, Min(0)] private int _value;

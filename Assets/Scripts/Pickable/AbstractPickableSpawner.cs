@@ -1,8 +1,8 @@
+using System.Collections.Generic;
+using UnityEngine;
+
 namespace Pickable
 {
-    using System.Collections.Generic;
-    using UnityEngine;
-
     public abstract class AbstractPickableSpawner<T> : MonoBehaviour where T : MonoBehaviour, IPickable
     {
         [SerializeField] private T _prefab;

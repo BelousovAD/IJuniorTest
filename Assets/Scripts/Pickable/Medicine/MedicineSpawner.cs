@@ -1,8 +1,7 @@
+using UnityEngine;
+
 namespace Pickable.Medicine
 {
-    using Pickable;
-    using UnityEngine;
-
     public class MedicineSpawner : AbstractPickableSpawner<Medicine>
     {
         private void Start() =>

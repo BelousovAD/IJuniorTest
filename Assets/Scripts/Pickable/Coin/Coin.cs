@@ -1,8 +1,8 @@
+using System;
+using UnityEngine;
+
 namespace Pickable.Coin
 {
-    using System;
-    using UnityEngine;
-
     public class Coin : MonoBehaviour, IPickable
     {
         [SerializeField, Min(0)] private int _value;

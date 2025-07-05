@@ -1,9 +1,9 @@
+using System;
+using System.Collections;
+using UnityEngine;
+
 namespace Character.Enemy
 {
-    using System;
-    using System.Collections;
-    using UnityEngine;
-
     public class Mover : MonoBehaviour
     {
         [SerializeField] private float _targetRadius = 0.25f;
@@ -45,7 +45,7 @@ namespace Character.Enemy
 
             _target = target;
 
-            if (_target != null)
+            if (_target is not null)
             {
                 _moving = StartCoroutine(Moving());
             }
@@ -57,7 +57,9 @@ namespace Character.Enemy
             {
                 yield return null;
 
-                _transformToMove.position = Vector2.MoveTowards(_transformToMove.position, _target.position, _speed * Time.deltaTime);
+                _transformToMove.position = Vector2.MoveTowards(_transformToMove.position,
+                        _target.position,
+                        _speed * Time.deltaTime);
             }
 
             _target = null;

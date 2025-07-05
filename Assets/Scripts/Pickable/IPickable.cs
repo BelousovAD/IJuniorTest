@@ -1,8 +1,7 @@
+using System;
+
 namespace Pickable
 {
-    using System;
-    using UnityEngine;
-
     public interface IPickable
     {
         public event Action<IPickable> Picked;

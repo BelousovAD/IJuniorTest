@@ -1,7 +1,7 @@
+using UnityEngine;
+
 namespace Pickable.Coin
 {
-    using UnityEngine;
-
     public class CoinSpawner : AbstractPickableSpawner<Coin>
     {
         private void Start() =>

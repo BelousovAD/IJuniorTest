@@ -1,10 +1,9 @@
+using System.Collections;
+using Character.ChangeableValue;
+using UnityEngine;
+
 namespace Character.Enemy
 {
-    using Character.Player;
-    using DevPackages.Character;
-    using System.Collections;
-    using UnityEngine;
-
     public class PlayerDamager : MonoBehaviour
     {
         [SerializeField, Min(0)] private int _damage;
@@ -19,7 +18,7 @@ namespace Character.Enemy
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.TryGetComponent(out Player player))
+            if (collision.TryGetComponent(out Player.Player player))
             {
                 if (_damageDealing == null)
                 {
@@ -30,7 +29,7 @@ namespace Character.Enemy
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (collision.TryGetComponent(out Player player))
+            if (collision.TryGetComponent(out Player.Player player))
             {
                 if (_damageDealing != null)
                 {
@@ -40,9 +39,9 @@ namespace Character.Enemy
             }
         }
 
-        private IEnumerator DamageDealing(Player player)
+        private IEnumerator DamageDealing(Player.Player player)
         {
-            Health playerHealth = player.Health;
+            Health playerHealth = player.ChangeableValueContainer.Get<Health>();
 
             yield return _waiting;
 

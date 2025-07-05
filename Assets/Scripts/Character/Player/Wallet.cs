@@ -1,8 +1,8 @@
+using System;
+using UnityEngine;
+
 namespace Character.Player
 {
-    using System;
-    using UnityEngine;
-
     public class Wallet : MonoBehaviour
     {
         private const int MinValue = 0;
@@ -31,10 +31,8 @@ namespace Character.Player
             {
                 throw new ArgumentOutOfRangeException("Amount can't be negative");
             }
-            else
-            {
-                Money += amount;
-            }
+
+            Money += amount;
         }
 
         public bool TrySpendMoney(int amount)
@@ -44,10 +42,8 @@ namespace Character.Player
                 Money -= amount;
                 return true;
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
     }
 }

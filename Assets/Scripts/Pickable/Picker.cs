@@ -1,8 +1,8 @@
+using System;
+using UnityEngine;
+
 namespace Pickable
 {
-    using System;
-    using UnityEngine;
-
     public class Picker : MonoBehaviour
     {
         public event Action<IPickable> Picking;
