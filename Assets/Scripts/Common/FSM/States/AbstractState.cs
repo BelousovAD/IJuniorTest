@@ -18,7 +18,7 @@ namespace Common.FSM.States
         public virtual void Enter()
         {
             SubscribeToTransitions();
-            CheckTransitions(); //FIXME: Операция должна быть асинхронной, иначе переполняется стек вызовов
+            CheckTransitions();
         }
 
         public virtual void Exit() =>
