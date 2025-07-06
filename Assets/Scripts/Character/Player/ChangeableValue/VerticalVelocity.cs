@@ -1,4 +1,3 @@
-using System;
 using Common.ChangeableValue;
 using UnityEngine;
 

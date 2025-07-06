@@ -1,8 +1,8 @@
-namespace DevPackages.Character.View
-{
-    using System.Collections;
-    using UnityEngine;
+using System.Collections;
+using UnityEngine;
 
+namespace Character.View
+{
     public class HealthSmoothSliderView : HealthSliderView
     {
         [SerializeField] private float _epsilon = 1e-5f;

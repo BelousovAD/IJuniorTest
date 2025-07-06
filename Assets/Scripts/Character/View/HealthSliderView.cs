@@ -3,7 +3,7 @@ using UI.View;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DevPackages.Character.View
+namespace Character.View
 {
     [RequireComponent(typeof(Slider))]
     public class HealthSliderView : AbstractSliderView<Health>
