@@ -15,9 +15,9 @@ namespace Character.Enemy.FSM.States
 
         public override void Enter()
         {
-            base.Enter();
             _mover.TargetReached += ChooseNextTarget;
             FocusOnCurrentTarget();
+            base.Enter();
         }
 
         public override void Exit()

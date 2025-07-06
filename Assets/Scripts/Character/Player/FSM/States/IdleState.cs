@@ -8,8 +8,8 @@ namespace Character.Player.FSM.States
 
         public override void Enter()
         {
+            PlayerAnimator.Play(PlayerAnimator.AnimationKey.Idle);
             base.Enter();
-            PlayerAnimator.PlayIdle();
         }
     }
 }
