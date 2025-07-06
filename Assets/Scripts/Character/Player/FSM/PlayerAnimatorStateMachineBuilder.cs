@@ -51,8 +51,8 @@ namespace Character.Player.FSM
             States[typeof(IdleState)].AddTransitionRange(new []
             {
                 new Transition(
-                    _verticalVelocity,
-                    () => _verticalVelocity.Value < VerticalVelocity.NeutralValue,
+                    _isOnGround,
+                    () => _isOnGround.Value == false,
                     States[typeof(FallState)]),
                 new Transition(
                     _verticalVelocity,
@@ -87,8 +87,8 @@ namespace Character.Player.FSM
                     () => _inputReader.HorizontalInput.Value == HorizontalInput.NeutralValue,
                     States[typeof(IdleState)]),
                 new Transition(
-                    _verticalVelocity,
-                    () => _verticalVelocity.Value < VerticalVelocity.NeutralValue,
+                    _isOnGround,
+                    () => _isOnGround.Value == false,
                     States[typeof(FallState)]),
                 new Transition(
                     _verticalVelocity,
