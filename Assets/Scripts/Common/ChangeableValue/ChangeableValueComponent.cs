@@ -18,8 +18,11 @@ namespace Common.ChangeableValue
 
             protected set
             {
-                _value = value;
-                ValueChanged?.Invoke();
+                if (_value.Equals(value) == false)
+                {
+                    _value = value;
+                    ValueChanged?.Invoke();
+                }
             }
         }
     }

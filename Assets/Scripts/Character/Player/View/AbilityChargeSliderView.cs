@@ -3,9 +3,9 @@ using UI.View;
 
 namespace Character.Player.View
 {
-    public class VampireAbilitySliderView : AbstractSliderView<VampireAbility>
+    public class AbilityChargeSliderView : AbstractSliderView<AbilityCharge>
     {
         protected override void UpdateView() =>
-            Slider.value = Parameter.Value / VampireAbility.MaxValue;
+            Slider.value = Parameter.Value / AbilityCharge.MaxValue;
     }
 }
