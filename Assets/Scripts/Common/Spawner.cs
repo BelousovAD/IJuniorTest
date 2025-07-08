@@ -11,7 +11,23 @@ namespace Common
         [SerializeField, Min(1)] private int _poolSize = 1;
 
         private ObjectPool<PooledObject> _objectPool;
+        private int _spawnCount = 0;
 
+        public event Action SpawnCountChanged;
+
+        public int SpawnCount
+        {
+            get
+            {
+                return _spawnCount;
+            }
+
+            private set
+            {
+                _spawnCount = value;
+                SpawnCountChanged?.Invoke();
+            }
+        }
         
         public int InstanceCount => _objectPool.CountAll;
         
@@ -29,6 +45,7 @@ namespace Common
             pooledObject.transform.position = position;
             pooledObject.transform.SetParent(_parent);
             pooledObject.gameObject.SetActive(true);
+            ++SpawnCount;
         }
 
         public virtual void Release(PooledObject pooledObject)
