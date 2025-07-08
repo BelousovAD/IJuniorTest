@@ -4,15 +4,15 @@ using UnityEngine;
 
 namespace Character.ChangeableValue
 {
-    public class Health : ChangeableValueComponent<int>
+    public class Health : ChangeableValueComponent<float>
     {
-        private const int MinValue = 0;
+        private const float MinValue = 0;
 
-        [SerializeField, Min(1)] private int _maxValue = 1;
+        [SerializeField, Min(1)] private float _maxValue = 1;
 
-        public int MaxValue => _maxValue;
+        public float MaxValue => _maxValue;
 
-        public override int Value
+        public override float Value
         {
             get => base.Value;
             protected set => base.Value = Mathf.Clamp(value, MinValue, MaxValue);
@@ -21,7 +21,7 @@ namespace Character.ChangeableValue
         private void Awake() =>
             Value = MaxValue;
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(float damage)
         {
             if (damage < 0)
             {
@@ -31,7 +31,7 @@ namespace Character.ChangeableValue
             Value -= damage;
         }
 
-        public void TakeHealing(int healing)
+        public void TakeHealing(float healing)
         {
             if (healing < 0)
             {
