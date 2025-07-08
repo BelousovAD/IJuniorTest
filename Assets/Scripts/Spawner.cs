@@ -5,7 +5,6 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private PooledObject _prefab;
     [SerializeField] private Transform _parent;
-    [SerializeField] private SpawnPlane _spawnPlane;
     [SerializeField, Min(1)] private int _poolSize = 1;
 
     private ObjectPool<PooledObject> _objectPool;
@@ -16,15 +15,15 @@ public class Spawner : MonoBehaviour
             actionOnDestroy: DestroyPooledObject,
             defaultCapacity: _poolSize);
 
-    public void Spawn()
+    public void SpawnAt(Vector3 position)
     {
         PooledObject pooledObject = _objectPool.Get();
-        pooledObject.transform.position = _spawnPlane.GetRandomPoint();
+        pooledObject.transform.position = position;
         pooledObject.transform.SetParent(_parent);
         pooledObject.gameObject.SetActive(true);
     }
 
-    public void Release(PooledObject pooledObject)
+    public virtual void Release(PooledObject pooledObject)
     {
         pooledObject.gameObject.SetActive(false);
         _objectPool.Release(pooledObject);
@@ -32,10 +31,10 @@ public class Spawner : MonoBehaviour
 
     private PooledObject CreatePooledObject()
     {
-        PooledObject droplet = Instantiate(_prefab);
-        droplet.Initialize(this);
+        PooledObject pooledObject = Instantiate(_prefab);
+        pooledObject.Initialize(this);
 
-        return droplet;
+        return pooledObject;
     }
 
     private void DestroyPooledObject(PooledObject pooledObject) =>
