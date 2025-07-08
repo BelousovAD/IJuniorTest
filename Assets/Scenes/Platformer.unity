@@ -4052,6 +4052,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 1576728064}
   _charge: {fileID: 1621087941}
+  _player: {fileID: 2010538705}
+  _healSpeed: 15
 --- !u!58 &1969841647
 CircleCollider2D:
   m_ObjectHideFlags: 0

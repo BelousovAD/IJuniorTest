@@ -17,29 +17,34 @@ namespace Character.Player.ChangeableValue
 
         protected virtual void OnEnable()
         {
-            _abilityInput.ValueChanged += Activate;
+            _abilityInput.ValueChanged += CheckReady;
             _charge.Emptied += Deactivate;
         }
 
         protected virtual void OnDisable()
         {
-            _abilityInput.ValueChanged -= Activate;
+            _abilityInput.ValueChanged -= CheckReady;
             _charge.Emptied -= Deactivate;
         }
 
-        private void Activate()
+        protected virtual void Activate()
         {
-            if (_charge.IsReady && _abilityInput.Value)
-            {
-                _charge.Use();
-                Value = true;
-            }
+            _charge.Use();
+            Value = true;
         }
 
-        private void Deactivate()
+        protected virtual void Deactivate()
         {
             _charge.Recharge();
             Value = false;
+        }
+
+        private void CheckReady()
+        {
+            if (_charge.IsReady && _abilityInput.Value)
+            {
+                Activate();
+            }
         }
     }
 }
