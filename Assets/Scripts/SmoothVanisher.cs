@@ -37,7 +37,7 @@ public class SmoothVanisher : MonoBehaviour
 
     private IEnumerator VanishSmoothly(float duration)
     {
-        float changingSpeed = _defaultColor.a - MinAlpha / duration;
+        float changingSpeed = (_defaultColor.a - MinAlpha) / duration;
 
         while (isActiveAndEnabled && IsTargetReached() == false)
         {
