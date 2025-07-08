@@ -1,16 +1,16 @@
 using System.Collections;
 using UnityEngine;
 
-public class SpawnCaller : MonoBehaviour
+public class DropletSpawnCaller : MonoBehaviour
 {
     [SerializeField, Min(0.005f)] private float _spawnDelay = 0.1f;
     [SerializeField, Min(1)] private int _spawnCount = 1;
-    [SerializeField] private Spawner _spawner;
+    [SerializeField] private DropletSpawner _spawner;
 
     private void OnEnable() =>
-        StartCoroutine(SpawnWithDelayRoutine(_spawnDelay));
+        StartCoroutine(SpawnWithDelay(_spawnDelay));
 
-    private IEnumerator SpawnWithDelayRoutine(float triggerTime)
+    private IEnumerator SpawnWithDelay(float triggerTime)
     {
         while (isActiveAndEnabled)
         {
