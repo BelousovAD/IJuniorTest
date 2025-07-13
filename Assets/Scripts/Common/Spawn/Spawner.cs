@@ -7,26 +7,29 @@ namespace Common.Spawn
 {
     public class Spawner : MonoBehaviour
     {
+        [SerializeField] protected Transform Parent;
+        
         [SerializeField] private PooledComponent _prefab;
-        [SerializeField] private Transform _parent;
         [SerializeField, Min(1)] private int _poolSize = 1;
 
         private IObjectPool<PooledComponent> _pool;
 
         public event Action<PooledComponent> ComponentReleased;
 
-        private void Awake() =>
+        protected virtual void Awake() =>
             _pool = new ObjectPool<PooledComponent>(
                 createFunc: CreatePooledComponent,
                 actionOnRelease: ReleasePooledComponent,
                 actionOnDestroy: DestroyPooledComponent,
                 defaultCapacity: _poolSize);
 
-        public void SpawnAt(Vector3 position)
+        protected PooledComponent SpawnAt(Vector3 position)
         {
             PooledComponent pooledComponent = _pool.Get();
             pooledComponent.transform.position = position;
             pooledComponent.gameObject.SetActive(true);
+
+            return pooledComponent;
         }
 
         private void ReleasePooledComponent(PooledComponent pooledComponent)
@@ -38,7 +41,7 @@ namespace Common.Spawn
 
         private PooledComponent CreatePooledComponent()
         {
-            PooledComponent pooledComponent = Instantiate(_prefab, _parent);
+            PooledComponent pooledComponent = Instantiate(_prefab, Parent);
             pooledComponent.Initialize(_pool);
 
             return pooledComponent;

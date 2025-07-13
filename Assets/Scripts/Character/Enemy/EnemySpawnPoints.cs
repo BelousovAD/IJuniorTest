@@ -4,7 +4,7 @@ using Common.Spawn;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Gameplay
+namespace Character.Enemy
 {
     public class EnemySpawnPoints : MonoBehaviour
     {

@@ -29,6 +29,10 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4842665993628386905, guid: 05c9040fde6bcee4381bd15739ac2317, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b59536c50c7ec4142a7f7708e67bf1cc, type: 3}
+    - target: {fileID: 4842665993628386905, guid: 05c9040fde6bcee4381bd15739ac2317, type: 3}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
@@ -127,6 +131,10 @@ PrefabInstance:
     - target: {fileID: 5304991663834467692, guid: 05c9040fde6bcee4381bd15739ac2317, type: 3}
       propertyPath: m_Offset.x
       value: -3.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745022806134516919, guid: 05c9040fde6bcee4381bd15739ac2317, type: 3}
+      propertyPath: m_Offset.x
+      value: -3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
