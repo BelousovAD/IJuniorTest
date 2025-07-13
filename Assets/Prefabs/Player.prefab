@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bece5b663ddf3f449189b68c9efb5e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _checkDistance: 0.25
+  _checkDistance: 0.1
   _layersToRaycast:
     serializedVersion: 2
     m_Bits: 55
@@ -350,6 +350,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2455958434113179750, guid: 05c9040fde6bcee4381bd15739ac2317, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7711023909030353916}
+    - targetCorrespondingSourceObject: {fileID: 2455958434113179750, guid: 05c9040fde6bcee4381bd15739ac2317, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4858322301382158475}
   m_SourcePrefab: {fileID: 100100000, guid: 05c9040fde6bcee4381bd15739ac2317, type: 3}
 --- !u!224 &2046328799817502237 stripped
 RectTransform:
@@ -400,3 +403,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
+--- !u!114 &4858322301382158475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8882332069784568151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c5efed255970f04497662721289b51c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerAnimator: {fileID: 1950382230755923923}
