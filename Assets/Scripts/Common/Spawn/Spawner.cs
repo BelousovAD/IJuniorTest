@@ -1,3 +1,4 @@
+using System;
 using Common.Pool;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -12,9 +13,12 @@ namespace Common.Spawn
 
         private IObjectPool<PooledComponent> _pool;
 
+        public event Action<PooledComponent> ComponentReleased;
+
         private void Awake() =>
             _pool = new ObjectPool<PooledComponent>(
                 createFunc: CreatePooledComponent,
+                actionOnRelease: ReleasePooledComponent,
                 actionOnDestroy: DestroyPooledComponent,
                 defaultCapacity: _poolSize);
 
@@ -22,19 +26,19 @@ namespace Common.Spawn
         {
             PooledComponent pooledComponent = _pool.Get();
             pooledComponent.transform.position = position;
-            pooledComponent.transform.SetParent(_parent);
             pooledComponent.gameObject.SetActive(true);
         }
 
-        public void Release(PooledComponent pooledComponent)
+        private void ReleasePooledComponent(PooledComponent pooledComponent)
         {
             pooledComponent.gameObject.SetActive(false);
             _pool.Release(pooledComponent);
+            ComponentReleased?.Invoke(pooledComponent);
         }
 
         private PooledComponent CreatePooledComponent()
         {
-            PooledComponent pooledComponent = Instantiate(_prefab);
+            PooledComponent pooledComponent = Instantiate(_prefab, _parent);
             pooledComponent.Initialize(_pool);
 
             return pooledComponent;
