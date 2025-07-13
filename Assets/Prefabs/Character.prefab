@@ -301,4 +301,4 @@ MonoBehaviour:
   _character: {fileID: 4987514384531529516}
   _spawnPoint: {fileID: 6302666735961433678}
   _shotDirection: {x: 1, y: 0}
-  _shotForce: 5
+  _shotForce: 200

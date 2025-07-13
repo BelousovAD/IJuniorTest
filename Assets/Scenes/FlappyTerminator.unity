@@ -317,7 +317,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 1080}
+  m_Size: {x: 10, y: 1080}
   m_EdgeRadius: 0
 --- !u!1 &317893823
 GameObject:
@@ -1226,7 +1226,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 1080}
+  m_Size: {x: 10, y: 1080}
   m_EdgeRadius: 0
 --- !u!1 &1860261945
 GameObject:
@@ -1308,7 +1308,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1920, y: 2}
+  m_Size: {x: 1920, y: 10}
   m_EdgeRadius: 0
 --- !u!1 &1882131870
 GameObject:
@@ -1354,7 +1354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd20f098a2234a51a21d0d70f74e2989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Parent: {fileID: 0}
+  Parent: {fileID: 1640037620}
   _prefab: {fileID: 1715876365721616985, guid: 8da56d4041464cb478467778998411ea, type: 3}
   _poolSize: 10
   _spawnPoints: {fileID: 537161191}
@@ -1496,10 +1496,6 @@ PrefabInstance:
     - target: {fileID: 2046328799817502237, guid: 2fedea6bd4c3f3341b4ff2d7eefa348b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6508686118845331663, guid: 2fedea6bd4c3f3341b4ff2d7eefa348b, type: 3}
-      propertyPath: _shotForce
-      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8882332069784568151, guid: 2fedea6bd4c3f3341b4ff2d7eefa348b, type: 3}
       propertyPath: m_Name

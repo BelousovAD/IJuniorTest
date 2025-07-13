@@ -10,7 +10,7 @@ namespace Weapon.Bullet
         private void Awake() =>
             Rigidbody = GetComponent<Rigidbody2D>();
 
-        private void OnCollisionEnter(Collision other) =>
+        private void OnCollisionEnter2D() =>
             Release();
     }
 }

@@ -35,7 +35,6 @@ namespace Common.Spawn
         private void ReleasePooledComponent(PooledComponent pooledComponent)
         {
             pooledComponent.gameObject.SetActive(false);
-            _pool.Release(pooledComponent);
             ComponentReleased?.Invoke(pooledComponent);
         }
 
