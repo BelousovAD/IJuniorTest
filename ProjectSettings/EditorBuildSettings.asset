@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 2ea3af6a579340e419fcc52fc5b3e0cc
+  - enabled: 1
+    path: Assets/Scenes/FlappyTerminator.unity
+    guid: 441853ae88e13ad49bf151392e3681ea
   m_configObjects: {}
