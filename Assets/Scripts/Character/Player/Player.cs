@@ -1,5 +1,7 @@
+using System;
 using Common.FSM;
 using UnityEngine;
+using Weapon.Bullet;
 
 namespace Character.Player
 {
@@ -8,6 +10,8 @@ namespace Character.Player
         [SerializeField] private PlayerAnimator _playerAnimator;
 
         private StateMachine _animatorStateMachine;
+
+        public event Action Died;
 
         public PlayerAnimator PlayerAnimator => _playerAnimator;
 
@@ -19,6 +23,14 @@ namespace Character.Player
 
         private void FixedUpdate() =>
             _animatorStateMachine?.FixedUpdate(Time.fixedTime);
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.gameObject.TryGetComponent<Bullet>(out _))
+            {
+                Died?.Invoke();
+            }
+        }
 
         public void Initialize(StateMachine animatorStateMachine) =>
             _animatorStateMachine = animatorStateMachine;
