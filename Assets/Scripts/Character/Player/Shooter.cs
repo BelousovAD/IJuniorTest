@@ -1,31 +1,34 @@
 using Input;
 using Input.ChangeableValue;
 using UnityEngine;
-using Weapon.Bullet;
 
 namespace Character.Player
 {
-    public class Shooter : MonoBehaviour
+    public class Shooter : Character.Shooter
     {
         [SerializeField] private StandaloneInputReader _inputReader;
-        [SerializeField] private BulletSpawner _spawner;
 
         private FireInput _fireInput;
+        private Coroutine _shooting;
 
-        private void Awake() =>
+        protected void Awake() =>
             _fireInput = _inputReader.FireInput;
 
         private void OnEnable() =>
-            _fireInput.ValueChanged += Spawn;
+            _fireInput.ValueChanged += Shoot;
 
         private void OnDisable() =>
-            _fireInput.ValueChanged -= Spawn;
+            _fireInput.ValueChanged -= Shoot;
 
-        private void Spawn()
+        private void Shoot()
         {
             if (_fireInput.Value)
             {
-                _spawner.Spawn();
+                _shooting = StartCoroutine(Shooting());
+            }
+            else
+            {
+                StopCoroutine(_shooting);
             }
         }
     }
