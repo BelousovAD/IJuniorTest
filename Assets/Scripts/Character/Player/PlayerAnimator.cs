@@ -20,8 +20,7 @@ namespace Character.Player
             _animator = GetComponent<Animator>();
             _parameters = new Dictionary<AnimationKey, int>
             {
-                [AnimationKey.Move] = Animator.StringToHash(nameof(AnimationKey.Move)),
-                [AnimationKey.Fly] = Animator.StringToHash(nameof(AnimationKey.Fly)),
+                [AnimationKey.Fly] = Animator.StringToHash(nameof(AnimationKey.Fly))
             };
         }
 
