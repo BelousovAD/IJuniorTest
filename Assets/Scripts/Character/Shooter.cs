@@ -12,7 +12,6 @@ namespace Character
         private bool _isReady = true;
         private WaitForSeconds _waitForCooldown;
         private WaitUntil _waitUntilReady;
-        private Coroutine _coolingDown;
 
         protected IEnumerator Shooting()
         {
@@ -21,7 +20,7 @@ namespace Character
                 yield return _waitUntilReady ??= new WaitUntil(() => _isReady);
                 
                 _spawner.Spawn();
-                _coolingDown = StartCoroutine(CoolDown());
+                StartCoroutine(CoolDown());
             }
         }
 
