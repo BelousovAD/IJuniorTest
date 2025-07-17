@@ -155,8 +155,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2fd794182e34c78863338f76dc9417a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputReader: {fileID: 3961090091317542459}
   _spawner: {fileID: 6508686118845331663}
+  _delayInSeconds: 0.5
+  _inputReader: {fileID: 3961090091317542459}
 --- !u!1 &7389410307233722316
 GameObject:
   m_ObjectHideFlags: 0

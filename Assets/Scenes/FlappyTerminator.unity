@@ -626,6 +626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 2103944278}
   _isOnGround: {fileID: 2052976713}
+  _enemySpawner: {fileID: 1882131873}
 --- !u!4 &682731615
 Transform:
   m_ObjectHideFlags: 0
