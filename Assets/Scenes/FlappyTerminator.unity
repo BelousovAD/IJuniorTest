@@ -802,6 +802,7 @@ MonoBehaviour:
   _startWindowId: 1
   _windowPrefabs:
   - {fileID: 3218914264603314031, guid: a230286cffcb54946a88da80010b11d0, type: 3}
+  - {fileID: 89806492275632576, guid: 272d24e1fa1d81c428c1552746b146bd, type: 3}
 --- !u!4 &1266672255
 Transform:
   m_ObjectHideFlags: 0

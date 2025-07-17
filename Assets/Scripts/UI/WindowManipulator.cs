@@ -5,7 +5,7 @@ namespace UI
 {
     public class WindowManipulator : MonoBehaviour
     {
-        [SerializeField] private WindowID _startWindowId;
+        [SerializeField] private WindowId _startWindowId;
         [SerializeField] private List<Window> _windowPrefabs = new();
 
         private Stack<Window> _windowsHistory = new();
@@ -14,7 +14,7 @@ namespace UI
         private void Start() =>
             OpenWindow(_startWindowId, false);
 
-        public void OpenWindow(WindowID windowId, bool needCloseCurrent)
+        public void OpenWindow(WindowId windowId, bool needCloseCurrent)
         {
             if (_windowsHistory.Count > 0)
             {
@@ -53,7 +53,7 @@ namespace UI
             }
         }
 
-        private Window SpawnWindow(WindowID windowId)
+        private Window SpawnWindow(WindowId windowId)
         {
             Window window = _windowPrefabs.Find(window => window.Id == windowId);
 

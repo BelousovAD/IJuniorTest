@@ -1,6 +1,6 @@
 namespace UI
 {
-    public enum WindowID
+    public enum WindowId
     {
         Menu = 0,
         HUD,

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5602096324183049480}
   - component: {fileID: 8776824985168564740}
   - component: {fileID: 89806492275632576}
+  - component: {fileID: 2445755613031987979}
   m_Layer: 5
   m_Name: RestartCanvas
   m_TagString: Untagged
@@ -35,7 +36,7 @@ RectTransform:
   - {fileID: 670581010216573835}
   - {fileID: 9041231928795968110}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -118,6 +119,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 2
+--- !u!114 &2445755613031987979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679474211146406678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed9ca99088540f2b601b23dee8da00e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3287392897671401577
 GameObject:
   m_ObjectHideFlags: 0

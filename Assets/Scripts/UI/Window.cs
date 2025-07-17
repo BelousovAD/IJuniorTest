@@ -5,14 +5,14 @@ namespace UI
 {
     public class Window : MonoBehaviour
     {
-        [SerializeField] private WindowID _id;
+        [SerializeField] private WindowId _id;
 
         private bool _isVisible = false;
         private WindowManipulator _windowManipulator;
 
         public event Action VisibleChanged;
 
-        public WindowID Id => _id;
+        public WindowId Id => _id;
 
         public WindowManipulator WindowManipulator => _windowManipulator;
 

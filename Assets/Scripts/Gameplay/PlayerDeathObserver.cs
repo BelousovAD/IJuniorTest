@@ -16,6 +16,6 @@ namespace Gameplay
             _player.Died -= OpenRestartWindow;
 
         private void OpenRestartWindow() =>
-            _windowManipulator.OpenWindow(WindowID.Restart, false);
+            _windowManipulator.OpenWindow(WindowId.Restart, false);
     }
 }
