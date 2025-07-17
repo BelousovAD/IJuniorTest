@@ -1,3 +1,4 @@
+using Character.Enemy;
 using Character.Player;
 using Character.Player.ChangeableValue;
 using Character.Player.FSM;
@@ -10,12 +11,16 @@ namespace Gameplay
     {
         [SerializeField] private Player _player;
         [SerializeField] private IsOnGround _isOnGround;
+        [SerializeField] private EnemySpawner _enemySpawner;
 
         private PlayerAnimatorStateMachineBuilder _playerAnimatorStateMachineBuilder;
         private StateMachine _stateMachine;
 
-        private void Start() =>
+        private void Start()
+        {
             InitializePlayer();
+            InitializeEnemySpawner();
+        }
 
         private void InitializePlayer()
         {
@@ -25,5 +30,8 @@ namespace Gameplay
             _stateMachine = _playerAnimatorStateMachineBuilder.Build();
             _player.Initialize(_stateMachine);
         }
+
+        private void InitializeEnemySpawner() =>
+            _enemySpawner.Initialize(_player.transform.position);
     }
 }
