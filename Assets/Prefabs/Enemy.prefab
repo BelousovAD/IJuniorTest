@@ -166,10 +166,6 @@ PrefabInstance:
       propertyPath: _shotDirection.x
       value: -1
       objectReference: {fileID: 0}
-    - target: {fileID: 2095171131312103262, guid: 05c9040fde6bcee4381bd15739ac2317, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 59ac56779525c404db4554b9436e849c, type: 2}
     - target: {fileID: 2455958434113179750, guid: 05c9040fde6bcee4381bd15739ac2317, type: 3}
       propertyPath: m_Name
       value: Enemy
