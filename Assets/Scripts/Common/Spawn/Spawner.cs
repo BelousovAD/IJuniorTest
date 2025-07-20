@@ -27,6 +27,7 @@ namespace Common.Spawn
         {
             PooledComponent pooledComponent = _pool.Get();
             pooledComponent.transform.position = position;
+            pooledComponent.ReleaseRequested += _pool.Release;
             pooledComponent.gameObject.SetActive(true);
 
             return pooledComponent;
@@ -35,13 +36,13 @@ namespace Common.Spawn
         private void ReleasePooledComponent(PooledComponent pooledComponent)
         {
             pooledComponent.gameObject.SetActive(false);
+            pooledComponent.ReleaseRequested -= _pool.Release;
             ComponentReleased?.Invoke(pooledComponent);
         }
 
         private PooledComponent CreatePooledComponent()
         {
             PooledComponent pooledComponent = Instantiate(_prefab, Parent);
-            pooledComponent.Initialize(_pool);
 
             return pooledComponent;
         }
