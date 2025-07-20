@@ -1,18 +1,14 @@
-using Common.UI;
-
 namespace UI
 {
+    using Common.UI;
+    using UnityEngine;
+    using Window;
+
     public class CloseWindowButton : AbstractButton
     {
-        private Window _window;
-        
-        protected override void Awake()
-        {
-            base.Awake();
-            _window = GetComponentInParent<Window>();
-        }
+        [SerializeField] private ICloseable _window;
 
         public override void OnClick() =>
-            _window.WindowManipulator.CloseCurrentWindow();
+            _window.Close();
     }
 }

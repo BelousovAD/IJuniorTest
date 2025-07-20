@@ -1,8 +1,8 @@
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace UI
+namespace UI.Window
 {
+    using System.Collections.Generic;
+    using UnityEngine;
+
     public class WindowManipulator : MonoBehaviour
     {
         [SerializeField] private WindowId _startWindowId;
@@ -12,9 +12,9 @@ namespace UI
         private List<Window> _spawnedWindows = new();
 
         private void Start() =>
-            OpenWindow(_startWindowId, false);
+            OpenWindow(_startWindowId);
 
-        public void OpenWindow(WindowId windowId, bool needCloseCurrent)
+        public void OpenWindow(WindowId windowId, bool needCloseCurrent = false)
         {
             if (_windowsHistory.Count > 0)
             {
@@ -23,33 +23,34 @@ namespace UI
 
             Window window = _spawnedWindows.Find(window => window.Id == windowId);
 
-            if (window is not null)
-            {
-                SetWindowStatus(window, true);
-            }
-            else
+            if (window is null)
             {
                 window = SpawnWindow(windowId);
 
-                if (window == null)
+                if (window is null)
                 {
                     Debug.LogError($"Can't open window: Window with ID:{windowId} not founded in prefabs list");
                     return;
                 }
             }
 
-            window.transform.SetAsLastSibling();
             _windowsHistory.Push(window);
+            window.transform.SetAsLastSibling();
+            SetWindowStatus(window, true);
         }
 
         public void CloseCurrentWindow()
         {
-            if (_windowsHistory.Count > 1)
+            if (_windowsHistory.Count > 0)
             {
                 Window window = _windowsHistory.Pop();
                 SetWindowStatus(window, false);
-                window = _windowsHistory.Peek();
-                SetWindowStatus(window, true);
+
+                if (_windowsHistory.Count > 0)
+                {
+                    window = _windowsHistory.Peek();
+                    SetWindowStatus(window, true);
+                }
             }
         }
 
@@ -57,12 +58,10 @@ namespace UI
         {
             Window window = _windowPrefabs.Find(window => window.Id == windowId);
 
-            if (window != null)
+            if (window is not null)
             {
                 window = Instantiate(window, transform);
-                window.Initialize(this);
                 _spawnedWindows.Add(window);
-                SetWindowStatus(window, true);
             }
 
             return window;
@@ -72,10 +71,14 @@ namespace UI
         {
             if (status)
             {
+                window.CloseRequested += CloseCurrentWindow;
+                window.OpenRequested += OpenWindow;
                 window.Show();
             }
             else
             {
+                window.CloseRequested -= CloseCurrentWindow;
+                window.OpenRequested -= OpenWindow;
                 window.Hide();
             }
         }

@@ -1,20 +1,19 @@
-using System;
-using UnityEngine;
-
-namespace UI
+namespace UI.Window
 {
-    public class Window : MonoBehaviour
+    using System;
+    using UnityEngine;
+
+    public class Window : AbstractWindowOpener, ICloseable
     {
         [SerializeField] private WindowId _id;
 
-        private bool _isVisible = false;
-        private WindowManipulator _windowManipulator;
+        private bool _isVisible;
 
+        public event Action CloseRequested;
+        public event Action<WindowId, bool> OpenRequested;
         public event Action VisibleChanged;
 
         public WindowId Id => _id;
-
-        public WindowManipulator WindowManipulator => _windowManipulator;
 
         public bool IsVisible
         {
@@ -33,8 +32,11 @@ namespace UI
             }
         }
 
-        public void Initialize(WindowManipulator windowManipulator) =>
-            _windowManipulator = windowManipulator;
+        public override void Open(WindowId windowId, bool needCloseCurrent) =>
+            OpenRequested?.Invoke(windowId, needCloseCurrent);
+
+        public void Close() =>
+            CloseRequested?.Invoke();
 
         public void Hide() =>
             IsVisible = false;

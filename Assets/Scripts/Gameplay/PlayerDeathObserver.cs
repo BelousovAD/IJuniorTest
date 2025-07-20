@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace Gameplay
 {
+    using UI.Window;
+
     public class PlayerDeathObserver : MonoBehaviour
     {
         [SerializeField] private Player _player;
@@ -16,6 +18,6 @@ namespace Gameplay
             _player.Died -= OpenRestartWindow;
 
         private void OpenRestartWindow() =>
-            _windowManipulator.OpenWindow(WindowId.Restart, false);
+            _windowManipulator.OpenWindow(WindowId.Restart);
     }
 }
