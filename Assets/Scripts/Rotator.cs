@@ -9,7 +9,8 @@ public class Rotator : MonoBehaviour
     [SerializeField] private Vector3 _rotationAnglePerSecond;
 
     private void Start() =>
-        transform.DOLocalRotate(transform.localEulerAngles + _rotationAnglePerSecond, Duration)
+        transform.DOLocalRotate(_rotationAnglePerSecond, Duration)
+            .SetRelative()
             .SetLoops(LoopCount, LoopType.Incremental)
             .SetEase(Ease.Linear);
 }

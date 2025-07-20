@@ -10,7 +10,8 @@ public class Scaler : MonoBehaviour
 
     private void Start()
     {
-        transform.DOScale(transform.localScale + _deltaScalePerSecond, Duration)
+        transform.DOScale(_deltaScalePerSecond, Duration)
+            .SetRelative()
             .SetLoops(LoopCount, LoopType.Incremental)
             .SetEase(Ease.Linear);
     }

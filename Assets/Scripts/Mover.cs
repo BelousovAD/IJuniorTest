@@ -9,7 +9,8 @@ public class Mover : MonoBehaviour
     [SerializeField] private float _speed;
 
     private void Start() =>
-        transform.DOLocalMove(transform.localPosition + transform.forward * _speed, Duration)
+        transform.DOLocalMove(transform.forward * _speed, Duration)
+            .SetRelative()
             .SetLoops(LoopCount, LoopType.Incremental)
             .SetEase(Ease.Linear);
 }
