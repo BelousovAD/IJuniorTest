@@ -1,13 +1,17 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class Scaler : MonoBehaviour
 {
-    [SerializeField]
-    private Vector3 _deltaScalePerSecond;
+    private const float Duration = 1f;
+    private const int LoopCount = -1;
+    
+    [SerializeField] private Vector3 _deltaScalePerSecond;
 
-    private void Update()
+    private void Start()
     {
-        Vector3 updatedScale = transform.localScale + _deltaScalePerSecond * Time.deltaTime;
-        transform.localScale = updatedScale;
+        transform.DOScale(transform.localScale + _deltaScalePerSecond, Duration)
+            .SetLoops(LoopCount, LoopType.Incremental)
+            .SetEase(Ease.Linear);
     }
 }
