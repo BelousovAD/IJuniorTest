@@ -1,8 +1,8 @@
-using Common.ChangeableValue;
-using UnityEngine;
-
 namespace Character.Player.ChangeableValue
 {
+    using Common.ChangeableValue;
+    using UnityEngine;
+
     public class IsOnGround : ChangeableValueComponent<bool>
     {
         [SerializeField] private float _checkDistance = 0.01f;

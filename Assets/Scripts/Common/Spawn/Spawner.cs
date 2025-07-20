@@ -1,10 +1,10 @@
-using System;
-using Common.Pool;
-using UnityEngine;
-using UnityEngine.Pool;
-
 namespace Common.Spawn
 {
+    using System;
+    using Pool;
+    using UnityEngine;
+    using UnityEngine.Pool;
+
     public class Spawner : MonoBehaviour
     {
         [SerializeField] protected Transform Parent;

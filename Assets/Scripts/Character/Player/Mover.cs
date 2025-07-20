@@ -1,14 +1,15 @@
-using Input;
-using Input.ChangeableValue;
-using UnityEngine;
-
 namespace Character.Player
 {
+    using ChangeableValue;
+    using Input;
+    using Input.ChangeableValue;
+    using UnityEngine;
+
     public class Mover : MonoBehaviour
     {
         [SerializeField] private float _jumpVelocity = 5f;
         [SerializeField] private Rigidbody2D _rigidbody2D;
-        [SerializeField] private ChangeableValue.IsOnGround _isOnGround;
+        [SerializeField] private IsOnGround _isOnGround;
         [SerializeField] private StandaloneInputReader _inputReader;
 
         private JumpInput _jumpInput;

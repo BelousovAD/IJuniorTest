@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Common.ChangeableValue
+﻿namespace Common.ChangeableValue
 {
+    using System;
+
     public class ChangeableValue<T> : IChangeableValue
     {
         private T _value;

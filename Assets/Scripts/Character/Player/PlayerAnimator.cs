@@ -1,8 +1,8 @@
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace Character.Player
 {
+    using System.Collections.Generic;
+    using UnityEngine;
+
     [RequireComponent(typeof(Animator))]
     public class PlayerAnimator : MonoBehaviour
     {

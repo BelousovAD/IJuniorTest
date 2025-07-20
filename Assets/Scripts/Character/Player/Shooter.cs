@@ -1,9 +1,9 @@
-using Input;
-using Input.ChangeableValue;
-using UnityEngine;
-
 namespace Character.Player
 {
+    using Input;
+    using Input.ChangeableValue;
+    using UnityEngine;
+
     public class Shooter : Character.Shooter
     {
         [SerializeField] private StandaloneInputReader _inputReader;

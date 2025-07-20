@@ -1,8 +1,8 @@
-using Common.Pool;
-using UnityEngine;
-
 namespace Weapon.Bullet
 {
+    using Common.Pool;
+    using UnityEngine;
+
     public class Bullet : PooledComponent
     {
         public Rigidbody2D Rigidbody { get; private set; }

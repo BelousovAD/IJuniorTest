@@ -1,8 +1,8 @@
-using UnityEngine;
-using UnityEngine.Pool;
-
 namespace Common.Pool
 {
+    using UnityEngine;
+    using UnityEngine.Pool;
+
     public class PooledComponent : MonoBehaviour
     {
         private IObjectPool<PooledComponent> _pool;

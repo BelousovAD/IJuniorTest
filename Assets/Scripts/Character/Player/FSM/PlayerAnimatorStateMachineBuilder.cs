@@ -1,13 +1,13 @@
-using System;
-using System.Collections.Generic;
-using Character.Player.ChangeableValue;
-using Character.Player.FSM.States;
-using Common.FSM;
-using Common.FSM.States;
-using Common.FSM.Transitions;
-
 namespace Character.Player.FSM
 {
+    using System;
+    using System.Collections.Generic;
+    using ChangeableValue;
+    using Common.FSM;
+    using Common.FSM.States;
+    using Common.FSM.Transitions;
+    using States;
+
     public class PlayerAnimatorStateMachineBuilder : AbstractStateMachineBuilder
     {
         private readonly IsOnGround _isOnGround;

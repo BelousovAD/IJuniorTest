@@ -1,11 +1,10 @@
-using System.Collections.Generic;
-using Common.Pool;
-using Common.Spawn;
-using UnityEngine;
-using Random = UnityEngine.Random;
-
 namespace Character.Enemy
 {
+    using System.Collections.Generic;
+    using Common.Pool;
+    using Common.Spawn;
+    using UnityEngine;
+
     public class EnemySpawnPoints : MonoBehaviour
     {
         [SerializeField] private Spawner _spawner;

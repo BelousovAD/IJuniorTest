@@ -1,8 +1,8 @@
-using System;
-using UnityEngine;
-
 namespace Common.ChangeableValue
 {
+    using System;
+    using UnityEngine;
+
     public class ChangeableValueComponent<T> : MonoBehaviour, IChangeableValue
     {
         private T _value;

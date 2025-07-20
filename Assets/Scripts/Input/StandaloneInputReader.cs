@@ -1,8 +1,8 @@
-using Input.ChangeableValue;
-using UnityEngine;
-
 namespace Input
 {
+    using ChangeableValue;
+    using UnityEngine;
+
     public class StandaloneInputReader : MonoBehaviour
     {
         public FireInput FireInput { get; } = new();

@@ -1,7 +1,7 @@
-using UnityEngine;
-
 namespace Gameplay
 {
+    using UnityEngine;
+
     public class Pause : MonoBehaviour
     {
         private const float MinTimeScale = 0f;

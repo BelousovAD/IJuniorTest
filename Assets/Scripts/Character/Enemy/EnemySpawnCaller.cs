@@ -1,8 +1,8 @@
-using System.Collections;
-using UnityEngine;
-
 namespace Character.Enemy
 {
+    using System.Collections;
+    using UnityEngine;
+
     public class EnemySpawnCaller : MonoBehaviour
     {
         [SerializeField, Min(0.005f)] private float _spawnDelay = 0.1f;

@@ -1,9 +1,9 @@
-using System;
-using System.Collections.Generic;
-using Common.FSM.Transitions;
-
 namespace Common.FSM.States
 {
+    using System;
+    using System.Collections.Generic;
+    using Transitions;
+
     public abstract class AbstractState : IEnterable, IExitable, IDisposable
     {
         private readonly List<Transition> _transitions = new ();

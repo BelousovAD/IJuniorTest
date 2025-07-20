@@ -1,10 +1,10 @@
-using System;
-using System.Collections.Generic;
-using Common.Behaviour;
-using Common.FSM.States;
-
 namespace Common.FSM
 {
+	using System;
+	using System.Collections.Generic;
+	using Behaviour;
+	using States;
+
 	public class StateMachine : IStateSwitcher, IFixedUpdatable, ILateUpdatable, IUpdatable, IDisposable
 	{
 		private readonly List<AbstractState> _states;

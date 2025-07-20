@@ -1,12 +1,12 @@
-using Character.Enemy;
-using Character.Player;
-using Character.Player.ChangeableValue;
-using Character.Player.FSM;
-using Common.FSM;
-using UnityEngine;
-
 namespace Gameplay
 {
+    using Character.Enemy;
+    using Character.Player;
+    using Character.Player.ChangeableValue;
+    using Character.Player.FSM;
+    using Common.FSM;
+    using UnityEngine;
+
     public class LevelInitializer : MonoBehaviour
     {
         [SerializeField] private Player _player;

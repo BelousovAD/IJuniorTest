@@ -1,10 +1,8 @@
-using Character.Player;
-using UI;
-using UnityEngine;
-
 namespace Gameplay
 {
+    using Character.Player;
     using UI.Window;
+    using UnityEngine;
 
     public class PlayerDeathObserver : MonoBehaviour
     {

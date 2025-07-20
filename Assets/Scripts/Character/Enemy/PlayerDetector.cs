@@ -1,8 +1,9 @@
-using Common.ChangeableValue;
-using UnityEngine;
-
 namespace Character.Enemy
 {
+    using Common.ChangeableValue;
+    using Player;
+    using UnityEngine;
+
     public class PlayerDetector : ChangeableValueComponent<bool>
     {
         [SerializeField] private Vector2 _direction;
@@ -19,7 +20,7 @@ namespace Character.Enemy
                 _distanceToCheck,
                 _layersToRaycast);
             Debug.DrawRay(transform.position, _direction * _distanceToCheck);
-            Value = _hitInfo.collider is not null && _hitInfo.collider.TryGetComponent<Player.Player>(out _);
+            Value = _hitInfo.collider is not null && _hitInfo.collider.TryGetComponent<Player>(out _);
         }
 
         public void Initialize(float distanceToCheck) =>

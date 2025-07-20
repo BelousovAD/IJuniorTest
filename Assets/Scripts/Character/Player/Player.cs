@@ -1,10 +1,10 @@
-using System;
-using Common.FSM;
-using UnityEngine;
-using Weapon.Bullet;
-
 namespace Character.Player
 {
+    using System;
+    using Common.FSM;
+    using UnityEngine;
+    using Weapon.Bullet;
+
     public class Player : MonoBehaviour
     {
         [SerializeField] private PlayerAnimator _playerAnimator;

@@ -1,9 +1,9 @@
-using Common.Pool;
-using UnityEngine;
-using Weapon.Bullet;
-
 namespace Character.Enemy
 {
+    using Common.Pool;
+    using UnityEngine;
+    using Weapon.Bullet;
+
     public class Enemy : PooledComponent
     {
         [SerializeField] private PlayerDetector _detector;

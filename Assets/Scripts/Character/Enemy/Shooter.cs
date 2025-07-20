@@ -1,7 +1,7 @@
-using UnityEngine;
-
 namespace Character.Enemy
 {
+    using UnityEngine;
+
     public class Shooter : Character.Shooter
     {
         [SerializeField] private PlayerDetector _detector;

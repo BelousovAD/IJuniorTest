@@ -1,9 +1,9 @@
-using System;
-using System.Collections.Generic;
-using Common.FSM.States;
-
 namespace Common.FSM
 {
+    using System;
+    using System.Collections.Generic;
+    using States;
+
     public abstract class AbstractStateMachineBuilder
     {
         protected Dictionary<Type, AbstractState> States;

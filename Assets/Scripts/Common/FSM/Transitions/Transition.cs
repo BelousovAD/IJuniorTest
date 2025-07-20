@@ -1,9 +1,9 @@
-using System;
-using Common.ChangeableValue;
-using Common.FSM.States;
-
 namespace Common.FSM.Transitions
 {
+    using System;
+    using ChangeableValue;
+    using States;
+
     public class Transition : IDisposable
     {
         private readonly Func<bool> _condition;

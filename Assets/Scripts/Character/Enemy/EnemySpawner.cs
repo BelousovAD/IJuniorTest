@@ -1,8 +1,8 @@
-using Common.Spawn;
-using UnityEngine;
-
 namespace Character.Enemy
 {
+    using Common.Spawn;
+    using UnityEngine;
+
     public class EnemySpawner : Spawner
     {
         [SerializeField] private EnemySpawnPoints _spawnPoints;

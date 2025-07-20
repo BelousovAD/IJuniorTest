@@ -1,8 +1,8 @@
-using Common.Spawn;
-using UnityEngine;
-
 namespace Weapon.Bullet
 {
+    using Common.Spawn;
+    using UnityEngine;
+
     public class BulletSpawner : Spawner
     {
         [SerializeField] private RectTransform _character;

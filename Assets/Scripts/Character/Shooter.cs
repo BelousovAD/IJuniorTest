@@ -1,11 +1,11 @@
-using System;
-using System.Collections;
-using System.Threading.Tasks;
-using UnityEngine;
-using Weapon.Bullet;
-
 namespace Character
 {
+    using System;
+    using System.Collections;
+    using System.Threading.Tasks;
+    using UnityEngine;
+    using Weapon.Bullet;
+
     public class Shooter : MonoBehaviour
     {
         [SerializeField] private BulletSpawner _spawner;
