@@ -1,6 +1,5 @@
 namespace Character.Player
 {
-    using ChangeableValue;
     using Input;
     using Input.ChangeableValue;
     using UnityEngine;
@@ -9,7 +8,6 @@ namespace Character.Player
     {
         [SerializeField] private float _jumpVelocity = 5f;
         [SerializeField] private Rigidbody2D _rigidbody2D;
-        [SerializeField] private IsOnGround _isOnGround;
         [SerializeField] private StandaloneInputReader _inputReader;
 
         private JumpInput _jumpInput;
