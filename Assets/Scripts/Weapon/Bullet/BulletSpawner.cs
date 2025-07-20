@@ -7,8 +7,10 @@ namespace Weapon.Bullet
     {
         [SerializeField] private RectTransform _character;
         [SerializeField] private RectTransform _spawnPoint;
-        [SerializeField] private Vector2 _shotDirection;
+        [SerializeField] private Vector2 _defaultShotDirection;
         [SerializeField] private float _shotForce;
+
+        private Vector2 _shootDirection;
 
         protected override void Awake()
         {
@@ -20,7 +22,8 @@ namespace Weapon.Bullet
         {
             Bullet bullet = SpawnAt(_spawnPoint.position) as Bullet;
             Rigidbody2D bulletRigidbody = bullet!.Rigidbody;
-            bulletRigidbody.AddForce(_shotDirection * _shotForce);
+            _shootDirection = Quaternion.AngleAxis(_character.eulerAngles.z, Vector3.forward) * _defaultShotDirection; 
+            bulletRigidbody.AddForce(_shootDirection.normalized * _shotForce);
         }
     }
 }
