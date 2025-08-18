@@ -34,7 +34,7 @@ namespace Common.Spawn
         {
             pooledComponent.gameObject.SetActive(false);
             pooledComponent.ReleaseRequested -= _pool.Release;
-            _pool.Release(pooledComponent);
+            ComponentReleased?.Invoke(pooledComponent);
         }
 
         private PooledComponent CreatePooledComponent()
