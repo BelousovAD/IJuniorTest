@@ -3,7 +3,7 @@ namespace Currency
     using System;
     using UnityEngine;
 
-    public class Gold
+    public class Gold : MonoBehaviour
     {
         private const int MinValue = 0;
         private const int MaxValue = int.MaxValue;
@@ -18,8 +18,8 @@ namespace Currency
             {
                 return _value;
             }
-            
-            protected set
+
+            private set
             {
                 _value = Mathf.Clamp(value, MinValue, MaxValue);
                 ValueChanged?.Invoke();
