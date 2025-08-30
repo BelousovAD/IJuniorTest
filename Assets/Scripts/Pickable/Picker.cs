@@ -7,9 +7,9 @@ namespace Pickable
     {
         public event Action<IPickable> Picking;
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        private void OnCollisionEnter(Collision other)
         {
-            if (collision.TryGetComponent(out IPickable pickable))
+            if (other.gameObject.TryGetComponent(out IPickable pickable))
             {
                 Picking?.Invoke(pickable);
             }
