@@ -2,22 +2,26 @@ namespace Unit
 {
     using System;
     using System.Collections;
+    using System.Collections.Generic;
     using UnityEngine;
 
     [RequireComponent(typeof(Collider))]
     public class Mover : MonoBehaviour
     {
         [SerializeField] private float _speed;
-
-        private Transform _target;
+        
+        private int _index;
         private Coroutine _moving;
         private bool _isTargetReached;
+        private readonly List<Transform> _waypoints = new();
 
         public event Action TargetReached;
 
+        public Transform Target => _index < 0 || _index >= _waypoints.Count ? null : _waypoints[_index];
+
         private void OnEnable()
         {
-            if (_target is not null && _moving is null)
+            if (Target is not null && _moving is null)
             {
                 _moving = StartCoroutine(Moving());
             }
@@ -34,7 +38,7 @@ namespace Unit
 
         private void OnCollisionEnter(Collision other)
         {
-            if (other.transform == _target)
+            if (other.transform == Target)
             {
                 _isTargetReached = true;
             }
@@ -42,20 +46,36 @@ namespace Unit
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.transform == _target)
+            if (other.transform == Target)
             {
                 _isTargetReached = true;
             }
         }
-
-        public void MoveTo(Transform target)
+        
+        public void SetWay(IEnumerable<Transform> targets)
+        {
+            _index = -1;
+            _waypoints.Clear();
+            _waypoints.AddRange(targets);
+            MoveToNextTarget();
+        }
+        
+        public void MoveToNextTarget()
         {
             if (_moving != null)
             {
                 StopCoroutine(_moving);
             }
 
-            _target = target;
+            if (_index < _waypoints.Count - 1)
+            {
+                ++_index;
+            }
+            else
+            {
+                return;
+            }
+            
             _isTargetReached = false;
             _moving = StartCoroutine(Moving());
         }
@@ -66,13 +86,12 @@ namespace Unit
             {
                 transform.position = Vector3.MoveTowards(
                     transform.position,
-                    _target.transform.position,
+                    Target.transform.position,
                     _speed * Time.deltaTime);
 
                 yield return null;
             }
 
-            _target = null;
             TargetReached?.Invoke();
         }
     }

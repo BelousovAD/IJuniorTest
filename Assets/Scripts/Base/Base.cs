@@ -59,6 +59,6 @@ namespace Base
         }
 
         private void SendUnit(Gold gold) =>
-            _freeUnits.Dequeue().SetWay(new[] { gold.transform });
+            _freeUnits.Dequeue().SetWay(new List<Transform> {gold.transform});
     }
 }

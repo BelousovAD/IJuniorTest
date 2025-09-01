@@ -1,7 +1,6 @@
 namespace Base
 {
     using Currency;
-    using Unit;
     using UnityEngine;
 
     [RequireComponent(typeof(Collider))]
@@ -12,9 +11,8 @@ namespace Base
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out Unit unit) && unit.Pickable is Item.Gold gold)
+            if (other.TryGetComponent(out Item.Gold gold))
             {
-                unit.Drop();
                 _gold.Earn(_income);
                 gold.Release();
             }

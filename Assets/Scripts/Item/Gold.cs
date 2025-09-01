@@ -24,10 +24,13 @@ namespace Item
         private void OnEnable() =>
             _rigidbody.AddRelativeTorque(Random.onUnitSphere * _maxAngularVelocity, ForceMode.Impulse);
 
+        private void OnDisable() =>
+            _rigidbody.Sleep();
+
         public void PickUp()
         {
-            _collider.enabled = false;
             _rigidbody.isKinematic = true;
+            _collider.enabled = false;
         }
 
         public void Drop()

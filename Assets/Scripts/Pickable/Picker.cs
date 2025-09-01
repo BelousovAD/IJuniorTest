@@ -5,14 +5,50 @@ namespace Pickable
 
     public class Picker : MonoBehaviour
     {
-        public event Action<IPickable> Picking;
+        [SerializeField] private Transform _handPoint;
+        [SerializeField] private Transform _dropPoint;
+        
+        public event Action Picked;
+        
+        public event Action Dropped;
+        
+        public IPickable Pickable { get; private set; }
 
-        private void OnCollisionEnter(Collision other)
+        public void PickUp(IPickable pickable)
         {
-            if (other.gameObject.TryGetComponent(out IPickable pickable))
+            if (Pickable is not null)
             {
-                Picking?.Invoke(pickable);
+                return;
             }
+            
+            Pickable = pickable;
+            Pickable.PickUp();
+
+            if (pickable is MonoBehaviour component)
+            {
+                component.transform.SetParent(_handPoint);
+                component.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+            }
+
+            Picked?.Invoke();
+        }
+
+        public void Drop()
+        {
+            if (Pickable is null)
+            {
+                return;
+            }
+            
+            if (Pickable is MonoBehaviour component)
+            {
+                component.transform.SetParent(null);
+                component.transform.SetPositionAndRotation(_dropPoint.position, Quaternion.identity);
+            }
+            
+            Pickable.Drop();
+            Pickable = null;
+            Dropped?.Invoke();
         }
     }
 }

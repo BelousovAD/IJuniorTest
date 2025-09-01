@@ -10,12 +10,9 @@ namespace Unit
         [SerializeField] private Mover _mover;
         [SerializeField] private Rotator _rotator;
         [SerializeField] private Picker _picker;
-        [SerializeField] private Transform _handPoint;
 
         private Transform _home;
-        private int _index;
         private bool _isBusy;
-        private readonly List<Transform> _waypoints = new();
 
         public event Action<Unit> BusyStatusChanged;
 
@@ -35,80 +32,63 @@ namespace Unit
                 }
             }
         }
-        
-        public IPickable Pickable { get; private set; }
 
         private void OnEnable()
         {
-            _picker.Picking += PickUp;
-            _mover.TargetReached += MoveToNextTarget;
+            _picker.Picked += MoveToNextTarget;
+            _mover.TargetReached += ChooseAction;
         }
 
         private void OnDisable()
         {
-            _picker.Picking -= PickUp;
-            _mover.TargetReached -= MoveToNextTarget;
+            _picker.Picked -= MoveToNextTarget;
+            _mover.TargetReached -= ChooseAction;
         }
 
         public void Initialize(Transform home) =>
             _home = home;
 
-        public void SetWay(IEnumerable<Transform> targets)
+        public void SetWay(IList<Transform> targets)
         {
             if (IsBusy == false)
             {
-                _index = -1;
-                _waypoints.Clear();
-                _waypoints.AddRange(targets);
-                _waypoints.Add(_home);
+                targets.Add(_home);
+                _mover.SetWay(targets);
                 IsBusy = true;
-                MoveToNextTarget();
+                _rotator.SetTarget(_mover.Target);
             }
         }
 
-        public void Drop()
+        private void ChooseAction()
         {
-            if (Pickable is MonoBehaviour component)
+            if (_mover.Target == _home)
             {
-                component.transform.SetParent(null);
+                DropItem();
             }
-            
-            Pickable.Drop();
-            Pickable = null;
-        }
-
-        private void PickUp(IPickable pickable)
-        {
-            if (Pickable is not null)
+            else
             {
-                return;
+                PickUpItem();
             }
-            
-            Pickable = pickable;
-            Pickable.PickUp();
-
-            if (pickable is MonoBehaviour component)
-            {
-                component.transform.SetParent(_handPoint);
-                component.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-            }
-            
-            MoveToNextTarget();
         }
 
         private void MoveToNextTarget()
         {
-            ++_index;
+            _mover.MoveToNextTarget();
+            _rotator.SetTarget(_mover.Target);
+        }
 
-            if (_index < _waypoints.Count)
+        private void PickUpItem()
+        {
+            if (_mover.Target.TryGetComponent(out IPickable pickable))
             {
-                _mover.MoveTo(_waypoints[_index]);
-                _rotator.SetTarget(_waypoints[_index]);
+                _picker.PickUp(pickable);
             }
-            else
-            {
-                IsBusy = false;
-            }
+        }
+
+        private void DropItem()
+        {
+            _picker.Drop();
+            IsBusy = false;
         }
     }
 }

@@ -40,6 +40,7 @@ namespace Common.Spawn
         private PooledComponent CreatePooledComponent()
         {
             PooledComponent pooledComponent = Instantiate(_prefab, _parent);
+            pooledComponent.gameObject.SetActive(false);
 
             return pooledComponent;
         }
