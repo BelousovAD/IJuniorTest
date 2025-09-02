@@ -87,6 +87,7 @@ namespace Unit
 
         private void DropItem()
         {
+            _rotator.SetTarget(null);
             _picker.Drop();
             IsBusy = false;
         }

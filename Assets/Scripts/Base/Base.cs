@@ -37,11 +37,14 @@ namespace Base
 
         private void AddToQueue(Gold gold)
         {
-            _detectedGold.Enqueue(gold);
-
-            if (_freeUnits.Count > 0)
+            if (_detectedGold.Contains(gold) == false)
             {
-                SendUnit(_detectedGold.Dequeue());
+                _detectedGold.Enqueue(gold);
+
+                if (_freeUnits.Count > 0)
+                {
+                    SendUnit(_detectedGold.Dequeue());
+                }
             }
         }
 
