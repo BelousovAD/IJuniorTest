@@ -10,7 +10,10 @@ namespace Unit
         {
             if (_target is not null)
             {
-                transform.LookAt(_target);
+                transform.forward = Vector3.ProjectOnPlane(
+                        _target.position - transform.position,
+                        Vector3.up)
+                    .normalized;
             }
         }
         
