@@ -1,4 +1,4 @@
-namespace Base
+namespace Fort
 {
     using System.Collections.Generic;
     using Gameplay;
@@ -6,7 +6,7 @@ namespace Base
     using Unit;
     using UnityEngine;
 
-    public class Base : MonoBehaviour
+    public class Fort : MonoBehaviour
     {
         [SerializeField] private GoldDetector _goldDetector;
         [SerializeField] private List<Unit> _units = new();
