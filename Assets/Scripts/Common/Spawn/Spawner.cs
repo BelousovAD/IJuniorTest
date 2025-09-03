@@ -1,8 +1,7 @@
-using UnityEngine;
-
 namespace Common.Spawn
 {
     using System;
+    using UnityEngine;
     using UnityEngine.Pool;
 
     public class Spawner : MonoBehaviour
@@ -22,12 +21,14 @@ namespace Common.Spawn
                 actionOnDestroy: DestroyPooledComponent,
                 defaultCapacity: _poolSize);
 
-        public void SpawnAt(Vector3 position)
+        public PooledComponent SpawnAt(Vector3 position)
         {
             PooledComponent pooledComponent = _pool.Get();
             pooledComponent.transform.position = position;
             pooledComponent.ReleaseRequested += _pool.Release;
             pooledComponent.gameObject.SetActive(true);
+
+            return pooledComponent;
         }
 
         private void ReleasePooledComponent(PooledComponent pooledComponent)

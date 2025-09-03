@@ -2,10 +2,11 @@ namespace Unit
 {
     using System;
     using System.Collections.Generic;
+    using Common.Spawn;
     using Pickable;
     using UnityEngine;
 
-    public class Unit : MonoBehaviour
+    public class Unit : PooledComponent
     {
         [SerializeField] private Mover _mover;
         [SerializeField] private Rotator _rotator;
