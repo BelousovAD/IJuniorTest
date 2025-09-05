@@ -5,7 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6469892b-a60f-4c09-8e73-26127c6dfef4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Fort/ChangeableValue/FortToBuild.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Fort/ChangeableValue/FortToBuild.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Fort/ChangeableValue/HasFreeUnit.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Fort/ChangeableValue/HasFreeUnit.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.IJuniorTest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IJuniorTest/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/CollectingBots.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CollectingBots.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/FiniteStateMachine/StateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/FiniteStateMachine/StateMachine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fort/Fort.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fort/Fort.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fort/FortStateMachineBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fort/FortStateMachineBuilder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fort/States/CreationUnitState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fort/States/CreationUnitState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/LevelInitializer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/LevelInitializer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Unit/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/Unit.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,14 +31,17 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventInterfaces.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="3267uYxW0gIS29yYVqEH20xso5C" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -83,10 +98,10 @@
       <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="24940">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="9964">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="24940" />
+      <option name="pid" value="9964" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
         <list>
@@ -109,6 +124,8 @@
       <updated>1756729391745</updated>
       <workItem from="1756729392778" duration="9251000" />
       <workItem from="1756806401019" duration="9449000" />
+      <workItem from="1756983148694" duration="13289000" />
+      <workItem from="1757067164346" duration="6746000" />
     </task>
     <servers />
   </component>
@@ -140,6 +157,32 @@
           <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="3" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Gameplay/FortSpawnCaller.cs</url>
+          <line>24</line>
+          <properties documentPath="C:\Users\AlekseyBelousov\Documents\IJuniorTest\Assets\Scripts\Gameplay\FortSpawnCaller.cs" containingFunctionPresentation="Method 'OnPointerClick'">
+            <startOffsets>
+              <option value="669" />
+            </startOffsets>
+            <endOffsets>
+              <option value="693" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Ground.cs</url>
+          <line>11</line>
+          <properties documentPath="C:\Users\AlekseyBelousov\Documents\IJuniorTest\Assets\Scripts\Gameplay\Ground.cs" containingFunctionPresentation="Method 'OnPointerClick'">
+            <startOffsets>
+              <option value="307" />
+            </startOffsets>
+            <endOffsets>
+              <option value="369" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

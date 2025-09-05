@@ -1,6 +1,9 @@
 namespace Fort
 {
+    using System;
     using System.Collections.Generic;
+    using System.Linq;
+    using ChangeableValue;
     using Common.FiniteStateMachine;
     using Common.Spawn;
     using Gameplay;
@@ -15,15 +18,25 @@ namespace Fort
 
         private readonly Queue<Gold> _detectedGold = new();
         private readonly Queue<Unit> _freeUnits = new();
-        private StateMachine _stateMachine;
+
+        public event Action Initialized;
+
+        public HasFreeUnit HasFreeUnit { get; } = new();
+
+        public FortToBuild FortToBuild { get; } = new();
+
+        public IReadOnlyList<Unit> FreeUnits => _freeUnits.ToList();
+
+        public StateMachine StateMachine { get; private set; }
 
         private void Start()
         {
             foreach (Unit unit in _units)
             {
-                unit.Initialize(transform);
                 _freeUnits.Enqueue(unit);
             }
+            
+            HasFreeUnit.SetValue(_freeUnits.Count > 0);
         }
 
         private void OnEnable()
@@ -39,27 +52,47 @@ namespace Fort
         }
 
         private void Update() =>
-            _stateMachine?.Update(Time.deltaTime);
+            StateMachine?.Update(Time.deltaTime);
         
         private void LateUpdate() =>
-            _stateMachine?.LateUpdate(Time.deltaTime);
+            StateMachine?.LateUpdate(Time.deltaTime);
 
         private void FixedUpdate() =>
-            _stateMachine?.FixedUpdate(Time.fixedTime);
+            StateMachine?.FixedUpdate(Time.fixedTime);
 
-        public void Initialize(StateMachine stateMachine) =>
-            _stateMachine = stateMachine;
+        public void Initialize(StateMachine stateMachine)
+        {
+            StateMachine = stateMachine;
+            Initialized?.Invoke();
+        }
 
         public void AddUnit(Unit unit)
         {
             _units.Add(unit);
-            unit.Initialize(transform);
-            _freeUnits.Enqueue(unit);
+
+            if (unit.IsBusy == false)
+            {
+                _freeUnits.Enqueue(unit);
+                HasFreeUnit.SetValue(_freeUnits.Count > 0);
+            }
 
             if (isActiveAndEnabled)
             {
                 unit.BusyStatusChanged += ReleaseUnit;
             }
+        }
+
+        public void BuildFort()
+        {
+            Unit buildingUnit = _freeUnits.Dequeue();
+            HasFreeUnit.SetValue(_freeUnits.Count > 0);
+            _units.Remove(buildingUnit);
+            buildingUnit.SetWay(new List<Transform>
+            {
+                FortToBuild.Value.transform
+            });
+            FortToBuild.Value.AddUnit(buildingUnit);
+            FortToBuild.SetValue(null);
         }
 
         private void AddToQueue(Gold gold)
@@ -68,7 +101,7 @@ namespace Fort
             {
                 _detectedGold.Enqueue(gold);
 
-                if (_freeUnits.Count > 0)
+                if (HasFreeUnit.Value)
                 {
                     SendUnit(_detectedGold.Dequeue());
                 }
@@ -80,6 +113,7 @@ namespace Fort
             if (unit.IsBusy == false)
             {
                 _freeUnits.Enqueue(unit);
+                HasFreeUnit.SetValue(_freeUnits.Count > 0);
 
                 if (_detectedGold.Count > 0)
                 {
@@ -88,7 +122,14 @@ namespace Fort
             }
         }
 
-        private void SendUnit(Gold gold) =>
-            _freeUnits.Dequeue().SetWay(new List<Transform> {gold.transform});
+        private void SendUnit(Gold gold)
+        {
+            _freeUnits.Dequeue().SetWay(new List<Transform>
+            {
+                gold.transform,
+                transform
+            });
+            HasFreeUnit.SetValue(_freeUnits.Count > 0);
+        }
     }
 }

@@ -12,7 +12,6 @@ namespace Unit
         [SerializeField] private Rotator _rotator;
         [SerializeField] private Picker _picker;
 
-        private Transform _home;
         private bool _isBusy;
 
         public event Action<Unit> BusyStatusChanged;
@@ -46,14 +45,10 @@ namespace Unit
             _mover.TargetReached -= ChooseAction;
         }
 
-        public void Initialize(Transform home) =>
-            _home = home;
-
         public void SetWay(IList<Transform> targets)
         {
             if (IsBusy == false)
             {
-                targets.Add(_home);
                 _mover.SetWay(targets);
                 IsBusy = true;
                 _rotator.SetTarget(_mover.Target);
@@ -62,13 +57,13 @@ namespace Unit
 
         private void ChooseAction()
         {
-            if (_mover.Target == _home)
+            if (_mover.Target.TryGetComponent(out IPickable pickable))
             {
-                DropItem();
+                _picker.PickUp(pickable);
             }
             else
             {
-                PickUpItem();
+                DropItem();
             }
         }
 
@@ -76,14 +71,6 @@ namespace Unit
         {
             _mover.MoveToNextTarget();
             _rotator.SetTarget(_mover.Target);
-        }
-
-        private void PickUpItem()
-        {
-            if (_mover.Target.TryGetComponent(out IPickable pickable))
-            {
-                _picker.PickUp(pickable);
-            }
         }
 
         private void DropItem()

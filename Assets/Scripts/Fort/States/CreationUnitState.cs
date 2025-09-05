@@ -9,38 +9,38 @@ namespace Fort.States
 
     public class CreationUnitState : AbstractState
     {
-        private readonly Action<Unit> _callback;
+        private readonly Fort _root;
         private readonly Gold _gold;
-        private readonly Spawner _spawner;
         private readonly int _spawnCost;
-        private readonly Vector3 _spawnPoint;
+        private readonly Spawner _spawner;
+        private readonly Transform _spawnPoint;
         
-        public CreationUnitState(Gold gold,
-            Spawner unitSpawner,
+        public CreationUnitState(Fort rootFort,
+            Gold gold,
             int unitSpawnCost,
-            Vector3 unitSpawnPoint,
-            Action<Unit> callback = null)
+            Spawner unitSpawner,
+            Transform unitSpawnPoint)
         {
-            _callback = callback;
+            _root = rootFort;
             _gold = gold;
-            _spawner = unitSpawner;
             _spawnCost = unitSpawnCost;
+            _spawner = unitSpawner;
             _spawnPoint = unitSpawnPoint;
         }
         
         public override void Enter()
         {
-            _gold.ValueChanged += SpawnUnit;
+            _gold.ValueChanged += CreateUnit;
             base.Enter();
         }
 
         public override void Exit()
         {
-            _gold.ValueChanged -= SpawnUnit;
+            _gold.ValueChanged -= CreateUnit;
             base.Exit();
         }
 
-        private void SpawnUnit()
+        private void CreateUnit()
         {
             if (_spawnCost < 0)
             {
@@ -49,8 +49,7 @@ namespace Fort.States
 
             if (_gold.TrySpend(_spawnCost))
             {
-                Unit unit = _spawner.SpawnAt(_spawnPoint) as Unit;
-                _callback?.Invoke(unit);
+                _root.AddUnit(_spawner.SpawnAt(_spawnPoint.position) as Unit);
             }
         }
     }
