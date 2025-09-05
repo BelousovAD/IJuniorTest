@@ -5,19 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6469892b-a60f-4c09-8e73-26127c6dfef4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Fort/ChangeableValue/FortToBuild.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Fort/ChangeableValue/FortToBuild.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Fort/ChangeableValue/HasFreeUnit.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Fort/ChangeableValue/HasFreeUnit.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.IJuniorTest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IJuniorTest/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Fort.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Fort.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/CollectingBots.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CollectingBots.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/FiniteStateMachine/StateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/FiniteStateMachine/StateMachine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fort/Fort.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fort/Fort.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fort/FortStateMachineBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fort/FortStateMachineBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fort/States/CreationUnitState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fort/States/CreationUnitState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/LevelInitializer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/LevelInitializer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Unit/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/Unit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fort/View/FortView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fort/View/FortView.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/FortSpawnCaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/FortSpawnCaller.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +23,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/605bf8b31fcb444b85176da963870aa746ac00/4a/f9eadcaa/List`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/605bf8b31fcb444b85176da963870aa746ac00/bb/92c638a0/Dictionary`2.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/605bf8b31fcb444b85176da963870aa746ac00/eb/43c92776/Queue`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventInterfaces.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -125,7 +120,7 @@
       <workItem from="1756729392778" duration="9251000" />
       <workItem from="1756806401019" duration="9449000" />
       <workItem from="1756983148694" duration="13289000" />
-      <workItem from="1757067164346" duration="6746000" />
+      <workItem from="1757067164346" duration="8522000" />
     </task>
     <servers />
   </component>
@@ -158,30 +153,17 @@
           <option name="timeStamp" value="3" />
         </breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Gameplay/FortSpawnCaller.cs</url>
-          <line>24</line>
-          <properties documentPath="C:\Users\AlekseyBelousov\Documents\IJuniorTest\Assets\Scripts\Gameplay\FortSpawnCaller.cs" containingFunctionPresentation="Method 'OnPointerClick'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Fort/Fort.cs</url>
+          <line>85</line>
+          <properties documentPath="C:\Users\AlekseyBelousov\Documents\IJuniorTest\Assets\Scripts\Fort\Fort.cs" containingFunctionPresentation="Method 'BuildFort'">
             <startOffsets>
-              <option value="669" />
+              <option value="2278" />
             </startOffsets>
             <endOffsets>
-              <option value="693" />
+              <option value="2279" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Ground.cs</url>
-          <line>11</line>
-          <properties documentPath="C:\Users\AlekseyBelousov\Documents\IJuniorTest\Assets\Scripts\Gameplay\Ground.cs" containingFunctionPresentation="Method 'OnPointerClick'">
-            <startOffsets>
-              <option value="307" />
-            </startOffsets>
-            <endOffsets>
-              <option value="369" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="7" />
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

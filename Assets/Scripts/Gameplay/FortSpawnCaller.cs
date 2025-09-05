@@ -1,6 +1,5 @@
 namespace Gameplay
 {
-    using System;
     using Common.Spawn;
     using Fort;
     using UnityEngine;

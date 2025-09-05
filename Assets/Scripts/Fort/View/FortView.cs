@@ -1,6 +1,5 @@
 namespace Fort.View
 {
-    using System;
     using System.Collections.Generic;
     using States;
     using UnityEngine;
