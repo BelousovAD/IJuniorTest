@@ -5,11 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6469892b-a60f-4c09-8e73-26127c6dfef4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/ChangeableValue/ChangeableQueue.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/ChangeableValue/ChangeableQueue.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.IJuniorTest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IJuniorTest/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Fort.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Fort.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/CollectingBots.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CollectingBots.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fort/View/FortView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fort/View/FortView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/FortSpawnCaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/FortSpawnCaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fort/ChangeableValue/HasFreeUnit.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fort/ChangeableValue/HasFreeUnit.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fort/Fort.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fort/Fort.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fort/FortStateMachineBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fort/FortStateMachineBuilder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fort/States/CreationFortState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fort/States/CreationFortState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +124,7 @@
       <workItem from="1756729392778" duration="9251000" />
       <workItem from="1756806401019" duration="9449000" />
       <workItem from="1756983148694" duration="13289000" />
-      <workItem from="1757067164346" duration="8522000" />
+      <workItem from="1757067164346" duration="13504000" />
     </task>
     <servers />
   </component>
@@ -157,13 +161,52 @@
           <line>85</line>
           <properties documentPath="C:\Users\AlekseyBelousov\Documents\IJuniorTest\Assets\Scripts\Fort\Fort.cs" containingFunctionPresentation="Method 'BuildFort'">
             <startOffsets>
-              <option value="2278" />
+              <option value="2276" />
             </startOffsets>
             <endOffsets>
-              <option value="2279" />
+              <option value="2277" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Fort/Fort.cs</url>
+          <line>38</line>
+          <properties documentPath="C:\Users\AlekseyBelousov\Documents\IJuniorTest\Assets\Scripts\Fort\Fort.cs" containingFunctionPresentation="Method 'OnEnable'">
+            <startOffsets>
+              <option value="964" />
+            </startOffsets>
+            <endOffsets>
+              <option value="965" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Fort/Fort.cs</url>
+          <line>30</line>
+          <properties documentPath="C:\Users\AlekseyBelousov\Documents\IJuniorTest\Assets\Scripts\Fort\Fort.cs" containingFunctionPresentation="Method 'Start'">
+            <startOffsets>
+              <option value="800" />
+            </startOffsets>
+            <endOffsets>
+              <option value="801" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Fort/Fort.cs</url>
+          <line>113</line>
+          <properties documentPath="C:\Users\AlekseyBelousov\Documents\IJuniorTest\Assets\Scripts\Fort\Fort.cs" containingFunctionPresentation="Method 'SendUnit'">
+            <startOffsets>
+              <option value="3006" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3007" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -22,12 +22,14 @@ namespace Fort.States
         public override void Enter()
         {
             _gold.ValueChanged += InvokeFortBuilding;
+            _root.FreeUnits.Changed += InvokeFortBuilding;
             base.Enter();
         }
 
         public override void Exit()
         {
             _gold.ValueChanged -= InvokeFortBuilding;
+            _root.FreeUnits.Changed -= InvokeFortBuilding;
             base.Exit();
         }
 
@@ -38,7 +40,7 @@ namespace Fort.States
                 throw new ArgumentOutOfRangeException(nameof(_createCost), "Can not be negative");
             }
 
-            if (_gold.TrySpend(_createCost) && _root.FreeUnits.Count > 0)
+            if (_root.FreeUnits.Count > 0 && _gold.TrySpend(_createCost))
             {
                 _root.BuildFort();
             }

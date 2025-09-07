@@ -60,8 +60,8 @@ namespace Fort
 
         protected override void BuildTransitions()
         {
-            States[typeof(BuildingState)].AddTransition(new Transition(_root.HasFreeUnit,
-                () => _root.HasFreeUnit.Value,
+            States[typeof(BuildingState)].AddTransition(new Transition(_root.FreeUnits,
+                () => _root.FreeUnits.Count > 0,
                 States[typeof(CreationUnitState)]));
             States[typeof(CreationFortState)].AddTransition(new Transition(_root.FortToBuild,
                 () => _root.FortToBuild.Value is null,

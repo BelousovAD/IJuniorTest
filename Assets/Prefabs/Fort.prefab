@@ -93,8 +93,12 @@ MonoBehaviour:
   - {fileID: 7995833021051306822}
   _creationFortStateObjects:
   - {fileID: 3649937812448875028}
+  - {fileID: 7016286692472233917}
+  - {fileID: 3421510033699504661}
   _creationUnitStateObjects:
   - {fileID: 3649937812448875028}
+  - {fileID: 7016286692472233917}
+  - {fileID: 3421510033699504661}
 --- !u!114 &4812393615212057409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,7 +419,6 @@ Transform:
   - {fileID: 2460987662971017795}
   - {fileID: 8939847654429560182}
   - {fileID: 3989836659940636972}
-  - {fileID: 1555013250818006031}
   - {fileID: 2351245358355315832}
   - {fileID: 6544038152018042044}
   m_Father: {fileID: 8370179851716674831}
@@ -669,52 +672,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &8235723124771413136
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1555013250818006031}
-  - component: {fileID: 7254169973419567742}
-  m_Layer: 0
-  m_Name: FortSpawnCaller
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1555013250818006031
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8235723124771413136}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3639904219846990801}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7254169973419567742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8235723124771413136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dc39e99ef38493197624d328f1a660c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fort: {fileID: 5003349882975340712}
-  _fortSpawner: {fileID: 8960481428428072336}
 --- !u!1 &8417278090012948780
 GameObject:
   m_ObjectHideFlags: 0
