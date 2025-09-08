@@ -1,6 +1,7 @@
 namespace Fort.States
 {
     using System;
+    using System.Collections.Generic;
     using Common.FiniteStateMachine.States;
     using Common.Spawn;
     using Currency;
@@ -31,12 +32,18 @@ namespace Fort.States
         public override void Enter()
         {
             _gold.ValueChanged += CreateUnit;
+            _root.DetectedGold.Changed += SendUnit;
+            _root.FreeUnits.Changed += SendUnit;
+            CreateUnit();
+            SendUnit();
             base.Enter();
         }
 
         public override void Exit()
         {
             _gold.ValueChanged -= CreateUnit;
+            _root.DetectedGold.Changed -= SendUnit;
+            _root.FreeUnits.Changed -= SendUnit;
             base.Exit();
         }
 
@@ -50,6 +57,19 @@ namespace Fort.States
             if (_gold.TrySpend(_spawnCost))
             {
                 _root.AddUnit(_spawner.SpawnAt(_spawnPoint.position) as Unit);
+            }
+        }
+        
+        private void SendUnit()
+        {
+            if (_root.FreeUnits.Count > 0
+                && _root.DetectedGold.TryDequeue(out Item.Gold gold))
+            {
+                _root.FreeUnits.Dequeue().SetWay(new List<Transform>
+                {
+                    gold.transform,
+                    _root.transform
+                });
             }
         }
     }

@@ -11,17 +11,19 @@ namespace Fort
     using Item;
     using Unit;
     using UnityEngine;
+    using UnityEngine.EventSystems;
 
-    public class Fort : PooledComponent
+    public class Fort : PooledComponent, IPointerClickHandler
     {
         [SerializeField] private GoldDetector _goldDetector;
         [SerializeField] private List<Unit> _units = new();
 
-        private readonly ChangeableQueue<Gold> _detectedGold = new();
-
+        public static event Action<Fort> Selected;
         public event Action Initialized;
 
         public FortToBuild FortToBuild { get; } = new();
+        
+        public ChangeableQueue<Gold> DetectedGold { get; } = new();
 
         public ChangeableQueue<Unit> FreeUnits { get; } = new();
 
@@ -37,19 +39,14 @@ namespace Fort
 
         private void OnEnable()
         {
-            _goldDetector.Detected += AddToQueue;
+            _goldDetector.Detected += AddGold;
             _units.ForEach(unit => unit.BusyStatusChanged += ReleaseUnit);
-            _detectedGold.Changed += SendUnit;
-            FreeUnits.Changed += SendUnit;
-            SendUnit();
         }
 
         private void OnDisable()
         {
-            _goldDetector.Detected -= AddToQueue;
+            _goldDetector.Detected -= AddGold;
             _units.ForEach(unit => unit.BusyStatusChanged -= ReleaseUnit);
-            _detectedGold.Changed -= SendUnit;
-            FreeUnits.Changed -= SendUnit;
         }
 
         private void Update() =>
@@ -60,6 +57,9 @@ namespace Fort
 
         private void FixedUpdate() =>
             StateMachine?.FixedUpdate(Time.fixedTime);
+        
+        public void OnPointerClick(PointerEventData eventData) =>
+            Selected?.Invoke(this);
 
         public void Initialize(StateMachine stateMachine)
         {
@@ -71,34 +71,28 @@ namespace Fort
         {
             _units.Add(unit);
 
-            if (unit.IsBusy == false)
-            {
-                FreeUnits.Enqueue(unit);
-            }
-
             if (isActiveAndEnabled)
             {
                 unit.BusyStatusChanged += ReleaseUnit;
             }
+
+            if (unit.IsBusy == false)
+            {
+                FreeUnits.Enqueue(unit);
+            }
         }
 
-        public void BuildFort()
+        public void RemoveUnit(Unit unit)
         {
-            Unit buildingUnit = FreeUnits.Dequeue();
-            _units.Remove(buildingUnit);
-            buildingUnit.SetWay(new List<Transform>
-            {
-                FortToBuild.Value.transform
-            });
-            FortToBuild.Value.AddUnit(buildingUnit);
-            FortToBuild.SetValue(null);
+            unit.BusyStatusChanged -= ReleaseUnit;
+            _units.Remove(unit);
         }
 
-        private void AddToQueue(Gold gold)
+        private void AddGold(Gold gold)
         {
-            if (_detectedGold.Contains(gold) == false)
+            if (DetectedGold.Contains(gold) == false)
             {
-                _detectedGold.Enqueue(gold);
+                DetectedGold.Enqueue(gold);
             }
         }
 
@@ -107,18 +101,6 @@ namespace Fort
             if (unit.IsBusy == false)
             {
                 FreeUnits.Enqueue(unit);
-            }
-        }
-
-        private void SendUnit()
-        {
-            if (FreeUnits.Count > 0 && _detectedGold.TryDequeue(out Gold gold))
-            {
-                FreeUnits.Dequeue().SetWay(new List<Transform>
-                {
-                    gold.transform,
-                    transform
-                });
             }
         }
     }

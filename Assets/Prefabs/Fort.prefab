@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5003349882975340712}
   - component: {fileID: 700528889523209609}
   - component: {fileID: 4879729552073709665}
-  - component: {fileID: 4812393615212057409}
   m_Layer: 0
   m_Name: Fort
   m_TagString: Untagged
@@ -99,20 +98,6 @@ MonoBehaviour:
   - {fileID: 3649937812448875028}
   - {fileID: 7016286692472233917}
   - {fileID: 3421510033699504661}
---- !u!114 &4812393615212057409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1185987869258495696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dc39e99ef38493197624d328f1a660c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fort: {fileID: 5003349882975340712}
-  _fortSpawner: {fileID: 8960481428428072336}
 --- !u!1 &3421510033699504661
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,53 +167,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _income: 1
   _gold: {fileID: 5133794472203796596}
---- !u!1 &3592117446805101629
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2351245358355315832}
-  - component: {fileID: 8960481428428072336}
-  m_Layer: 0
-  m_Name: FortSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2351245358355315832
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3592117446805101629}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3639904219846990801}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8960481428428072336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3592117446805101629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb63248fdc784156878b0c365599be5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefab: {fileID: 0}
-  _parent: {fileID: 0}
-  _poolSize: 1
 --- !u!1 &3649937812448875028
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,8 +357,6 @@ Transform:
   - {fileID: 2460987662971017795}
   - {fileID: 8939847654429560182}
   - {fileID: 3989836659940636972}
-  - {fileID: 2351245358355315832}
-  - {fileID: 6544038152018042044}
   m_Father: {fileID: 8370179851716674831}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -491,53 +427,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6489a6a3b7544308e1d18ff7ec984a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &7088304227705657606
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6544038152018042044}
-  - component: {fileID: 4593146324525915994}
-  m_Layer: 0
-  m_Name: UnitSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6544038152018042044
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7088304227705657606}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3639904219846990801}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4593146324525915994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7088304227705657606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb63248fdc784156878b0c365599be5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefab: {fileID: 2231881945738767274, guid: 274f918d54ed3064284e73da9e0dad0d, type: 3}
-  _parent: {fileID: 0}
-  _poolSize: 10
 --- !u!1 &7702275809589451271
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,7 +475,6 @@ MonoBehaviour:
   _gold: {fileID: 5133794472203796596}
   _fortSpawnCost: 5
   _unitSpawnCost: 3
-  _unitSpawner: {fileID: 4593146324525915994}
   _unitSpawnPoint: {fileID: 1958454225715243646}
 --- !u!1 &7995833021051306822
 GameObject:

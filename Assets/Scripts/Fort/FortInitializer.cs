@@ -4,6 +4,7 @@ namespace Fort
     using Common.Spawn;
     using Currency;
     using UnityEngine;
+    using Zenject;
 
     public class FortInitializer : MonoBehaviour
     {
@@ -11,11 +12,11 @@ namespace Fort
         [SerializeField] private Gold _gold;
         [SerializeField, Min(0)] private int _fortSpawnCost = 5;
         [SerializeField, Min(0)] private int _unitSpawnCost = 3;
-        [SerializeField] private Spawner _unitSpawner;
         [SerializeField] private Transform _unitSpawnPoint;
 
         private FortStateMachineBuilder _fortStateMachineBuilder;
         private StateMachine _stateMachine;
+        [Inject(Id = "Unit")] private Spawner _unitSpawner;
 
         private void Start() =>
             InitializeFort();

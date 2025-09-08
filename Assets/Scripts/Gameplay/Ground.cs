@@ -6,7 +6,7 @@ namespace Gameplay
 
     public class Ground : MonoBehaviour, IPointerClickHandler
     {
-        public static event Action<Vector3> Clicked;
+        public event Action<Vector3> Clicked;
         
         public void OnPointerClick(PointerEventData eventData) =>
             Clicked?.Invoke(eventData.pointerCurrentRaycast.worldPosition);

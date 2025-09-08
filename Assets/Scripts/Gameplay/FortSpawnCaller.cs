@@ -3,39 +3,41 @@ namespace Gameplay
     using Common.Spawn;
     using Fort;
     using UnityEngine;
-    using UnityEngine.EventSystems;
 
-    public class FortSpawnCaller : MonoBehaviour, IPointerClickHandler
+    public class FortSpawnCaller : MonoBehaviour
     {
-        private static FortSpawnCaller _selectedInstance;
-        
-        [SerializeField] private Fort _fort;
         [SerializeField] private Spawner _fortSpawner;
+        [SerializeField] private Ground _ground;
 
-        private Fort _lastSpawnedFort;
+        private Fort _selectedFort;
 
-        private void OnEnable() =>
-            Ground.Clicked += SpawnOrMoveFort;
+        private void OnEnable()
+        {
+            _ground.Clicked += SpawnOrMoveFort;
+            Fort.Selected += SetSelectedFort;
+        }
 
-        private void OnDisable() =>
-            Ground.Clicked -= SpawnOrMoveFort;
+        private void OnDisable()
+        {
+            _ground.Clicked -= SpawnOrMoveFort;
+            Fort.Selected -= SetSelectedFort;
+        }
 
-        public void OnPointerClick(PointerEventData eventData) =>
-            _selectedInstance = this;
+        private void SetSelectedFort(Fort fort) =>
+            _selectedFort = fort;
 
         private void SpawnOrMoveFort(Vector3 position)
         {
-            if (_selectedInstance == this)
+            Fort fortToBuild = _selectedFort.FortToBuild.Value;
+            
+            if (fortToBuild is null)
             {
-                if (_fort.FortToBuild.Value is null)
-                {
-                    _lastSpawnedFort = _fortSpawner.SpawnAt(position) as Fort;
-                    _fort.FortToBuild!.SetValue(_lastSpawnedFort);
-                }
-                else
-                {
-                    _lastSpawnedFort.transform.position = position;
-                }
+                fortToBuild = _fortSpawner.SpawnAt(position) as Fort;
+                _selectedFort.FortToBuild.SetValue(fortToBuild);
+            }
+            else
+            {
+                fortToBuild.transform.position = position;
             }
         }
     }

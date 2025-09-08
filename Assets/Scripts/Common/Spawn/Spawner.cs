@@ -3,6 +3,7 @@ namespace Common.Spawn
     using System;
     using UnityEngine;
     using UnityEngine.Pool;
+    using Zenject;
 
     public class Spawner : MonoBehaviour
     {
@@ -11,6 +12,7 @@ namespace Common.Spawn
         [SerializeField, Min(1)] private int _poolSize = 1;
 
         private IObjectPool<PooledComponent> _pool;
+        private IInstantiator _instantiator;
         
         public event Action<PooledComponent> ComponentReleased;
 
@@ -31,6 +33,10 @@ namespace Common.Spawn
             return pooledComponent;
         }
 
+        [Inject]
+        private void Initialize(IInstantiator instantiator) =>
+            _instantiator = instantiator;
+
         private void ReleasePooledComponent(PooledComponent pooledComponent)
         {
             pooledComponent.gameObject.SetActive(false);
@@ -40,7 +46,8 @@ namespace Common.Spawn
 
         private PooledComponent CreatePooledComponent()
         {
-            PooledComponent pooledComponent = Instantiate(_prefab, _parent);
+            PooledComponent pooledComponent =
+                _instantiator.InstantiatePrefabForComponent<PooledComponent>(_prefab, _parent);
             pooledComponent.gameObject.SetActive(false);
 
             return pooledComponent;

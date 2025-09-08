@@ -1,8 +1,11 @@
 namespace Fort.States
 {
     using System;
+    using System.Collections.Generic;
     using Common.FiniteStateMachine.States;
     using Currency;
+    using Unit;
+    using UnityEngine;
 
     public class CreationFortState : AbstractState
     {
@@ -21,28 +24,47 @@ namespace Fort.States
         
         public override void Enter()
         {
-            _gold.ValueChanged += InvokeFortBuilding;
-            _root.FreeUnits.Changed += InvokeFortBuilding;
+            _root.DetectedGold.Changed += SendUnit;
+            _root.FreeUnits.Changed += SendUnit;
+            SendUnit();
             base.Enter();
         }
 
         public override void Exit()
         {
-            _gold.ValueChanged -= InvokeFortBuilding;
-            _root.FreeUnits.Changed -= InvokeFortBuilding;
+            _root.DetectedGold.Changed -= SendUnit;
+            _root.FreeUnits.Changed -= SendUnit;
             base.Exit();
         }
 
-        private void InvokeFortBuilding()
+        private void SendUnit()
         {
             if (_createCost < 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(_createCost), "Can not be negative");
             }
 
-            if (_root.FreeUnits.Count > 0 && _gold.TrySpend(_createCost))
+            if (_root.FreeUnits.Count > 0)
             {
-                _root.BuildFort();
+                if (_gold.TrySpend(_createCost))
+                {
+                    Unit unit = _root.FreeUnits.Dequeue();
+                    _root.RemoveUnit(unit);
+                    unit.SetWay(new List<Transform>
+                    {
+                        _root.FortToBuild.Value.transform
+                    });
+                    _root.FortToBuild.Value.AddUnit(unit);
+                    _root.FortToBuild.SetValue(null);
+                }
+                else if (_root.DetectedGold.TryDequeue(out Item.Gold gold))
+                {
+                    _root.FreeUnits.Dequeue().SetWay(new List<Transform>
+                    {
+                        gold.transform,
+                        _root.transform
+                    });
+                }
             }
         }
     }
