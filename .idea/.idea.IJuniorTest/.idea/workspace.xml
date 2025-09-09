@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6469892b-a60f-4c09-8e73-26127c6dfef4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.IJuniorTest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IJuniorTest/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Fort.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Fort.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/CollectingBots.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CollectingBots.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fort/Fort.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fort/Fort.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/FortSpawnCaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/FortSpawnCaller.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,6 +116,7 @@
       <workItem from="1756983148694" duration="13289000" />
       <workItem from="1757067164346" duration="13504000" />
       <workItem from="1757402130014" duration="389000" />
+      <workItem from="1757402533614" duration="684000" />
     </task>
     <servers />
   </component>
@@ -194,10 +192,10 @@
           <line>104</line>
           <properties documentPath="C:\Users\AlekseyBelousov\Documents\IJuniorTest\Assets\Scripts\Fort\Fort.cs" containingFunctionPresentation="Method 'SendUnit'">
             <startOffsets>
-              <option value="3006" />
+              <option value="-1" />
             </startOffsets>
             <endOffsets>
-              <option value="3007" />
+              <option value="-1" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="16" />

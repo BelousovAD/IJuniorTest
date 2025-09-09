@@ -28,6 +28,11 @@ namespace Gameplay
 
         private void SpawnOrMoveFort(Vector3 position)
         {
+            if (_selectedFort is null)
+            {
+                return;
+            }
+            
             Fort fortToBuild = _selectedFort.FortToBuild.Value;
             
             if (fortToBuild is null)
