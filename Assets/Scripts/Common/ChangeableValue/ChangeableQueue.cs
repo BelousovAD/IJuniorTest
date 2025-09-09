@@ -9,6 +9,7 @@ namespace Common.ChangeableValue
         private readonly Queue<T> _queue = new();
         
         public event Action Changed;
+        public event Action Increased;
 
         public int Count => _queue.Count;
 
@@ -16,6 +17,7 @@ namespace Common.ChangeableValue
         {
             _queue.Enqueue(item);
             Changed?.Invoke();
+            Increased?.Invoke();
         }
 
         public T Dequeue()
