@@ -13,6 +13,8 @@ namespace Item
         
         private Collider _collider;
         private Rigidbody _rigidbody;
+        
+        public bool IsDetected { get; private set; }
 
         private void Awake()
         {
@@ -21,11 +23,17 @@ namespace Item
             _rigidbody.maxAngularVelocity = _maxAngularVelocity;
         }
 
-        private void OnEnable() =>
+        private void OnEnable()
+        {
+            IsDetected = false;
             _rigidbody.AddRelativeTorque(Random.onUnitSphere * _maxAngularVelocity, ForceMode.Impulse);
+        }
 
         private void OnDisable() =>
             _rigidbody.Sleep();
+
+        public void Detect() =>
+            IsDetected = true;
 
         public void PickUp()
         {

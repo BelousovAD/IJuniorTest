@@ -13,8 +13,9 @@ namespace Gameplay
         {
             Gold gold = other.GetComponent<Gold>();
             
-            if (gold is not null)
+            if (gold is not null && gold.IsDetected == false)
             {
+                gold.Detect();
                 Detected?.Invoke(gold);
             }
         }
