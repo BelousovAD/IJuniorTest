@@ -66,9 +66,15 @@ namespace Fort
             States[typeof(CreationFortState)].AddTransition(new Transition(_root.FortToBuild,
                 () => _root.FortToBuild.Value is null,
                 States[typeof(CreationUnitState)]));
-            States[typeof(CreationUnitState)].AddTransition(new Transition(_root.FortToBuild,
-                () => _root.FortToBuild.Value is not null,
-                States[typeof(CreationFortState)]));
+            States[typeof(CreationUnitState)].AddTransitionRange(new[]
+            {
+                new Transition(_root.FortToBuild,
+                    () => _root.FortToBuild.Value is not null && _root.Units.Count > 1,
+                    States[typeof(CreationFortState)]),
+                new Transition(_root.Units,
+                    () => _root.FortToBuild.Value is not null && _root.Units.Count > 1,
+                    States[typeof(CreationFortState)]),
+            });
         }
     }
 }

@@ -19,21 +19,24 @@ namespace Fort
         [SerializeField] private GoldDetector _goldDetector;
         [SerializeField] private List<Unit> _units = new();
 
-        public static event Action<Fort> Selected;
         public event Action Initialized;
-
-        public FortToBuild FortToBuild { get; } = new();
+        public static event Action<Fort> Selected;
         
         public ChangeableQueue<Gold> DetectedGold { get; } = new();
+
+        public FortToBuild FortToBuild { get; } = new();
 
         public ChangeableQueue<Unit> FreeUnits { get; } = new();
 
         public StateMachine StateMachine { get; private set; }
 
-        private void Start()
+        public ChangeableList<Unit> Units { get; } = new();
+
+        private void Awake()
         {
             foreach (Unit unit in _units)
             {
+                Units.Add(unit);
                 FreeUnits.Enqueue(unit);
             }
         }
@@ -41,13 +44,21 @@ namespace Fort
         private void OnEnable()
         {
             _goldDetector.Detected += AddGold;
-            _units.ForEach(unit => unit.BusyStatusChanged += ReleaseUnit);
+
+            foreach (Unit unit in Units)
+            {
+                unit.BusyStatusChanged += ReleaseUnit;
+            }
         }
 
         private void OnDisable()
         {
             _goldDetector.Detected -= AddGold;
-            _units.ForEach(unit => unit.BusyStatusChanged -= ReleaseUnit);
+
+            foreach (Unit unit in Units)
+            {
+                unit.BusyStatusChanged -= ReleaseUnit;
+            }
         }
 
         private void Update() =>
@@ -75,7 +86,7 @@ namespace Fort
 
         public void AddUnit(Unit unit)
         {
-            _units.Add(unit);
+            Units.Add(unit);
 
             if (isActiveAndEnabled)
             {
@@ -91,7 +102,7 @@ namespace Fort
         public void RemoveUnit(Unit unit)
         {
             unit.BusyStatusChanged -= ReleaseUnit;
-            _units.Remove(unit);
+            Units.Remove(unit);
         }
 
         private void AddGold(Gold gold)
