@@ -16,12 +16,12 @@ namespace Currency.View
 
         private void OnEnable()
         {
-            _gold.ValueChanged += UpdateView;
+            _gold.Changed += UpdateView;
             UpdateView();
         }
 
         private void OnDisable() =>
-            _gold.ValueChanged -= UpdateView;
+            _gold.Changed -= UpdateView;
 
         private void UpdateView() =>
             _textField.text = string.Format(_format, _gold.Value);

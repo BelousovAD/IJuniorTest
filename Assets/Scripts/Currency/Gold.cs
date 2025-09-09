@@ -10,7 +10,8 @@ namespace Currency
 
         private int _value;
 
-        public event Action ValueChanged;
+        public event Action Changed;
+        public event Action Increased;
 
         public int Value
         {
@@ -21,8 +22,14 @@ namespace Currency
 
             private set
             {
+                int oldValue = _value;
                 _value = Mathf.Clamp(value, MinValue, MaxValue);
-                ValueChanged?.Invoke();
+                Changed?.Invoke();
+
+                if (oldValue < _value)
+                {
+                    Increased?.Invoke();
+                }
             }
         }
 
