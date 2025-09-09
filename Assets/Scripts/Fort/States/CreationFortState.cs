@@ -24,6 +24,7 @@ namespace Fort.States
         
         public override void Enter()
         {
+            _gold.ValueChanged += SendUnit;
             _root.DetectedGold.Increased += SendUnit;
             _root.FreeUnits.Increased += SendUnit;
             SendUnit();
@@ -32,6 +33,7 @@ namespace Fort.States
 
         public override void Exit()
         {
+            _gold.ValueChanged -= SendUnit;
             _root.DetectedGold.Increased -= SendUnit;
             _root.FreeUnits.Increased -= SendUnit;
             base.Exit();
