@@ -9,6 +9,7 @@ namespace Fort
     using Common.Spawn;
     using Gameplay;
     using Item;
+    using States;
     using Unit;
     using UnityEngine;
     using UnityEngine.EventSystems;
@@ -58,8 +59,13 @@ namespace Fort
         private void FixedUpdate() =>
             StateMachine?.FixedUpdate(Time.fixedTime);
         
-        public void OnPointerClick(PointerEventData eventData) =>
-            Selected?.Invoke(this);
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            if (StateMachine.CurrentState is not BuildingState)
+            {
+                Selected?.Invoke(this);
+            }
+        }
 
         public void Initialize(StateMachine stateMachine)
         {

@@ -5,15 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6469892b-a60f-4c09-8e73-26127c6dfef4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/ChangeableValue/ChangeableQueue.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/ChangeableValue/ChangeableQueue.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.IJuniorTest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IJuniorTest/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Fort.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Fort.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fort/ChangeableValue/HasFreeUnit.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fort/ChangeableValue/HasFreeUnit.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/CollectingBots.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CollectingBots.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fort/Fort.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fort/Fort.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fort/FortStateMachineBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fort/FortStateMachineBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fort/States/CreationFortState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fort/States/CreationFortState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,15 +92,13 @@
       <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="9964">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="9964" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="runtimes">
-        <list>
-          <MonoRuntime />
-        </list>
+        <list />
       </option>
       <option name="selectedOptions">
         <list />
@@ -125,6 +118,7 @@
       <workItem from="1756806401019" duration="9449000" />
       <workItem from="1756983148694" duration="13289000" />
       <workItem from="1757067164346" duration="13504000" />
+      <workItem from="1757402130014" duration="389000" />
     </task>
     <servers />
   </component>
@@ -158,7 +152,7 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Fort/Fort.cs</url>
-          <line>85</line>
+          <line>88</line>
           <properties documentPath="C:\Users\AlekseyBelousov\Documents\IJuniorTest\Assets\Scripts\Fort\Fort.cs" containingFunctionPresentation="Method 'BuildFort'">
             <startOffsets>
               <option value="2276" />
@@ -171,7 +165,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Fort/Fort.cs</url>
-          <line>38</line>
+          <line>35</line>
           <properties documentPath="C:\Users\AlekseyBelousov\Documents\IJuniorTest\Assets\Scripts\Fort\Fort.cs" containingFunctionPresentation="Method 'OnEnable'">
             <startOffsets>
               <option value="964" />
@@ -184,7 +178,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Fort/Fort.cs</url>
-          <line>30</line>
+          <line>27</line>
           <properties documentPath="C:\Users\AlekseyBelousov\Documents\IJuniorTest\Assets\Scripts\Fort\Fort.cs" containingFunctionPresentation="Method 'Start'">
             <startOffsets>
               <option value="800" />
@@ -197,7 +191,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Fort/Fort.cs</url>
-          <line>113</line>
+          <line>104</line>
           <properties documentPath="C:\Users\AlekseyBelousov\Documents\IJuniorTest\Assets\Scripts\Fort\Fort.cs" containingFunctionPresentation="Method 'SendUnit'">
             <startOffsets>
               <option value="3006" />
