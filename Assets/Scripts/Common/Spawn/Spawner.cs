@@ -13,7 +13,8 @@ namespace Common.Spawn
 
         private IObjectPool<PooledComponent> _pool;
         private IInstantiator _instantiator;
-        
+
+        public event Action<PooledComponent> ComponentSpawned;
         public event Action<PooledComponent> ComponentReleased;
 
         private void Awake() =>
@@ -29,7 +30,8 @@ namespace Common.Spawn
             pooledComponent.transform.position = position;
             pooledComponent.ReleaseRequested += _pool.Release;
             pooledComponent.gameObject.SetActive(true);
-
+            ComponentSpawned?.Invoke(pooledComponent);
+            
             return pooledComponent;
         }
 

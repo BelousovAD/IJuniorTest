@@ -214,6 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fortSpawner: {fileID: 644972064}
   _ground: {fileID: 1067605012}
+  _fortContainer: {fileID: 1806848936}
 --- !u!1 &306261217
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,6 +248,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &352454948 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5003349882975340712, guid: 38ce5975b4b3cab4fb3cb64c2b180080, type: 3}
+  m_PrefabInstance: {fileID: 1266316506}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b12735ac6dc64af693f401ddc9361b2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &416258614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -537,6 +549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c3cc670516846d889c228f022a51698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _fortContainer: {fileID: 1806848936}
   _fortSpawner: {fileID: 644972064}
   _unitSpawner: {fileID: 1448450333}
 --- !u!1 &1067605007
@@ -975,12 +988,60 @@ Transform:
   - {fileID: 861046456}
   - {fileID: 796202216}
   - {fileID: 70401513}
+  - {fileID: 1806848935}
   - {fileID: 160644186}
   - {fileID: 644972063}
   - {fileID: 1448450332}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1806848934
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1806848935}
+  - component: {fileID: 1806848936}
+  m_Layer: 0
+  m_Name: FortContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1806848935
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806848934}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1717061547}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1806848936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806848934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 205a11b8e57a43778c837bc8a43a3f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fortSpawner: {fileID: 644972064}
+  _forts:
+  - {fileID: 352454948}
 --- !u!1 &2030583527
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,7 +20,7 @@ namespace Fort
         [SerializeField] private List<Unit> _units = new();
 
         public event Action Initialized;
-        public static event Action<Fort> Selected;
+        public event Action<Fort> Selected;
         
         public ChangeableQueue<Gold> DetectedGold { get; } = new();
 

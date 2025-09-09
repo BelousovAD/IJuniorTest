@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5003349882975340712}
   - component: {fileID: 700528889523209609}
   - component: {fileID: 4879729552073709665}
+  - component: {fileID: 4694174413477836897}
   m_Layer: 0
   m_Name: Fort
   m_TagString: Untagged
@@ -100,6 +101,20 @@ MonoBehaviour:
   - {fileID: 7016286692472233917}
   - {fileID: 3421510033699504661}
   - {fileID: 9114522086885928950}
+--- !u!114 &4694174413477836897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185987869258495696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22bfe8754c2b4a20b21e689f4f3dc1b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fort: {fileID: 5003349882975340712}
+  _outlineComponent: {fileID: 202382658776952663}
 --- !u!1 &3421510033699504661
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,6 +195,7 @@ GameObject:
   - component: {fileID: 1552345705304410835}
   - component: {fileID: 6494582814933643607}
   - component: {fileID: 6630007912321446784}
+  - component: {fileID: 202382658776952663}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -252,6 +268,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &202382658776952663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3649937812448875028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 0, a: 1}
+  outlineWidth: 5
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &4657969738839151719
 GameObject:
   m_ObjectHideFlags: 0
