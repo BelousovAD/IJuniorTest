@@ -8,8 +8,11 @@
       <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/ChangeableValue/ChangeableList.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Assets/Scripts/Common/ChangeableValue/ChangeableList.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.IJuniorTest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IJuniorTest/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/ChangeableValue/ChangeableQueue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/ChangeableValue/ChangeableQueue.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fort/Fort.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fort/Fort.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fort/FortStateMachineBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fort/FortStateMachineBuilder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fort/States/CreationFortState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fort/States/CreationFortState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Fort/States/CreationUnitState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Fort/States/CreationUnitState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +123,7 @@
       <workItem from="1756983148694" duration="13289000" />
       <workItem from="1757067164346" duration="13504000" />
       <workItem from="1757402130014" duration="389000" />
-      <workItem from="1757402533614" duration="4186000" />
+      <workItem from="1757402533614" duration="4643000" />
     </task>
     <servers />
   </component>

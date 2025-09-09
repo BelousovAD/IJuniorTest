@@ -62,10 +62,11 @@ namespace Fort.States
         
         private void SendUnit()
         {
-            if (_root.FreeUnits.Count > 0
-                && _root.DetectedGold.TryDequeue(out Item.Gold gold))
+            if (_root.FreeUnits.Count > 0 && _root.DetectedGold.Count > 0)
             {
-                _root.FreeUnits.Dequeue().SetWay(new List<Transform>
+                Unit unit = _root.FreeUnits.Dequeue();
+                Item.Gold gold = _root.DetectedGold.Dequeue();
+                unit.SetWay(new List<Transform>
                 {
                     gold.transform,
                     _root.transform
