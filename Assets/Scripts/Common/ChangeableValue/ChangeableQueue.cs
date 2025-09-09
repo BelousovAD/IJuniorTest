@@ -25,8 +25,16 @@ namespace Common.ChangeableValue
             return item;
         }
 
-        public bool TryDequeue(out T item) =>
-            _queue.TryDequeue(out item);
+        public bool TryDequeue(out T item)
+        {
+            if (_queue.TryDequeue(out item))
+            {
+                Changed?.Invoke();
+                return true;
+            }
+
+            return false;
+        }
 
         public IEnumerator<T> GetEnumerator() =>
             _queue.GetEnumerator();

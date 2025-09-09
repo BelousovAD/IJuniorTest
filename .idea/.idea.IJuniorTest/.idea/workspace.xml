@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6469892b-a60f-4c09-8e73-26127c6dfef4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/FortSpawnCaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/FortSpawnCaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/ChangeableValue/ChangeableQueue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/ChangeableValue/ChangeableQueue.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +116,7 @@
       <workItem from="1756983148694" duration="13289000" />
       <workItem from="1757067164346" duration="13504000" />
       <workItem from="1757402130014" duration="389000" />
-      <workItem from="1757402533614" duration="684000" />
+      <workItem from="1757402533614" duration="1356000" />
     </task>
     <servers />
   </component>
