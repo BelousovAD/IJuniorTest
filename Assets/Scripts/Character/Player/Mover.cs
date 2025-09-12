@@ -7,11 +7,11 @@ namespace Character.Player
     public class Mover : MonoBehaviour
     {
         [SerializeField] private InputReader _inputReader;
-        [SerializeField, Min(0)] private float _movementSpeed;
+        [SerializeField, Min(0)] private float _speed;
         
         private CharacterController _characterController;
         private Vector3 _moveDirection;
-        private Vector3 _motion;
+        private Vector3 _motion = Vector3.zero;
 
         private void Awake() =>
             _characterController = GetComponent<CharacterController>();
@@ -23,18 +23,12 @@ namespace Character.Player
             _inputReader.MoveInputChanged -= UpdateMotion;
 
         private void Update() =>
-            _characterController.Move(_motion * Time.deltaTime);
+            _characterController.SimpleMove(_motion);
 
         private void UpdateMotion()
         {
-            if (_inputReader.MoveInput == Vector2.zero)
-            {
-                _motion = Vector3.zero;
-            }
-            else
-            {
-                _motion = transform.forward * _movementSpeed + Physics.gravity;
-            }
+            _moveDirection = new Vector3(_inputReader.MoveInput.x, 0f, _inputReader.MoveInput.y);
+            _motion = _moveDirection * _speed;
         }
     }
 }
