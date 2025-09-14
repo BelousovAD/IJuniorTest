@@ -1,32 +1,27 @@
+using Input;
 using UnityEngine;
 
 public class Catapult : MonoBehaviour
 {
-    [SerializeField] private KeyCode _throwKey;
-    [SerializeField] private KeyCode _readyKey;
-    [SerializeField] private KeyCode _spawnBall;
+    [SerializeField] private InputReader _inputReader;
     [SerializeField] private Transform _throwPointForSpring;
     [SerializeField] private Transform _readyPointForSpring;
     [SerializeField] private Transform _spawnBallPoint;
     [SerializeField] private SpringJoint _spring;
-    [SerializeField] private Transform _ballPrefab;
+    [SerializeField] private Ball _ball;
 
-    private void Update()
+    private void OnEnable()
     {
-        if (Input.GetKeyDown(_throwKey))
-        {
-            Throw();
-        }
-
-        if (Input.GetKeyDown(_readyKey))
-        {
-            GetReady();
-        }
-
-        if (Input.GetKeyDown(_spawnBall))
-        {
-            SpawnBall();
-        }
+        _inputReader.ThrowRequested += Throw;
+        _inputReader.GetReadyRequested += GetReady;
+        _inputReader.SpawnBallRequested += SpawnBall;
+    }
+    
+    private void OnDisable()
+    {
+        _inputReader.ThrowRequested -= Throw;
+        _inputReader.GetReadyRequested -= GetReady;
+        _inputReader.SpawnBallRequested -= SpawnBall;
     }
 
     private void Throw() =>
@@ -36,5 +31,5 @@ public class Catapult : MonoBehaviour
         _spring.transform.position = _readyPointForSpring.position;
 
     private void SpawnBall() =>
-        Instantiate(_ballPrefab, _spawnBallPoint.position, Quaternion.identity, null);
+        Instantiate(_ball, _spawnBallPoint.position, Quaternion.identity, null);
 }
