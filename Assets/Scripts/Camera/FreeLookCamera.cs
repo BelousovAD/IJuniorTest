@@ -7,7 +7,10 @@ namespace Camera
     {
         [SerializeField] private InputReader _inputReader;
         [SerializeField] private Transform _camera;
-        [SerializeField] private Transform _anchor;
+        [SerializeField] private Transform _target;
+        [SerializeField, Min(0.001f)] private float _sphereRadius = 0.1f;
+        [SerializeField] private LayerMask _layerMask;
+        [SerializeField, Min(0f)] private float _preferredDistance = 2f;
         [SerializeField, Range(-89f, 0f)] private float _minVerticalAngle = -89f;
         [SerializeField, Range(1f, 89f)] private float _maxVerticalAngle = 89f;
 
@@ -20,8 +23,18 @@ namespace Camera
         private void OnDisable() =>
             _inputReader.RotateRequested -= Rotate;
 
-        private void LateUpdate() =>
-            transform.position = _anchor.position;
+        private void LateUpdate()
+        {
+            transform.position = _target.position;
+            _camera.localPosition = Physics.Raycast(
+                transform.position,
+                -transform.forward,
+                out RaycastHit hit,
+                _preferredDistance,
+                _layerMask)
+                ? new Vector3(0f, 0f, -hit.distance + _sphereRadius)
+                : new Vector3(0f, 0f, -_preferredDistance);
+        }
 
         private void Rotate(Vector2 delta)
         {
