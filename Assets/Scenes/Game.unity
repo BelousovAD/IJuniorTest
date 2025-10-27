@@ -720,7 +720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 706674610}
-  _cameraRig: {fileID: 866332157}
+  _freeLookCamera: {fileID: 866332156}
   _moveSpeed: 5
 --- !u!1 &1766549664
 GameObject:

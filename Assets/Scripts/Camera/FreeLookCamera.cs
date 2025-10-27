@@ -17,8 +17,9 @@ namespace Camera
 
         [Inject(Id = "Player")] private IInputReader _inputReader;
         private ChangeableValue<Vector2> _lookInput;
-        private float _horizontalAngle;
         private float _verticalAngle;
+        
+        public float HorizontalAngle { get; private set; }
 
         private void Awake() =>
             _lookInput = _inputReader.LookInput;
@@ -44,10 +45,11 @@ namespace Camera
 
         private void Rotate()
         {
-            _horizontalAngle += _lookInput.Value.x;
+            HorizontalAngle += _lookInput.Value.x;
+            HorizontalAngle %= 360;
             _verticalAngle -= _lookInput.Value.y;
             _verticalAngle = Mathf.Clamp(_verticalAngle, _minVerticalAngle, _maxVerticalAngle);
-            transform.rotation = Quaternion.Euler(_verticalAngle, _horizontalAngle, 0f);
+            transform.rotation = Quaternion.Euler(_verticalAngle, HorizontalAngle, 0f);
         }
     }
 }
