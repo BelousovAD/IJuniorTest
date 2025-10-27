@@ -1,27 +1,33 @@
-namespace Character
+namespace Character.Player
 {
+    using Common.ChangeableValue;
     using Input;
     using UnityEngine;
+    using Zenject;
 
-    public class Mover : MonoBehaviour
+    public class PlayerMover : MonoBehaviour
     {
         [SerializeField] private Rigidbody _rigidbody;
-        [SerializeField] private InputReader _inputReader;
         [SerializeField] private Transform _cameraRig;
         [SerializeField, Min(0f)] private float _moveSpeed = 1f;
-        
+
+        [Inject(Id = "Player")] private IInputReader _inputReader;
+        private ChangeableValue<Vector2> _moveInput;
         private Vector3 _horizontalVelocity;
         private Vector3 _verticalVelocity;
+
+        private void Awake() =>
+            _moveInput = _inputReader.MoveInput;
 
         private void OnEnable()
         {
             _horizontalVelocity = Vector3.zero;
             _verticalVelocity = Vector3.zero;
-            _inputReader.MoveRequested += UpdateHorizontalVelocity;
+            _moveInput.ValueChanged += UpdateHorizontalVelocity;
         }
 
         private void OnDisable() =>
-            _inputReader.MoveRequested -= UpdateHorizontalVelocity;
+            _moveInput.ValueChanged -= UpdateHorizontalVelocity;
 
         private void Update()
         {
@@ -37,7 +43,7 @@ namespace Character
             _rigidbody.velocity = transform.rotation * _horizontalVelocity + _verticalVelocity;
         }
 
-        private void UpdateHorizontalVelocity(Vector2 inputDirection) =>
-            _horizontalVelocity = new Vector3(inputDirection.x, 0f, inputDirection.y) * _moveSpeed;
+        private void UpdateHorizontalVelocity() =>
+            _horizontalVelocity = new Vector3(_moveInput.Value.x, 0f, _moveInput.Value.y) * _moveSpeed;
     }
 }
