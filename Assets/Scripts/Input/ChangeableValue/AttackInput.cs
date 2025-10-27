@@ -2,6 +2,7 @@ namespace Input.ChangeableValue
 {
     using Common.Behaviour;
     using Common.ChangeableValue;
+    using UnityEngine;
     using UnityEngine.InputSystem;
     using Input = Input;
 
@@ -25,6 +26,6 @@ namespace Input.ChangeableValue
         }
 
         private void RequestMove(InputAction.CallbackContext context) =>
-            Value = context.ReadValue<bool>();
+            Value = Mathf.Approximately(context.ReadValue<float>(), 1f);
     }
 }

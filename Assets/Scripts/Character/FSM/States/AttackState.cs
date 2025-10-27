@@ -4,7 +4,7 @@ namespace Character.FSM.States
 
     public class AttackState : AbstractCharacterAnimatorState, IUpdatable
     {
-        private const float BusyTime = 1f;
+        private const float BusyTime = 0.35f;
         
         private float _busynessCountdown;
         
