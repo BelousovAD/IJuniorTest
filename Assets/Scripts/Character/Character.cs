@@ -1,9 +1,10 @@
 namespace Character
 {
     using Common.FSM;
+    using Common.Spawn;
     using UnityEngine;
 
-    public class Character : MonoBehaviour
+    public class Character : PooledComponent
     {
         [SerializeField] private CharacterAnimator _animator;
         
