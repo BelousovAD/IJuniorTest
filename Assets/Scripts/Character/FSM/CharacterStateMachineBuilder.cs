@@ -8,18 +8,22 @@ namespace Character.FSM
     using Input;
     using Input.ChangeableValue;
     using States;
+    using UnityEngine;
 
     public class CharacterStateMachineBuilder : AbstractStateMachineBuilder
     {
         private readonly CharacterAnimator _characterAnimator;
         private readonly IInputReader _inputReader;
+        private readonly Rigidbody _rigidbody;
 
         public CharacterStateMachineBuilder(
             CharacterAnimator characterAnimator,
-            IInputReader inputReader)
+            IInputReader inputReader,
+            Rigidbody rigidbody)
         {
             _characterAnimator = characterAnimator;
             _inputReader = inputReader;
+            _rigidbody = rigidbody;
         }
 
         public override StateMachine Build()
@@ -36,7 +40,7 @@ namespace Character.FSM
             {
                 [typeof(IdleState)] = new IdleState(_characterAnimator),
                 [typeof(RunState)] = new RunState(_characterAnimator),
-                [typeof(AttackState)] = new AttackState(_characterAnimator),
+                [typeof(AttackState)] = new AttackState(_characterAnimator, _rigidbody),
             };
         }
 

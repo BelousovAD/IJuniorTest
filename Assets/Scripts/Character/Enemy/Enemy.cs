@@ -10,10 +10,11 @@ namespace Character.Enemy
         [SerializeField] private EnemyInputReader _inputReader;
         [SerializeField] private Mover _mover;
         [SerializeField] private PlayerPositionObserver _playerPositionObserver;
+        [SerializeField] private Rigidbody _rigidbody;
 
         public void Initialize(Transform player)
         {
-            CharacterStateMachineBuilder stateMachineBuilder = new(Animator, _inputReader);
+            CharacterStateMachineBuilder stateMachineBuilder = new(Animator, _inputReader, _rigidbody);
             StateMachine stateMachine = stateMachineBuilder.Build();
             Initialize(stateMachine);
             _playerPositionObserver.Initialize(player);

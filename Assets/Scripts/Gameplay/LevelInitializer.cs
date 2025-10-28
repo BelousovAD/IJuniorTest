@@ -10,6 +10,7 @@ namespace Gameplay
     public class LevelInitializer : MonoBehaviour
     {
         [SerializeField] private Character _player;
+        [SerializeField] private Rigidbody _playerRigidbody;
 
         private IInputReader _inputReader;
         private CharacterStateMachineBuilder _characterStateMachineBuilder;
@@ -21,7 +22,10 @@ namespace Gameplay
 
         private void Start()
         {
-            _characterStateMachineBuilder = new CharacterStateMachineBuilder(_player.Animator, _inputReader);
+            _characterStateMachineBuilder = new CharacterStateMachineBuilder(
+                _player.Animator,
+                _inputReader,
+                _playerRigidbody);
             _stateMachine = _characterStateMachineBuilder.Build();
             _player.Initialize(_stateMachine);
         }

@@ -239,6 +239,7 @@ MonoBehaviour:
   _inputReader: {fileID: 2671192100420810683}
   _mover: {fileID: 8457918143019784982}
   _playerPositionObserver: {fileID: 4714074020176602656}
+  _rigidbody: {fileID: 1113372383375548757}
 --- !u!1 &8283703878868182135
 GameObject:
   m_ObjectHideFlags: 0

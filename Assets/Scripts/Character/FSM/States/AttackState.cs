@@ -1,23 +1,32 @@
 namespace Character.FSM.States
 {
     using Common.Behaviour;
+    using UnityEngine;
 
     public class AttackState : AbstractCharacterAnimatorState, IUpdatable
     {
-        private const float BusyTime = 0.35f;
+        private const float BusyTime = 1f;
         
+        private readonly Rigidbody _rigidbody;
         private float _busynessCountdown;
-        
-        public AttackState(CharacterAnimator characterAnimator)
-            : base(characterAnimator)
-        { }
+
+        public AttackState(CharacterAnimator characterAnimator, Rigidbody rigidbody)
+            : base(characterAnimator) =>
+            _rigidbody = rigidbody;
 
         public override void Enter()
         {
             IsBusy = true;
+            _rigidbody.isKinematic = true;
             CharacterAnimator.Play(CharacterAnimator.AnimationKey.Shoot);
             _busynessCountdown = BusyTime;
             base.Enter();
+        }
+
+        public override void Exit()
+        {
+            _rigidbody.isKinematic = false;
+            base.Exit();
         }
 
         public void Update(float deltaTime)
