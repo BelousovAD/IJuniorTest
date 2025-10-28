@@ -240,7 +240,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7b20972f1f749c588215ed2976e324e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawner: {fileID: 1076140422}
   _points:
   - {fileID: 8484574281079233495}
   - {fileID: 8484574281079233494}
@@ -334,7 +333,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7b20972f1f749c588215ed2976e324e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawner: {fileID: 1581198745}
   _points:
   - {fileID: 8484574281079233495}
   - {fileID: 8484574281079233494}
@@ -557,6 +555,7 @@ Transform:
   - {fileID: 1581198744}
   - {fileID: 343603699}
   - {fileID: 1076140421}
+  - {fileID: 2134092751}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -703,7 +702,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 706674608}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba04da153b1d439f9d61267c5bc406cf, type: 3}
+  m_Script: {fileID: 11500000, guid: eb27f9850b394a39bee134707b0b6e36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 1975837804}
@@ -908,12 +907,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1076140420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa9138958b884ac486584695aff4f97f, type: 3}
+  m_Script: {fileID: 11500000, guid: c606aacf52984c3287332daf0fd94376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _parent: {fileID: 0}
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 932972705645484059, guid: 77b86d3fb7c99a246ba9358fde2338ad, type: 3}
   _poolSize: 1
+  _player: {fileID: 706674609}
+  _enemySpawnPoints: {fileID: 343603700}
 --- !u!1 &1163068089
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,8 +960,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 706674610}
-  _freeLookCamera: {fileID: 866332156}
   _moveSpeed: 5
+  _freeLookCamera: {fileID: 866332156}
 --- !u!1 &1581198743
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,12 +1003,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1581198743}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa9138958b884ac486584695aff4f97f, type: 3}
+  m_Script: {fileID: 11500000, guid: c606aacf52984c3287332daf0fd94376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _parent: {fileID: 0}
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 5100405704863898933, guid: a7bb2b002b0bc0f41831ddccf1e8fe2a, type: 3}
   _poolSize: 10
+  _player: {fileID: 706674609}
+  _enemySpawnPoints: {fileID: 440664005}
 --- !u!1 &1766549664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1422,6 +1425,60 @@ Transform:
   m_Father: {fileID: 866332157}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2134092750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2134092751}
+  - component: {fileID: 2134092752}
+  m_Layer: 0
+  m_Name: WaveSpawnCaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2134092751
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134092750}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 674015729}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2134092752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134092750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f052e8e8a5a43c898680f1851c91e36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnDelay: 1
+  _ordinarySpawner: {fileID: 1581198745}
+  _bossSpawner: {fileID: 1076140422}
+  _waves:
+  - OrdinaryEnemyCount: 10
+    BossEnemyCount: 1
+  - OrdinaryEnemyCount: 20
+    BossEnemyCount: 1
+  - OrdinaryEnemyCount: 30
+    BossEnemyCount: 1
 --- !u!1001 &8484574281079233446
 PrefabInstance:
   m_ObjectHideFlags: 0

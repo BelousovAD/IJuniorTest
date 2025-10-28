@@ -15,14 +15,14 @@ namespace Camera
         [SerializeField, Range(-89f, 0f)] private float _minVerticalAngle = -89f;
         [SerializeField, Range(1f, 89f)] private float _maxVerticalAngle = 89f;
 
-        [Inject(Id = "Player")] private IInputReader _inputReader;
         private ChangeableValue<Vector2> _lookInput;
         private float _verticalAngle;
         
         public float HorizontalAngle { get; private set; }
 
-        private void Awake() =>
-            _lookInput = _inputReader.LookInput;
+        [Inject]
+        private void Initialize(IInputReader inputReader) =>
+            _lookInput = inputReader.LookInput;
 
         private void OnEnable() =>
             _lookInput.ValueChanged += Rotate;

@@ -11,9 +11,13 @@ namespace Gameplay
     {
         [SerializeField] private Character _player;
 
-        [Inject(Id = "Player")] private IInputReader _inputReader;
+        private IInputReader _inputReader;
         private CharacterStateMachineBuilder _characterStateMachineBuilder;
         private StateMachine _stateMachine;
+
+        [Inject]
+        private void Initialize(IInputReader inputReader) =>
+            _inputReader = inputReader;
 
         private void Start()
         {

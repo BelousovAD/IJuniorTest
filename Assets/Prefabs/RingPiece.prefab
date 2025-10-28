@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7446439268921333283}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RingPiece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 175877180961432101}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5542411653588320389}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3101958599553166249}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5923768348332099694}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,6 +170,14 @@ PrefabInstance:
     - target: {fileID: 1601172089432882, guid: e91d4132b0b22c14eb088dc1855996e0, type: 3}
       propertyPath: m_Name
       value: SM_Bld_Mexican_Wall_01 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601172089432882, guid: e91d4132b0b22c14eb088dc1855996e0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1952032986362624, guid: e91d4132b0b22c14eb088dc1855996e0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4186442079643728, guid: e91d4132b0b22c14eb088dc1855996e0, type: 3}
       propertyPath: m_RootOrder
@@ -240,6 +248,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Mexican_Wall_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1601172089432882, guid: e91d4132b0b22c14eb088dc1855996e0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1952032986362624, guid: e91d4132b0b22c14eb088dc1855996e0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4186442079643728, guid: e91d4132b0b22c14eb088dc1855996e0, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -309,6 +325,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Mexican_Wall_01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1601172089432882, guid: e91d4132b0b22c14eb088dc1855996e0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1952032986362624, guid: e91d4132b0b22c14eb088dc1855996e0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4186442079643728, guid: e91d4132b0b22c14eb088dc1855996e0, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -377,6 +401,14 @@ PrefabInstance:
     - target: {fileID: 1601172089432882, guid: e91d4132b0b22c14eb088dc1855996e0, type: 3}
       propertyPath: m_Name
       value: SM_Bld_Mexican_Wall_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1601172089432882, guid: e91d4132b0b22c14eb088dc1855996e0, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1952032986362624, guid: e91d4132b0b22c14eb088dc1855996e0, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4186442079643728, guid: e91d4132b0b22c14eb088dc1855996e0, type: 3}
       propertyPath: m_RootOrder

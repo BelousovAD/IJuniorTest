@@ -8,14 +8,14 @@ namespace Common.ChangeableValue
         
         public event Action ValueChanged;
 
-        public virtual T Value
+        public T Value
         {
             get
             {
                 return _value;
             }
 
-            protected set
+            set
             {
                 if (_value.Equals(value) == false)
                 {

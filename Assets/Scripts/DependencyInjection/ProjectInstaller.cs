@@ -7,7 +7,7 @@ namespace DependencyInjection
     {
         public override void InstallBindings()
         {
-            Container.Bind<IInputReader>().WithId("Player").To<PlayerInputReader>().AsSingle();
+            Container.Bind<IInputReader>().To<PlayerInputReader>().AsSingle();
         }
     }
 }

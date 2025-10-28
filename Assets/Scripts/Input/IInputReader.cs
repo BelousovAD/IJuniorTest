@@ -1,13 +1,14 @@
 namespace Input
 {
-    using ChangeableValue;
+    using Common.ChangeableValue;
+    using UnityEngine;
 
     public interface IInputReader
     {
-        public AttackInput AttackInput { get; }
+        public ChangeableValue<bool> AttackInput { get; }
         
-        public LookInput LookInput { get; }
+        public ChangeableValue<Vector2> LookInput { get; }
         
-        public MoveInput MoveInput { get; }
+        public ChangeableValue<Vector2> MoveInput { get; }
     }
 }

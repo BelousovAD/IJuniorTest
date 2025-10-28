@@ -6,7 +6,6 @@ namespace Character.Enemy
 
     public class EnemySpawnPoints : MonoBehaviour
     {
-        [SerializeField] private Spawner _spawner;
         [SerializeField] private List<Transform> _points = new();
 
         public Vector3 GetRandomPoint()
