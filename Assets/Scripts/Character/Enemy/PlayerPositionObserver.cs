@@ -10,6 +10,7 @@ namespace Character.Enemy
 
         private float _sqrCloseDistance;
         private Transform _player;
+        private bool _needDirection = true;
 
         public ChangeableValue<bool> IsCloseEnough { get; } = new();
 
@@ -25,7 +26,13 @@ namespace Character.Enemy
         {
             Vector3 direction3D = _player.position - _transformFrom.position;
             IsCloseEnough.Value = Vector3.SqrMagnitude(direction3D) <= _sqrCloseDistance;
-            Direction2D.Value = new Vector2(direction3D.x, direction3D.z).normalized;
+            Direction2D.Value = _needDirection ? new Vector2(direction3D.x, direction3D.z).normalized : Vector2.zero;
         }
+
+        public void ForgetDirection() =>
+            _needDirection = false;
+
+        public void RemindDirection() =>
+            _needDirection = true;
     }
 }

@@ -8,23 +8,32 @@ namespace Input.ChangeableValue
 
     public class MoveInput : ChangeableValue<Vector2>, IEnable, IDisable
     {
-        public static readonly Vector2 NeutralValue = Vector2.zero;
-        
         private readonly Input _input;
+        private bool _isActive;
 
         public MoveInput(Input input) =>
             _input = input;
 
         public void Enable()
         {
-            _input.Player.Move.performed += RequestMove;
-            _input.Player.Move.canceled += RequestMove;
+            if (_isActive == false)
+            {
+                _input.Player.Move.performed += RequestMove;
+                _input.Player.Move.canceled += RequestMove;
+                Value = _input.Player.Move.ReadValue<Vector2>();
+                _isActive = true;
+            }
         }
 
         public void Disable()
         {
-            _input.Player.Move.performed -= RequestMove;
-            _input.Player.Move.canceled -= RequestMove;
+            if (_isActive)
+            {
+                _input.Player.Move.performed -= RequestMove;
+                _input.Player.Move.canceled -= RequestMove;
+                Value = Vector2.zero;
+                _isActive = false;
+            }
         }
 
         private void RequestMove(InputAction.CallbackContext context) =>

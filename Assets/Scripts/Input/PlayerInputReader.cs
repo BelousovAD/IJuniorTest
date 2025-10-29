@@ -29,6 +29,12 @@ namespace Input
         public ChangeableValue<Vector2> LookInput => _lookInput;
 
         public ChangeableValue<Vector2> MoveInput => _moveInput;
+        
+        public void LockMove() =>
+            _moveInput.Disable();
+
+        public void UnlockMove() =>
+            _moveInput.Enable();
 
         public void Dispose()
         {

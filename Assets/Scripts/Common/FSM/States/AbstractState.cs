@@ -52,7 +52,7 @@ namespace Common.FSM.States
             UnsubscribeFromTransitions();
         }
 
-        public void Update(float deltaTime)
+        public virtual void Update(float deltaTime)
         {
             if (_isFirstUpdate)
             {

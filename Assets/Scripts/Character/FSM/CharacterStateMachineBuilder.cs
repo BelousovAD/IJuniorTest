@@ -6,7 +6,6 @@ namespace Character.FSM
     using Common.FSM.States;
     using Common.FSM.Transitions;
     using Input;
-    using Input.ChangeableValue;
     using States;
     using UnityEngine;
 
@@ -40,7 +39,7 @@ namespace Character.FSM
             {
                 [typeof(IdleState)] = new IdleState(_characterAnimator),
                 [typeof(RunState)] = new RunState(_characterAnimator),
-                [typeof(AttackState)] = new AttackState(_characterAnimator, _rigidbody),
+                [typeof(AttackState)] = new AttackState(_characterAnimator, _inputReader, _rigidbody),
             };
         }
 
@@ -50,7 +49,7 @@ namespace Character.FSM
             {
                 new Transition(
                     _inputReader.MoveInput,
-                    () => _inputReader.MoveInput.Value != MoveInput.NeutralValue,
+                    () => _inputReader.MoveInput.Value != Vector2.zero,
                     States[typeof(RunState)]),
                 new Transition(
                     _inputReader.AttackInput,
@@ -65,14 +64,14 @@ namespace Character.FSM
                     States[typeof(AttackState)]),
                 new Transition(
                     _inputReader.MoveInput,
-                    () => _inputReader.MoveInput.Value == MoveInput.NeutralValue,
+                    () => _inputReader.MoveInput.Value == Vector2.zero,
                     States[typeof(IdleState)]),
             });
             States[typeof(AttackState)].AddTransitionRange(new []
             {
                 new Transition(
                     _inputReader.MoveInput,
-                    () => _inputReader.MoveInput.Value != MoveInput.NeutralValue,
+                    () => _inputReader.MoveInput.Value != Vector2.zero,
                     States[typeof(RunState)]),
                 new Transition(
                     _inputReader.AttackInput,

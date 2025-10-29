@@ -12,6 +12,12 @@ namespace Input
         public ChangeableValue<bool> AttackInput { get; private set; }
         public ChangeableValue<Vector2> LookInput => throw new NotImplementedException();
         public ChangeableValue<Vector2> MoveInput { get; private set; }
+        
+        public void LockMove() =>
+            _playerPositionObserver.ForgetDirection();
+
+        public void UnlockMove() =>
+            _playerPositionObserver.RemindDirection();
 
         private void Awake()
         {

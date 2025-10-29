@@ -2,7 +2,6 @@ namespace Character
 {
     using Common.ChangeableValue;
     using Input;
-    using Input.ChangeableValue;
     using UnityEngine;
     using Zenject;
 
@@ -59,13 +58,16 @@ namespace Character
 
         private void FixedUpdate()
         {
-            _verticalVelocity = new Vector3(0f, _rigidbody.velocity.y, 0f);
-            _rigidbody.velocity = transform.rotation * _horizontalVelocity + _verticalVelocity;
+            if (_rigidbody.isKinematic == false)
+            {
+                _verticalVelocity = new Vector3(0f, _rigidbody.velocity.y, 0f);
+                _rigidbody.velocity = transform.rotation * _horizontalVelocity + _verticalVelocity;
+            }
         }
 
         private void UpdateHorizontalVelocity()
         {
-            if (_moveInput.Value != MoveInput.NeutralValue)
+            if (_moveInput.Value != Vector2.zero)
             {
                 _moveInputDirection = new Vector3(_moveInput.Value.x, 0f, _moveInput.Value.y);
                 _horizontalVelocity = Vector3.forward * _moveSpeed;
