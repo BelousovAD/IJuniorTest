@@ -23,7 +23,7 @@ namespace Character.FSM.States
             IsBusy = true;
             _inputReader.LockMove();
             _rigidbody.isKinematic = true;
-            CharacterAnimator.Play(CharacterAnimator.AnimationKey.Shoot);
+            CharacterAnimator.Play(CharacterAnimator.AnimationKey.Slash);
             _busynessCountdown = BusyTime;
             base.Enter();
         }

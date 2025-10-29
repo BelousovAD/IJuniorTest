@@ -741,7 +741,7 @@ MonoBehaviour:
   _sphereRadius: 0.1
   _layerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 65
   _preferredDistance: 5
   _minVerticalAngle: -50
   _maxVerticalAngle: 89
