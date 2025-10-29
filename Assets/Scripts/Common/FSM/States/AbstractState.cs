@@ -4,11 +4,14 @@ using Common.FSM.Transitions;
 
 namespace Common.FSM.States
 {
-    public abstract class AbstractState : IEnterable, IExitable, IDisposable
+    using Behaviour;
+
+    public abstract class AbstractState : IEnterable, IExitable, IDisposable, IUpdatable
     {
         private readonly List<Transition> _transitions = new ();
         private IStateSwitcher _stateSwitcher;
         private bool _isBusy;
+        private bool _isFirstUpdate;
 
         private event Action BusynessChanged;
 
@@ -39,13 +42,23 @@ namespace Common.FSM.States
         {
             SubscribeToTransitions();
             BusynessChanged += CheckTransitions;
-            CheckTransitions();
+            _isFirstUpdate = true;
         }
 
         public virtual void Exit()
         {
+            _isFirstUpdate = true;
             BusynessChanged -= CheckTransitions;
             UnsubscribeFromTransitions();
+        }
+
+        public void Update(float deltaTime)
+        {
+            if (_isFirstUpdate)
+            {
+                CheckTransitions();
+                _isFirstUpdate = false;
+            }
         }
 
         public void Dispose()
