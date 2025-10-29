@@ -14,7 +14,7 @@ namespace Character.Enemy
 
         public void Initialize(Transform player)
         {
-            CharacterStateMachineBuilder stateMachineBuilder = new(Animator, _inputReader, _rigidbody);
+            CharacterStateMachineBuilder stateMachineBuilder = new(this, _inputReader, _rigidbody);
             StateMachine stateMachine = stateMachineBuilder.Build();
             Initialize(stateMachine);
             _playerPositionObserver.Initialize(player);

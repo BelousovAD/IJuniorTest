@@ -23,7 +23,7 @@ namespace Gameplay
         private void Start()
         {
             _characterStateMachineBuilder = new CharacterStateMachineBuilder(
-                _player.Animator,
+                _player,
                 _inputReader,
                 _playerRigidbody);
             _stateMachine = _characterStateMachineBuilder.Build();

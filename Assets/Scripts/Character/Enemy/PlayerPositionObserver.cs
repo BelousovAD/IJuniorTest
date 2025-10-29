@@ -1,5 +1,7 @@
 namespace Character.Enemy
 {
+    using ChangeableValue;
+    using Common;
     using Common.ChangeableValue;
     using UnityEngine;
 
@@ -8,31 +10,35 @@ namespace Character.Enemy
         [SerializeField] private Transform _transformFrom;
         [SerializeField, Min(0f)] private float _closeDistance;
 
-        private float _sqrCloseDistance;
-        private Transform _player;
-        private bool _needDirection = true;
+        private readonly IsTransformCloseEnough _isCloseEnough = new();
+        private readonly Direction2 _direction2 = new();
 
-        public ChangeableValue<bool> IsCloseEnough { get; } = new();
+        public ChangeableValue<bool> IsCloseEnough => _isCloseEnough;
 
-        public ChangeableValue<Vector2> Direction2D { get; } = new();
+        public ChangeableValue<Vector2> Direction2D => _direction2;
 
-        public void Initialize(Transform player) =>
-            _player = player;
+        public void Initialize(Transform player)
+        {
+            _isCloseEnough.Initialize(_transformFrom, player, _closeDistance);
+            _direction2.Initialize(_transformFrom, player, AxisType.Y);
+        }
 
-        private void Awake() =>
-            _sqrCloseDistance = _closeDistance * _closeDistance;
+        private void OnEnable() =>
+            _direction2.Enable();
+
+        private void OnDisable() =>
+            _direction2.Disable();
 
         private void Update()
         {
-            Vector3 direction3D = _player.position - _transformFrom.position;
-            IsCloseEnough.Value = Vector3.SqrMagnitude(direction3D) <= _sqrCloseDistance;
-            Direction2D.Value = _needDirection ? new Vector2(direction3D.x, direction3D.z).normalized : Vector2.zero;
+            _isCloseEnough.Update(Time.deltaTime);
+            _direction2.Update(Time.deltaTime);
         }
 
         public void ForgetDirection() =>
-            _needDirection = false;
+            _direction2.Disable();
 
         public void RemindDirection() =>
-            _needDirection = true;
+            _direction2.Enable();
     }
 }

@@ -6,14 +6,16 @@ namespace Character.FSM.States
     public class AttackState : AbstractCharacterAnimatorState
     {
         private const float BusyTime = 1f;
-        
+
+        private readonly Character _character;
         private readonly IInputReader _inputReader;
         private readonly Rigidbody _rigidbody;
         private float _busynessCountdown;
 
-        public AttackState(CharacterAnimator characterAnimator, IInputReader inputReader, Rigidbody rigidbody)
-            : base(characterAnimator)
+        public AttackState(Character character, IInputReader inputReader, Rigidbody rigidbody)
+            : base(character.Animator)
         {
+            _character = character;
             _inputReader = inputReader;
             _rigidbody = rigidbody;
         }
@@ -23,7 +25,11 @@ namespace Character.FSM.States
             IsBusy = true;
             _inputReader.LockMove();
             _rigidbody.isKinematic = true;
-            CharacterAnimator.Play(CharacterAnimator.AnimationKey.Slash);
+
+            CharacterAnimator.Play(_character.HasGun
+                ? CharacterAnimator.AnimationKey.Shoot
+                : CharacterAnimator.AnimationKey.Slash);
+
             _busynessCountdown = BusyTime;
             base.Enter();
         }

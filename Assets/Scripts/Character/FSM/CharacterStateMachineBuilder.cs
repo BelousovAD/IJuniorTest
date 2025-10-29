@@ -11,16 +11,16 @@ namespace Character.FSM
 
     public class CharacterStateMachineBuilder : AbstractStateMachineBuilder
     {
-        private readonly CharacterAnimator _characterAnimator;
+        private readonly Character _character;
         private readonly IInputReader _inputReader;
         private readonly Rigidbody _rigidbody;
 
         public CharacterStateMachineBuilder(
-            CharacterAnimator characterAnimator,
+            Character character,
             IInputReader inputReader,
             Rigidbody rigidbody)
         {
-            _characterAnimator = characterAnimator;
+            _character = character;
             _inputReader = inputReader;
             _rigidbody = rigidbody;
         }
@@ -37,9 +37,9 @@ namespace Character.FSM
         {
             States = new Dictionary<Type, AbstractState>
             {
-                [typeof(IdleState)] = new IdleState(_characterAnimator),
-                [typeof(RunState)] = new RunState(_characterAnimator),
-                [typeof(AttackState)] = new AttackState(_characterAnimator, _inputReader, _rigidbody),
+                [typeof(IdleState)] = new IdleState(_character.Animator),
+                [typeof(RunState)] = new RunState(_character.Animator),
+                [typeof(AttackState)] = new AttackState(_character, _inputReader, _rigidbody),
             };
         }
 
