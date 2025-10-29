@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4905507353042023373}
+  - component: {fileID: 2401171143872104983}
   m_Layer: 0
   m_Name: KnifeHolder
   m_TagString: Untagged
@@ -32,6 +33,20 @@ Transform:
   m_Father: {fileID: 2366941501953025664}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 65, y: 39, z: 216}
+--- !u!114 &2401171143872104983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881122756671762177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dda7994f56134d0ab861f04c57b1bf3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 1
+  _playerTrigger: {fileID: 4427380733958400593}
 --- !u!1 &5474487887343083110
 GameObject:
   m_ObjectHideFlags: 0
@@ -77,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93a2a838e93041d6a172eec487fbcebd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 100
+  _damage: 1
   _maxShootDistance: 100
   _layerMask:
     serializedVersion: 2
@@ -115,7 +130,7 @@ Transform:
   - {fileID: 4905507353042023373}
   - {fileID: 2514833386064711586}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6229449758312888392
 MonoBehaviour:
@@ -285,10 +300,55 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1909035667600302, guid: 0855e95901e04f241bba2899f299870f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 590671434668560178}
+    - targetCorrespondingSourceObject: {fileID: 1909035667600302, guid: 0855e95901e04f241bba2899f299870f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4427380733958400593}
   m_SourcePrefab: {fileID: 100100000, guid: 0855e95901e04f241bba2899f299870f, type: 3}
 --- !u!4 &3481797461174877435 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4197559458360760, guid: 0855e95901e04f241bba2899f299870f, type: 3}
   m_PrefabInstance: {fileID: 3485572804405825859}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3484085981220152045 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1909035667600302, guid: 0855e95901e04f241bba2899f299870f, type: 3}
+  m_PrefabInstance: {fileID: 3485572804405825859}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &590671434668560178
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3484085981220152045}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 839d8c8bd5c525748a5c3025d385138d, type: 3}
+--- !u!114 &4427380733958400593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3484085981220152045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbd8cb7e4cfa4ec6b586ee3e069f90f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

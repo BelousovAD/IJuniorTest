@@ -1,11 +1,12 @@
 namespace Character.Player
 {
+    using UnityEngine;
+
     public class Player : Character
     {
-        protected override void OnEnable()
-        { }
-
-        protected override void OnDisable()
-        { }
+        protected override void Die()
+        {
+            Debug.LogError($"Health: {Health.Value}");
+        }
     }
 }

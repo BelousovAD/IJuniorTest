@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 5336399159407982617}
-  _maxHealth: 300
+  _maxHealth: 3
   _hasGun: 0
   _inputReader: {fileID: 3304254682261584318}
   _mover: {fileID: 4359855158824659408}
