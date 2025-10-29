@@ -37,8 +37,14 @@ namespace Character
 
         public Health Health { get; private set; }
 
-        private void Awake() =>
+        protected virtual void OnEnable()
+        {
             Health = new Health(_maxHealth);
+            Health.ValueChanged += Die;
+        }
+
+        protected virtual void OnDisable() =>
+            Health.ValueChanged -= Die;
 
         private void Update() =>
             _stateMachine?.Update(Time.deltaTime);
@@ -51,5 +57,13 @@ namespace Character
 
         public void Initialize(StateMachine stateMachine) =>
             _stateMachine = stateMachine;
+
+        private void Die()
+        {
+            if (Health.Value <= 0)
+            {
+                Release();
+            }
+        }
     }
 }

@@ -41,6 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2514833386064711586}
+  - component: {fileID: 1530351984813111333}
   m_Layer: 0
   m_Name: GunHolder
   m_TagString: Untagged
@@ -64,6 +65,24 @@ Transform:
   m_Father: {fileID: 2366941501953025664}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: -90}
+--- !u!114 &1530351984813111333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5474487887343083110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93a2a838e93041d6a172eec487fbcebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 100
+  _maxShootDistance: 100
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  _startShootingPoint: {fileID: 0}
 --- !u!1 &7444147592929807439
 GameObject:
   m_ObjectHideFlags: 0

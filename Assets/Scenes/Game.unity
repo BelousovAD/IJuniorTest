@@ -486,6 +486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 706674612}
   _playerRigidbody: {fileID: 706674610}
+  _gun: {fileID: 7659095996787711816}
 --- !u!1 &674015728
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,7 +1201,7 @@ MonoBehaviour:
   _ordinarySpawner: {fileID: 1581198745}
   _bossSpawner: {fileID: 1076140422}
   _waves:
-  - OrdinaryEnemyCount: 0
+  - OrdinaryEnemyCount: 10
     BossEnemyCount: 1
   - OrdinaryEnemyCount: 20
     BossEnemyCount: 1
@@ -1271,6 +1272,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2bebb6421bd6a840be264e13fb1edc6, type: 3}
+--- !u!114 &7659095996787711816 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3693787094956627564, guid: a2bebb6421bd6a840be264e13fb1edc6, type: 3}
+  m_PrefabInstance: {fileID: 7659095996787711815}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93a2a838e93041d6a172eec487fbcebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8484574281079233446
 PrefabInstance:
   m_ObjectHideFlags: 0
