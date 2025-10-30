@@ -24,8 +24,15 @@ namespace UI.Window
                 {
                     return;
                 }
-                
-                SetWindowStatus(lastWindow, !needCloseCurrent);
+
+                if (needCloseCurrent)
+                {
+                    SetWindowStatus(lastWindow, false);
+                }
+                else
+                {
+                    lastWindow.Lock();
+                }
             }
 
             if (_spawnedWindows.TryGetValue(windowId, out Window window) == false)
@@ -55,6 +62,7 @@ namespace UI.Window
                 {
                     window = _windowsHistory.Peek();
                     SetWindowStatus(window, true);
+                    window.Unlock();
                 }
             }
         }
