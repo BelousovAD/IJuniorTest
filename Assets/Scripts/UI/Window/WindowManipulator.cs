@@ -2,6 +2,7 @@ namespace UI.Window
 {
     using System.Collections.Generic;
     using UnityEngine;
+    using Zenject;
 
     public class WindowManipulator : MonoBehaviour
     {
@@ -10,6 +11,11 @@ namespace UI.Window
 
         private readonly Stack<Window> _windowsHistory = new();
         private readonly Dictionary<string, Window> _spawnedWindows = new();
+        private IInstantiator _instantiator;
+
+        [Inject]
+        private void Initialize(IInstantiator instantiator) =>
+            _instantiator = instantiator;
 
         private void Start() =>
             OpenWindow(_startWindowId);
@@ -73,7 +79,7 @@ namespace UI.Window
 
             if (window is not null)
             {
-                window = Instantiate(window, transform);
+                window = _instantiator.InstantiatePrefabForComponent<Window>(window.gameObject, transform);
                 _spawnedWindows.Add(windowId, window);
             }
 

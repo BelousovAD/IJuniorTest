@@ -9,7 +9,6 @@ namespace Character
     public class Character : PooledComponent
     {
         [SerializeField] private CharacterAnimator _animator;
-        [SerializeField, Min(1f)] private float _maxHealth;
         [SerializeField] private bool _hasGun;
         
         private StateMachine _stateMachine;
@@ -35,13 +34,10 @@ namespace Character
             }
         }
 
-        public Health Health { get; private set; }
+        public Health Health { get; protected set; }
 
-        private void OnEnable()
-        {
-            Health = new Health(_maxHealth);
+        protected virtual void OnEnable() =>
             Health.ValueChanged += Die;
-        }
 
         private void OnDisable() =>
             Health.ValueChanged -= Die;
