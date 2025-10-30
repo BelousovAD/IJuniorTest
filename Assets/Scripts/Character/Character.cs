@@ -13,6 +13,7 @@ namespace Character
         
         private StateMachine _stateMachine;
 
+        public event Action Initialized;
         public event Action WeaponChanged;
 
         public CharacterAnimator Animator => _animator;
@@ -36,6 +37,8 @@ namespace Character
 
         public Health Health { get; protected set; }
 
+        public IStateSwitcher StateSwitcher => _stateMachine;
+
         protected virtual void OnEnable() =>
             Health.ValueChanged += Die;
 
@@ -51,8 +54,11 @@ namespace Character
         private void FixedUpdate() =>
             _stateMachine?.FixedUpdate(Time.fixedTime);
 
-        public void Initialize(StateMachine stateMachine) =>
+        public void Initialize(StateMachine stateMachine)
+        {
             _stateMachine = stateMachine;
+            Initialized?.Invoke();
+        }
 
         protected virtual void Die()
         {

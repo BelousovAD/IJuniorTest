@@ -12,7 +12,6 @@ namespace Gameplay
     {
         [SerializeField] private Character _player;
         [SerializeField] private Rigidbody _playerRigidbody;
-        [SerializeField] private Gun _gun;
 
         private IInputReader _inputReader;
         private CharacterStateMachineBuilder _characterStateMachineBuilder;
@@ -24,8 +23,7 @@ namespace Gameplay
 
         private void Start()
         {
-            _characterStateMachineBuilder = new CharacterStateMachineBuilder(_player, _inputReader,
-                _playerRigidbody, _gun);
+            _characterStateMachineBuilder = new CharacterStateMachineBuilder(_player, _inputReader, _playerRigidbody);
             _stateMachine = _characterStateMachineBuilder.Build();
             _player.Initialize(_stateMachine);
         }

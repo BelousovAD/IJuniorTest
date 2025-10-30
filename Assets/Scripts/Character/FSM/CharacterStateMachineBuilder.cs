@@ -15,18 +15,15 @@ namespace Character.FSM
         private readonly Character _character;
         private readonly IInputReader _inputReader;
         private readonly Rigidbody _rigidbody;
-        private readonly Gun _gun;
 
         public CharacterStateMachineBuilder(
             Character character,
             IInputReader inputReader,
-            Rigidbody rigidbody,
-            Gun gun)
+            Rigidbody rigidbody)
         {
             _character = character;
             _inputReader = inputReader;
             _rigidbody = rigidbody;
-            _gun = gun;
         }
 
         public override StateMachine Build()
@@ -43,7 +40,7 @@ namespace Character.FSM
             {
                 [typeof(IdleState)] = new IdleState(_character.Animator),
                 [typeof(RunState)] = new RunState(_character.Animator),
-                [typeof(AttackState)] = new AttackState(_character, _inputReader, _rigidbody, _gun),
+                [typeof(AttackState)] = new AttackState(_character, _inputReader, _rigidbody),
             };
         }
 

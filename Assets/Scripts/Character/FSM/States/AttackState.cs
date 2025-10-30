@@ -7,22 +7,18 @@ namespace Character.FSM.States
     public class AttackState : AbstractCharacterAnimatorState
     {
         private const float BusyTime = 1f;
-        private const float DelayBeforeAttack = 0.25f;
 
         private readonly Character _character;
         private readonly IInputReader _inputReader;
         private readonly Rigidbody _rigidbody;
-        private readonly Gun _gun;
         private float _busynessCountdown;
-        private float _delayCountdown;
 
-        public AttackState(Character character, IInputReader inputReader, Rigidbody rigidbody, Gun gun)
+        public AttackState(Character character, IInputReader inputReader, Rigidbody rigidbody)
             : base(character.Animator)
         {
             _character = character;
             _inputReader = inputReader;
             _rigidbody = rigidbody;
-            _gun = gun;
         }
 
         public override void Enter()
@@ -31,15 +27,9 @@ namespace Character.FSM.States
             _inputReader.LockMove();
             _rigidbody.isKinematic = true;
 
-            if (_character.HasGun)
-            {
-                CharacterAnimator.Play(CharacterAnimator.AnimationKey.Shoot);
-                _delayCountdown = DelayBeforeAttack;
-            }
-            else
-            {
-                CharacterAnimator.Play(CharacterAnimator.AnimationKey.Slash);
-            }
+            CharacterAnimator.Play(_character.HasGun
+                ? CharacterAnimator.AnimationKey.Shoot
+                : CharacterAnimator.AnimationKey.Slash);
 
             _busynessCountdown = BusyTime;
             base.Enter();
@@ -62,16 +52,6 @@ namespace Character.FSM.States
                 if (_busynessCountdown <= 0f)
                 {
                     IsBusy = false;
-                }
-            }
-
-            if (_delayCountdown > 0f)
-            {
-                _delayCountdown -= deltaTime;
-
-                if (_delayCountdown <= 0f)
-                {
-                    _gun.Shoot();
                 }
             }
         }

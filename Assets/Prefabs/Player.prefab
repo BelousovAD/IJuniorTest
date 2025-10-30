@@ -350,6 +350,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 112904513967903993}
     m_Modifications:
     - target: {fileID: 1530351984813111333, guid: 628018e949e6ff8458844ce1354c45e0, type: 3}
+      propertyPath: _character
+      value: 
+      objectReference: {fileID: 7958948448978363546}
+    - target: {fileID: 1530351984813111333, guid: 628018e949e6ff8458844ce1354c45e0, type: 3}
       propertyPath: _startShootingPoint
       value: 
       objectReference: {fileID: 2205499243833012743}
@@ -397,6 +401,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2401171143872104983, guid: 628018e949e6ff8458844ce1354c45e0, type: 3}
+      propertyPath: _character
+      value: 
+      objectReference: {fileID: 7958948448978363546}
     - target: {fileID: 6229449758312888392, guid: 628018e949e6ff8458844ce1354c45e0, type: 3}
       propertyPath: _character
       value: 

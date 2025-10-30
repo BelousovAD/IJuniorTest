@@ -9,14 +9,17 @@ namespace Common.FSM
 	{
 		private readonly List<AbstractState> _states;
 
-		private AbstractState _currentState;
-
 		public StateMachine(IEnumerable<AbstractState> states) =>
 			_states = new List<AbstractState>(states);
 
+		public event Action StateSwitching;
+		public event Action StateSwitched;
+
+		public AbstractState CurrentState { get; private set; }
+
 		public void Update(float deltaTime)
 		{
-			if (_currentState is IUpdatable updatableState)
+			if (CurrentState is IUpdatable updatableState)
 			{
 				updatableState.Update(deltaTime);
 			}
@@ -24,7 +27,7 @@ namespace Common.FSM
 
 		public void FixedUpdate(float deltaTime)
 		{
-			if (_currentState is IFixedUpdatable fixedUpdatableState)
+			if (CurrentState is IFixedUpdatable fixedUpdatableState)
 			{
 				fixedUpdatableState.FixedUpdate(deltaTime);
 			}
@@ -32,7 +35,7 @@ namespace Common.FSM
 
 		public void LateUpdate(float deltaTime)
 		{
-			if (_currentState is ILateUpdatable lateUpdatableState)
+			if (CurrentState is ILateUpdatable lateUpdatableState)
 			{
 				lateUpdatableState.LateUpdate(deltaTime);
 			}
@@ -47,19 +50,21 @@ namespace Common.FSM
 					$"State {nextState.GetType().Name} doesnt exist in StateMachine");
 			}
 
-			if (nextState == _currentState)
+			if (nextState == CurrentState)
 			{
 				return;
 			}
-
-			_currentState?.Exit();
-			_currentState = nextState;
-			_currentState?.Enter();
+			
+			CurrentState?.Exit();
+			StateSwitching?.Invoke();
+			CurrentState = nextState;
+			StateSwitched?.Invoke();
+			CurrentState?.Enter();
 		}
 
 		public void Dispose()
 		{
-			_currentState?.Exit();
+			CurrentState?.Exit();
 			_states.ForEach(state => state.Dispose());
 		}
 	}
