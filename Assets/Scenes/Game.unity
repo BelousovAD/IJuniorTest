@@ -387,6 +387,7 @@ GameObject:
   m_Component:
   - component: {fileID: 615185525}
   - component: {fileID: 615185524}
+  - component: {fileID: 615185526}
   m_Layer: 0
   m_Name: SceneContext
   m_TagString: Untagged
@@ -407,7 +408,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
-  _monoInstallers: []
+  _monoInstallers:
+  - {fileID: 615185526}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -440,6 +442,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &615185526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615185523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 374fc06ebd58475392d6eb5cea1c06c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waveSpawnCaller: {fileID: 2134092752}
 --- !u!1 &641045502
 GameObject:
   m_ObjectHideFlags: 0
@@ -1248,11 +1263,11 @@ MonoBehaviour:
   _ordinarySpawner: {fileID: 1581198745}
   _bossSpawner: {fileID: 1076140422}
   _waves:
-  - OrdinaryEnemyCount: 10
+  - OrdinaryEnemyCount: 2
     BossEnemyCount: 1
-  - OrdinaryEnemyCount: 20
+  - OrdinaryEnemyCount: 4
     BossEnemyCount: 1
-  - OrdinaryEnemyCount: 30
+  - OrdinaryEnemyCount: 6
     BossEnemyCount: 1
 --- !u!1001 &7659095996787711815
 PrefabInstance:

@@ -14,46 +14,77 @@ namespace Gameplay
         [SerializeField] private EnemySpawner _bossSpawner;
         [SerializeField] private List<Wave> _waves = new();
 
-        private int _currentWaveIndex = -1;
-        private int _currentBossCount = 1;
+        private int _waveIndex = -1;
+        private int _ordinaryCount;
+        private int _bossCount;
         private WaitForSeconds _delay;
+
+        public event Action WaveIndexChanged;
+
+        public int WaveIndex
+        {
+            get
+            {
+                return _waveIndex;
+            }
+
+            private set
+            {
+                if (value != _waveIndex)
+                {
+                    _waveIndex = value;
+                    WaveIndexChanged?.Invoke();
+                }
+            }
+        }
+
+        public int WaveCount => _waves.Count;
 
         private void Awake() =>
             _delay = new WaitForSeconds(_spawnDelay);
 
         private void OnEnable()
         {
+            _ordinarySpawner.ComponentReleased += CallBossSubwave;
             _bossSpawner.ComponentReleased += CallNextWave;
             CallNextWave(null);
         }
 
-        private void OnDisable() =>
+        private void OnDisable()
+        {
             _bossSpawner.ComponentReleased -= CallNextWave;
+            _ordinarySpawner.ComponentReleased -= CallBossSubwave;
+        }
+
+        private void CallBossSubwave(PooledComponent pooledComponent)
+        {
+            _ordinaryCount--;
+
+            if (_ordinaryCount > 0)
+            {
+                return;
+            }
+
+            _bossCount = _waves[WaveIndex].BossEnemyCount;
+            StartCoroutine(SpawnWithDelay(_bossSpawner, _bossCount));
+        }
 
         private void CallNextWave(PooledComponent pooledComponent)
         {
-            _currentBossCount--;
+            _bossCount--;
 
-            if (_currentBossCount > 0)
+            if (_bossCount > 0)
             {
                 return;
             }
             
-            _currentWaveIndex++;
+            WaveIndex++;
 
-            if (_currentWaveIndex < _waves.Count)
+            if (WaveIndex < _waves.Count)
             {
-                StartCoroutine(SpawnWaveWithDelay(
-                    _waves[_currentWaveIndex].OrdinaryEnemyCount,
-                    _waves[_currentWaveIndex].BossEnemyCount));
+                _ordinaryCount = _waves[WaveIndex].OrdinaryEnemyCount;
+                StartCoroutine(SpawnWithDelay(_ordinarySpawner, _ordinaryCount));
             }
-        }
-
-        private IEnumerator SpawnWaveWithDelay(int ordinaryCount, int bossCount)
-        {
-            yield return StartCoroutine(SpawnWithDelay(_ordinarySpawner, ordinaryCount));
-
-            yield return StartCoroutine(SpawnWithDelay(_bossSpawner, bossCount));
         }
 
         private IEnumerator SpawnWithDelay(EnemySpawner enemySpawner, int count)
