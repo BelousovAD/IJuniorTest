@@ -9,10 +9,5 @@ namespace Character.Player
         [Inject]
         private void Initialize(Health health) =>
             Health = health;
-        
-        protected override void Die()
-        {
-            Debug.LogError($"Health: {Health.Value}");
-        }
     }
 }
