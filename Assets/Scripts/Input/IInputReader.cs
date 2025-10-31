@@ -1,9 +1,10 @@
 namespace Input
 {
+    using Common.Behaviour;
     using Common.ChangeableValue;
     using UnityEngine;
 
-    public interface IInputReader
+    public interface IInputReader : IEnable, IDisable
     {
         public ChangeableValue<bool> AttackInput { get; }
         

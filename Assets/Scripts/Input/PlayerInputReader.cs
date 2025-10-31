@@ -18,10 +18,7 @@ namespace Input
             _attackInput = new AttackInput(_input);
             _lookInput = new LookInput(_input);
             _moveInput = new MoveInput(_input);
-            _attackInput.Enable();
-            _lookInput.Enable();
-            _moveInput.Enable();
-            _input.Enable();
+            Enable();
         }
         
         public ChangeableValue<bool> AttackInput => _attackInput;
@@ -36,12 +33,23 @@ namespace Input
         public void UnlockMove() =>
             _moveInput.Enable();
 
-        public void Dispose()
+        public void Enable()
+        {
+            _attackInput.Enable();
+            _lookInput.Enable();
+            _moveInput.Enable();
+            _input.Enable();
+        }
+
+        public void Disable()
         {
             _input.Disable();
             _attackInput.Disable();
             _lookInput.Disable();
             _moveInput.Disable();
         }
+
+        public void Dispose() =>
+            Disable();
     }
 }
