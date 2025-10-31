@@ -11,12 +11,11 @@ namespace Character.Enemy
         [SerializeField] private EnemyInputReader _inputReader;
         [SerializeField] private Mover _mover;
         [SerializeField] private PlayerPositionObserver _playerPositionObserver;
-        [SerializeField] private Rigidbody _rigidbody;
         [SerializeField, Min(1f)] private float _maxHealth;
 
         public void Initialize(Transform player)
         {
-            CharacterStateMachineBuilder stateMachineBuilder = new(this, _inputReader, _rigidbody);
+            CharacterStateMachineBuilder stateMachineBuilder = new(this, _inputReader);
             StateMachine stateMachine = stateMachineBuilder.Build();
             Initialize(stateMachine);
             _playerPositionObserver.Initialize(player);

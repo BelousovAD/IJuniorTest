@@ -1,8 +1,6 @@
 namespace Character.FSM.States
 {
     using Input;
-    using UnityEngine;
-    using Weapon;
 
     public class AttackState : AbstractCharacterAnimatorState
     {
@@ -10,22 +8,19 @@ namespace Character.FSM.States
 
         private readonly Character _character;
         private readonly IInputReader _inputReader;
-        private readonly Rigidbody _rigidbody;
         private float _busynessCountdown;
 
-        public AttackState(Character character, IInputReader inputReader, Rigidbody rigidbody)
+        public AttackState(Character character, IInputReader inputReader)
             : base(character.Animator)
         {
             _character = character;
             _inputReader = inputReader;
-            _rigidbody = rigidbody;
         }
 
         public override void Enter()
         {
             IsBusy = true;
             _inputReader.LockMove();
-            _rigidbody.isKinematic = true;
 
             CharacterAnimator.Play(_character.HasGun
                 ? CharacterAnimator.AnimationKey.Shoot
@@ -37,7 +32,6 @@ namespace Character.FSM.States
 
         public override void Exit()
         {
-            _rigidbody.isKinematic = false;
             _inputReader.UnlockMove();
             base.Exit();
         }
@@ -45,6 +39,7 @@ namespace Character.FSM.States
         public override void Update(float deltaTime)
         {
             base.Update(deltaTime);
+            
             if (_busynessCountdown > 0f)
             {
                 _busynessCountdown -= deltaTime;

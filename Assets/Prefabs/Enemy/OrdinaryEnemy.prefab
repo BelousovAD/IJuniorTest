@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 8990053847431187717}
   - component: {fileID: 1113372383375548757}
   - component: {fileID: 5100405704863898933}
+  - component: {fileID: 7707916199965472659}
   m_Layer: 3
   m_Name: OrdinaryEnemy
   m_TagString: Untagged
@@ -240,8 +241,20 @@ MonoBehaviour:
   _inputReader: {fileID: 2671192100420810683}
   _mover: {fileID: 8457918143019784982}
   _playerPositionObserver: {fileID: 4714074020176602656}
-  _rigidbody: {fileID: 1113372383375548757}
   _maxHealth: 1
+--- !u!114 &7707916199965472659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4810554303395924425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a3f271dafc64ae3b7de3a3cc4b5d000, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _character: {fileID: 5100405704863898933}
 --- !u!1 &8283703878868182135
 GameObject:
   m_ObjectHideFlags: 0
