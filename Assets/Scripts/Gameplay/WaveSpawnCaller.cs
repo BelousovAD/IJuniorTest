@@ -19,6 +19,7 @@ namespace Gameplay
         private int _bossCount;
         private WaitForSeconds _delay;
 
+        public event Action Completed;
         public event Action WaveIndexChanged;
 
         public int WaveIndex
@@ -77,13 +78,16 @@ namespace Gameplay
             {
                 return;
             }
-            
-            WaveIndex++;
 
-            if (WaveIndex < _waves.Count)
+            if (WaveIndex < WaveCount - 1)
             {
+                WaveIndex++;
                 _ordinaryCount = _waves[WaveIndex].OrdinaryEnemyCount;
                 StartCoroutine(SpawnWithDelay(_ordinarySpawner, _ordinaryCount));
+            }
+            else
+            {
+                Completed?.Invoke();
             }
         }
 

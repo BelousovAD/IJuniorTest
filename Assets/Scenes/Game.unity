@@ -571,6 +571,7 @@ MonoBehaviour:
   _startWindowId: HUD
   _windowPrefabs:
   - {fileID: 821549047744473924, guid: 0e1bcead960d1d14da9bb0b812abaaac, type: 3}
+  - {fileID: 821549047744473924, guid: 58651f88ddd12604188ffec9a181ce17, type: 3}
 --- !u!4 &701217228
 Transform:
   m_ObjectHideFlags: 0
