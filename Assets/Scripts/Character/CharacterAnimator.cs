@@ -29,8 +29,16 @@ namespace Character
             };
         }
 
+        private void OnDestroy() =>
+            _animator = null;
+
         public void Play(AnimationKey animationKey)
         {
+            if (_animator is null)
+            {
+                return;
+            }
+            
             foreach (int parameter in _parameters.Values)
             {
                 _animator.SetBool(parameter, false);

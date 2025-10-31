@@ -14,26 +14,10 @@ namespace Character
         private StateMachine _stateMachine;
 
         public event Action Initialized;
-        public event Action WeaponChanged;
 
         public CharacterAnimator Animator => _animator;
 
-        public bool HasGun
-        {
-            get
-            {
-                return _hasGun;
-            }
-
-            private set
-            {
-                if (value != _hasGun)
-                {
-                    _hasGun = value;
-                    WeaponChanged?.Invoke();
-                }
-            }
-        }
+        public bool HasGun => _hasGun;
 
         public Health Health { get; protected set; }
 
@@ -60,7 +44,7 @@ namespace Character
             Initialized?.Invoke();
         }
 
-        protected virtual void Die()
+        private void Die()
         {
             if (Health.Value <= 0)
             {

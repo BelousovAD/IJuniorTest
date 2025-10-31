@@ -454,6 +454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 374fc06ebd58475392d6eb5cea1c06c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxPlayerHealth: 3
   _waveSpawnCaller: {fileID: 2134092752}
 --- !u!1 &641045502
 GameObject:

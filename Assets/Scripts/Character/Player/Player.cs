@@ -1,7 +1,6 @@
 namespace Character.Player
 {
     using ChangeableValue;
-    using UnityEngine;
     using Zenject;
 
     public class Player : Character
